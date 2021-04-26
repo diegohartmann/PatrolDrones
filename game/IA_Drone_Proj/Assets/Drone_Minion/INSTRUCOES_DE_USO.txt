@@ -1,0 +1,4 @@
+1. The player or any other drone possible target must have a "Target" Layer. Must have a Collider so the View component of the drone can 'see' them;
+2. Any drone obstacle must have an "Obstacles" Layer. Must have a Collider so eigther the View component of the drone and the AStartGrid can 'see' them;
+2. Whenever you create a scene, you must drag into it (in the exact center) a AStartGrid;
+3. For each drone in scene, you must drag one 'waypointpath' prefab around any patrol area you wish, and asign it on the drone's waypoint component, so it starts patroling on it.

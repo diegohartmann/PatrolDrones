@@ -1,0 +1,22 @@
+Diego:
+A*:                                           https://www.youtube.com/watch?v=alU04hvz6L4
+			https://www.youtube.com/watch?v=nhiFx28e7JY&t=241s&ab_channel=SebastianLague
+Campo de visao do inimigo:   https://www.youtube.com/watch?v=xkcCWqifT9M&list=RDCMUCmtyQOKKmrMVaKuRXz02jbQ&index=2
+
+Flocking:                                  https://www.youtube.com/watch?v=mjKINQigAE4&list=PL5KbKbJ6Gf99UlyIqzV1UpOzseyRn5H1d
+			https://www.youtube.com/watch?v=bqtqltqcQhw&list=RDCMUCmtyQOKKmrMVaKuRXz02jbQ&index=9&ab_channel=SebastianLague
+
+State Machine: 	                https://www.youtube.com/watch?v=db0KWYaWfeM
+
+//----------------------------------------------------------
+
+Philipp:
+A*: https://www.youtube.com/watch?v=5QT5Czfe0YE
+
+Flocking: https://www.youtube.com/watch?v=mBVarJm3Tgk
+
+Finite State Machine: https://www.youtube.com/watch?v=cnpJtheBLLY
+
+
+Unity3D AI with State Machine (FSM), Drones, and Lasers!
+https://www.youtube.com/watch?v=YdERlPfwUb0

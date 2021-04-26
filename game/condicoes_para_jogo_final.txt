@@ -1,0 +1,8 @@
+1. condicao vitoria e derrota; //podemos fazer já
+2. desafios progressivos;       //podemos fazer ja --> tres tipos de drones
+
+3. ter:
+	Finite State Machine (or behaviour trees? --> animacao);
+	Pathfinding (A* -->  pode ser outro --> seguir player);
+	Flocking --> minions (Swarming and Hearding --> podemos usar tambpem, para garantir);
+	
