@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GFX: {fileID: 1166702066314084969}
-  rotationFactor: 6
+  rotationFactor: 3
   moveSpeed: 6
   rotateOffset: 0.3
 --- !u!114 &2822787937260799855
@@ -217,7 +217,6 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 7385257752868349094}
-  damageFromFriendFire: 0
 --- !u!54 &4310559716548637385
 Rigidbody:
   m_ObjectHideFlags: 0
