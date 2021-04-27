@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6432b7b2241e0ba45a8c214b5ee29ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  State: 0
 --- !u!114 &1016385377114272139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,10 +170,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerOrMinion: 1
+  destructble: 0
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 5113931180897670206}
-  damageFromFriendFire: 1
 --- !u!1001 &6947422098190168983
 PrefabInstance:
   m_ObjectHideFlags: 0

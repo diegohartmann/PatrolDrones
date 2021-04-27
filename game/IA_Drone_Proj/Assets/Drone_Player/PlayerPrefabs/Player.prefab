@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerOrMinion: 1
+  destructble: 0
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 7385257752868349094}
@@ -230,9 +231,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
+  m_Interpolate: 2
+  m_Constraints: 112
+  m_CollisionDetection: 2
 --- !u!114 &1095153714506834031
 MonoBehaviour:
   m_ObjectHideFlags: 0

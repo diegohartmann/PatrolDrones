@@ -6,26 +6,29 @@ using UnityEngine.UI;
 public class DamageFromBullet : MonoBehaviour
 {
     [SerializeField] private bool isPlayerOrMinion = false;
+    [SerializeField] private bool destructble = true;
     [SerializeField] private float maxHealth = 1;
     [SerializeField] private Slider healthSlider = null;
     [SerializeField] private Transform GFXChild = null;
     private float currHealth = 0;
     private SceneLoader loader;
+    
     private void Awake() {
         loader = FindObjectOfType<SceneLoader>();
         currHealth = maxHealth;
     }
+
     private void OnTriggerEnter(Collider other) {
-        
         GameObject otherObj = other.gameObject;
         if (otherObj.CompareTag("Bullet"))
         {
-            float damage = -otherObj.GetComponent<bulletMovement>().bullDamage;
-            UpdateLife(damage);
+            if(destructble){
+                float damage = -otherObj.GetComponent<bulletMovement>().bullDamage;
+                UpdateLife(damage);
+            }
             otherObj.SetActive(false);
         }
     }
-
     void UpdateLife(float _amt){
         currHealth += _amt;
         if(currHealth <= 0){
@@ -46,7 +49,7 @@ public class DamageFromBullet : MonoBehaviour
             healthSlider.value = _value;
             return;
         }
-        print("Vida do "+this.gameObject.name+" = "+currHealth+" (nao tem slider ainda)");
+        print(currHealth);
     }
 
     private void DieCondition(){
@@ -62,10 +65,12 @@ public class DamageFromBullet : MonoBehaviour
             var partObj = part.gameObject;
             part.parent = null;
             partObj.AddComponent<Rigidbody>();
-            var col = partObj.AddComponent<MeshCollider>();
-            col.convex = true;
-            Destroy(this.gameObject);
+            if(partObj.GetComponent<Collider>() == null){
+                var col = partObj.AddComponent<MeshCollider>();
+                col.convex = true;
+            }
             Destroy(partObj, 3);
         }
+        Destroy(this.gameObject);
     }
 }
