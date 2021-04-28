@@ -24,6 +24,7 @@ public class DamageFromBullet : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other) {
+        print(name);
         GameObject otherObj = other.gameObject;
         if (otherObj.CompareTag("Bullet")){
             bulletMovement bulletMov = otherObj.GetComponent<bulletMovement>();
