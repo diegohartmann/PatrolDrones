@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6163259300838358359}
   - component: {fileID: 8307824922627320403}
   m_Layer: 0
-  m_Name: Locker
+  m_Name: Closer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6654349577276881522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 694ea3ad8a676a542981f2cb1580dcc2, type: 2}
+  - {fileID: 2100000, guid: 41c997dea9502cb4eb3f5598bb9341fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructble: 1
-  maxHealth: 1
+  maxHealth: 0.01
   healthSlider: {fileID: 0}
   OnDestroyed:
     m_PersistentCalls:
@@ -123,6 +123,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 3
-          m_StringArgument: Open
+          m_StringArgument: Close
           m_BoolArgument: 0
         m_CallState: 2
