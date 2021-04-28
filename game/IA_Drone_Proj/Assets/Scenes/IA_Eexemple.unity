@@ -219,6 +219,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 492136450}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &130422289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -428,6 +431,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 200309753}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &200309760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +451,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 200309753}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &200309761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +471,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 200309753}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &200309762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +491,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 200309753}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &200309763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,6 +511,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 200309753}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &252224488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -623,7 +641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3984725447375471681, guid: b4869ce47e2d39643a35146d2800ceb4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3984725447375471693, guid: b4869ce47e2d39643a35146d2800ceb4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1598,6 +1616,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 492136450}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1260353469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1699,6 +1720,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 492136450}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1401014375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1795,6 +1819,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 492136450}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1485527115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2039,6 +2066,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 492136450}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1618054572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2315,6 +2345,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 1749451507}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1749451514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2332,6 +2365,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 1749451507}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1749451515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2349,6 +2385,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 1749451507}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1749451516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2366,6 +2405,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 1749451507}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1749451517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2383,6 +2425,9 @@ MonoBehaviour:
   maxHealth: 1
   healthSlider: {fileID: 0}
   GFXChild: {fileID: 1749451507}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1919037613
 PrefabInstance:
   m_ObjectHideFlags: 0

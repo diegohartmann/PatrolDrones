@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DamageFromBullet : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class DamageFromBullet : MonoBehaviour
     [SerializeField] private float maxHealth = 1;
     [SerializeField] private Slider healthSlider = null;
     [SerializeField] private Transform GFXChild = null;
+    [SerializeField] private UnityEvent OnDestroyed = null;
     private float currHealth = 0;
     private SceneLoader loader;
     
@@ -36,6 +38,7 @@ public class DamageFromBullet : MonoBehaviour
             currHealth = 0;
             SliderValue(0);
             DieCondition();
+            OnDestroyEvent();
             return;
         }
         if(currHealth > maxHealth){
@@ -57,20 +60,28 @@ public class DamageFromBullet : MonoBehaviour
         DestroyDrone();
     }
     private void DestroyDrone(){
-        foreach (Transform part in GFXChild)
-        {
-            GameObject partObj = part.gameObject;
-            part.parent = null;
-            partObj.AddComponent<Rigidbody>();
-            if(partObj.GetComponent<Collider>() == null){
-                var col = partObj.AddComponent<MeshCollider>();
-                col.convex = true;
+        if(GFXChild!= null){
+            foreach (Transform part in GFXChild)
+            {
+                GameObject partObj = part.gameObject;
+                part.parent = null;
+                partObj.AddComponent<Rigidbody>();
+                if(partObj.GetComponent<Collider>() == null){
+                    var col = partObj.AddComponent<MeshCollider>();
+                    col.convex = true;
+                }
+                Destroy(partObj, 3);
             }
-            Destroy(partObj, 3);
         }
         Destroy(this.gameObject);
     }
     private bool SameObj(GameObject obj1, GameObject obj2){
         return obj1 == obj2;
+    }
+
+    private void OnDestroyEvent(){
+        if(OnDestroyed!=null){
+                OnDestroyed.Invoke();
+        }
     }
 }
