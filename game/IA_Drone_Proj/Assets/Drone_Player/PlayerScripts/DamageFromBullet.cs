@@ -6,11 +6,10 @@ using UnityEngine.Events;
 
 public class DamageFromBullet : MonoBehaviour
 {
-    [SerializeField] private bool isPlayerOrMinion = false;
     [SerializeField] private bool destructble = true;
     [SerializeField] private float maxHealth = 1;
     [SerializeField] private Slider healthSlider = null;
-    [SerializeField] private Transform GFXChild = null;
+    // [SerializeField] private Transform GFXChild = null;
     [SerializeField] private UnityEvent OnDestroyed = null;
     private float currHealth = 0;
     private SceneLoader loader;
@@ -18,6 +17,11 @@ public class DamageFromBullet : MonoBehaviour
     private void Awake() {
         loader = FindObjectOfType<SceneLoader>();
         currHealth = maxHealth;
+    }
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            ReloadGame(0);
+        }
     }
     private void OnTriggerEnter(Collider other) {
         GameObject otherObj = other.gameObject;
@@ -37,7 +41,6 @@ public class DamageFromBullet : MonoBehaviour
         if(currHealth <= 0){
             currHealth = 0;
             SliderValue(0);
-            DieCondition();
             OnDestroyEvent();
             return;
         }
@@ -53,35 +56,45 @@ public class DamageFromBullet : MonoBehaviour
             healthSlider.value = _value;
         }
     }
-    private void DieCondition(){
-        if(isPlayerOrMinion){
-            loader.Load("IA_Eexemple", 1);
-        }
-        DestroyDrone();
-    }
-    private void DestroyDrone(){
-        if(GFXChild!= null){
-            foreach (Transform part in GFXChild)
-            {
-                GameObject partObj = part.gameObject;
-                part.parent = null;
-                partObj.AddComponent<Rigidbody>();
-                if(partObj.GetComponent<Collider>() == null){
-                    var col = partObj.AddComponent<MeshCollider>();
-                    col.convex = true;
-                }
-                Destroy(partObj, 3);
-            }
-        }
-        Destroy(this.gameObject);
-    }
     private bool SameObj(GameObject obj1, GameObject obj2){
         return obj1 == obj2;
     }
-
     private void OnDestroyEvent(){
         if(OnDestroyed!=null){
-                OnDestroyed.Invoke();
+            OnDestroyed.Invoke();
         }
+    }
+    public void SplashObjectsIn(Transform partsParent){
+        foreach (Transform part in partsParent)
+        {
+            Splash(part.gameObject);
+        }
+    }
+    public void SplashObject(GameObject _object){
+        Splash(_object);
+    }
+    private void Splash(GameObject _object){
+        if(_object.GetComponent<Collider>() == null){
+            var col = _object.AddComponent<MeshCollider>();
+            col.convex = true;
+        }
+        if(_object.GetComponent<Rigidbody>() == null){
+            _object.AddComponent<Rigidbody>();
+        }
+        
+        _object.transform.parent = null;
+        Destroy(_object, 3f);
+    }
+    public void _DestroyObject(GameObject _object){
+        Destroy(_object);
+    }
+    public void _DestroyObjectsIn(Transform partsParent){
+        foreach (Transform part in partsParent)
+        {
+            Destroy(part.gameObject);
+        }
+    }
+    public void ReloadGame(float t){
+        loader.Load("IA_Eexemple", t);
     }
 }

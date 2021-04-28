@@ -234,10 +234,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc7e975176b1ba41ae3d81f38bfa626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOrMinion: 0
+  destructble: 1
   maxHealth: 1
   healthSlider: {fileID: 0}
-  GFXChild: {fileID: 2228627002088966747}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6037012019717401250}
+        m_TargetAssemblyTypeName: DamageFromBullet, Assembly-CSharp
+        m_MethodName: SplashObjectsIn
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2228627002088966747}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6037012019717401250}
+        m_TargetAssemblyTypeName: DamageFromBullet, Assembly-CSharp
+        m_MethodName: _DestroyObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3984725447375471681}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DamageFromBullet, Assembly-CSharp
+        m_MethodName: ReloadGame
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3984725447375471681}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &731811328501006585
 MonoBehaviour:
   m_ObjectHideFlags: 0

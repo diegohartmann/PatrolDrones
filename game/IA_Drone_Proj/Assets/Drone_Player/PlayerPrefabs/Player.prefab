@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GFX: {fileID: 1166702066314084969}
-  rotationFactor: 3
+  rotationFactor: 6
   moveSpeed: 6
   rotateOffset: 0.3
 --- !u!114 &2822787937260799855
@@ -213,11 +213,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc7e975176b1ba41ae3d81f38bfa626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOrMinion: 1
-  destructble: 0
+  destructble: 1
   maxHealth: 1
   healthSlider: {fileID: 0}
-  GFXChild: {fileID: 7385257752868349094}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2822787937260799855}
+        m_TargetAssemblyTypeName: DamageFromBullet, Assembly-CSharp
+        m_MethodName: SplashObjectsIn
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7385257752868349094}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2822787937260799855}
+        m_TargetAssemblyTypeName: DamageFromBullet, Assembly-CSharp
+        m_MethodName: _DestroyObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8552253401467005495}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2822787937260799855}
+        m_TargetAssemblyTypeName: DamageFromBullet, Assembly-CSharp
+        m_MethodName: ReloadGame
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &4310559716548637385
 Rigidbody:
   m_ObjectHideFlags: 0

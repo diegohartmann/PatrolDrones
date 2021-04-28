@@ -26,8 +26,6 @@ public class FieldOfView : MonoBehaviour
         viewMesh.name = "malha da vista";
         viewMeshFilter.mesh = viewMesh;
     }
-    
-   
 
     public void FindVisibleTargets(){
        
