@@ -38,9 +38,14 @@ public class PlayerBulletsPool : MonoBehaviour
             _bulletToShoot.transform.position = _firePoint.position;
             _bulletToShoot.transform.rotation = _firePoint.rotation;
             _bulletToShoot.SetActive(true);
-            _bulletToShoot.GetComponent<bulletMovement>().bullSpeed = fire.bulletSpeed;
-            _bulletToShoot.GetComponent<bulletMovement>().bullDamage = fire.bulletDamage;
+            bulletMovement bull = BulletMovFrom(_bulletToShoot);
+            bull.bullSpeed = fire.bulletSpeed;
+            bull.bullDamage = fire.bulletDamage;
+            bull.shooter = this.gameObject;
             // _bulletToShoot.GetComponent<Rigidbody>().AddForce(transform.forward * (components.status.bulletSpeed));
         }
+    }
+    private bulletMovement BulletMovFrom(GameObject obj){
+        return obj.GetComponent<bulletMovement>();        
     }
 }

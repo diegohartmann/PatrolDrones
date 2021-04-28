@@ -8,6 +8,7 @@ public class bulletMovement : MonoBehaviour
 {
     [HideInInspector]public float bullSpeed;
     [HideInInspector]public float bullDamage;
+    [HideInInspector]public GameObject shooter;
     private void OnEnable(){
         StartCoroutine(DestroyBullet(2));
     }

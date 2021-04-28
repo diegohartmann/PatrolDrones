@@ -17,14 +17,15 @@ public class DamageFromBullet : MonoBehaviour
         loader = FindObjectOfType<SceneLoader>();
         currHealth = maxHealth;
     }
-
     private void OnTriggerEnter(Collider other) {
         GameObject otherObj = other.gameObject;
-        if (otherObj.CompareTag("Bullet"))
-        {
+        if (otherObj.CompareTag("Bullet")){
+            bulletMovement bulletMov = otherObj.GetComponent<bulletMovement>();
+            if(SameObj(bulletMov.shooter, gameObject)){
+                return;
+            }
             if(destructble){
-                float damage = -otherObj.GetComponent<bulletMovement>().bullDamage;
-                UpdateLife(damage);
+                UpdateLife(-bulletMov.bullDamage);
             }
             otherObj.SetActive(false);
         }
@@ -47,22 +48,18 @@ public class DamageFromBullet : MonoBehaviour
     void SliderValue(float _value){
         if(healthSlider != null){
             healthSlider.value = _value;
-            return;
         }
-        print(currHealth);
     }
-
     private void DieCondition(){
         if(isPlayerOrMinion){
             loader.Load("IA_Eexemple", 1);
         }
         DestroyDrone();
     }
-
     private void DestroyDrone(){
         foreach (Transform part in GFXChild)
         {
-            var partObj = part.gameObject;
+            GameObject partObj = part.gameObject;
             part.parent = null;
             partObj.AddComponent<Rigidbody>();
             if(partObj.GetComponent<Collider>() == null){
@@ -72,5 +69,8 @@ public class DamageFromBullet : MonoBehaviour
             Destroy(partObj, 3);
         }
         Destroy(this.gameObject);
+    }
+    private bool SameObj(GameObject obj1, GameObject obj2){
+        return obj1 == obj2;
     }
 }
