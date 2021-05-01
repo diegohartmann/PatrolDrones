@@ -97,8 +97,8 @@ MonoBehaviour:
   currentTargetWaypoint: {x: 0, y: 0, z: 0}
   path: []
   LastFinalTarget: {x: 0, y: 0, z: 0}
-  startFollow: 0
-  canRequestAPath: 1
+  reachedTargetTransform: 0
+  pathSuccedded: 0
 --- !u!114 &335638285436176071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6432b7b2241e0ba45a8c214b5ee29ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  State: 0
+  distToStandOnPlayer: 1.88
+  State: 3
 --- !u!114 &1016385377114272139
 MonoBehaviour:
   m_ObjectHideFlags: 0

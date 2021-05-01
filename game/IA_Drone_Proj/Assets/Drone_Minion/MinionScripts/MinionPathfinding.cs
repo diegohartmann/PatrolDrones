@@ -8,83 +8,81 @@ public class MinionPathfinding : MonoBehaviour
     [HideInInspector]public Vector3[] path; //taken from grid
     [HideInInspector]public Vector3 LastFinalTarget;
     private int targetIndex;
-    private int lastTargetIndex = -1;
-    // [HideInInspector] public bool reachedLastPoint ;
-    [HideInInspector] public bool startFollow = false;
-    [HideInInspector] public bool canRequestAPath = true;
+    // private int lastTargetIndex = -1;
+    public bool reachedTargetTransform;
+    public bool pathSuccedded;
+    // [HideInInspector] public bool canRequestAPath = true;
 
     public void RequestAPath(Vector3 _finalTarget){
         targetIndex = 0; 
         PathRequestManager.RequestPath(transform.position, _finalTarget, OnPathFound);
         LastFinalTarget = _finalTarget;
-        // reachedLastPoint = false;
-        canRequestAPath = false;
-    }
-
-    
-    Vector3 player;
-    private void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player").transform.position;
+        // canRequestAPath = false;
     }
 
     private void OnPathFound ( Vector3[] newPath, bool pathSuccessful){
         //tuto used for this method: https://www.youtube.com/watch?v=dn1XRIaROM4&ab_channel=SebastianLague
+        this.pathSuccedded = pathSuccessful;
         if (pathSuccessful){
-            path = newPath;
-            startFollow = true;
-            currentTargetWaypoint = path[0];
+            reachedTargetTransform = false;
+            this.path = newPath;
+            this.currentTargetWaypoint = path[0];
             return;
         }
-        print("confuso, sem caminho (???)");
+        Debug.LogWarning("path failed");
     }
 
 
     public void UpdatePathWaypoints(){
-        if (startFollow && path!=null && path.Length > 0){
-            if (DistanceFrom(targetIndex) < 0.4f)
-            {    
-                TargetIndexEqualsTo(targetIndex+1);
-            }
-            if(FinishCheck()){
-                return;
-            }
-            if (targetIndex != lastTargetIndex) 
-            {
-                currentTargetWaypoint = path[targetIndex];
-                lastTargetIndex = targetIndex; // --> says that the last one reached is the this new target so it only updates after the target changes again
-            }
+        if(!pathSuccedded){
+            return;
+        }
+        if (PathNull()){
+            print("PathNull()");
+            return;
+        }
+        if(EmptyPath()){
+            return;
+        }
+        if(!ReachedTargetTransform()){ //enquanto nao chegou no ultimo waypoint...
+            UpdateTargetWaypointByDistance(); //o waypoint é atualizado
+            return;
+        }
+        pathSuccedded = false;
+        reachedTargetTransform = true;
+        // print("Chegou no ultimo waypoint do aStart");
+    }
+    private void UpdateTargetWaypointByDistance(){
+        if (DistanceFrom(this.targetIndex) < 0.4f)
+        {    
+            this.targetIndex += 1;
+            this.currentTargetWaypoint = path[this.targetIndex];
         }
     }
-
+    private bool PathNull(){
+        return (this.path == null);
+    }
+    private bool ReachedTargetTransform(){
+        return (this.targetIndex == this.path.Length);
+    }
+    private bool EmptyPath(){
+        return this.path.Length == 0;
+    } 
     private float DistanceFrom(int _index){
         return Vector3.Distance(transform.position, path[_index]);
     }
-    // private bool reachedCurrTarget(int _index){
-    //     return (transform.position == path[_index]);
-    // }
-    private void TargetIndexEqualsTo(int _amt){
-        targetIndex = _amt;
-    }
-    private bool FinishCheck(){
-        if (targetIndex == path.Length){
-            // canRequestAPath = true;
-            startFollow = false;
-            return true;
-        }
-        return false;
-    }
-
+    
     private void OnDrawGizmos() {
-        if (path != null){
-            for (int i = targetIndex; i < path.Length; i++)
+        if (this.path != null){
+            for (int i = targetIndex; i < this.path.Length; i++)
             {
                 Gizmos.color = Color.blue;
                 Gizmos.DrawCube(path[i], Vector3.one);
                 if (i == targetIndex){
-                    Gizmos.DrawLine(transform.position, path[i]);
+                    Gizmos.DrawLine(this.transform.position, path[i]);
                 }
                 else{
-                    Gizmos.DrawLine(path[i-1], path[i]);
+                    Gizmos.DrawLine(this.path[i-1], this.path[i]);
                 }
             }
         }

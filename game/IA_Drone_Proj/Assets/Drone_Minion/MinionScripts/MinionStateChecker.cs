@@ -5,22 +5,27 @@ using UnityEngine;
 
 public enum MinionStates{
     Locked,
-    Wait,
+    Stoped,
+    StandOnPlayer,
     Follow,
     GoingToFixedArea,
 }
 public class MinionStateChecker : MonoBehaviour
 {
-    private const float distToFollow = 4f;
+    [SerializeField]private  float distToStandOnPlayer = 1.88f;
     private const float distToSimpleFollow = 3f;
     [SerializeField]private MinionStates State = MinionStates.Locked;
+    private exempleMove PlayerMov = null;
     private MinionComponents components;
 
     private void Awake() {
         components = GetComponent<MinionComponents>();
     }
+    private void Start() {
+        PlayerMov = Player().gameObject.GetComponent<exempleMove>();
+    }
     private void Update() {
-    //    SetState();
+       SetState();
        ExecuteState();
     }
     private Transform Player(){
@@ -34,28 +39,24 @@ public class MinionStateChecker : MonoBehaviour
     }
 
     private void SetState(){
-        
-        if(components.status.isLocked){
-            State = MinionStates.Locked;
+        // if(components.status.isLocked){
+        //     State = MinionStates.Locked;
+        //     return;
+        // }
+        // if(components.status.isGoingToFixedArea){
+        //     State = MinionStates.GoingToFixedArea;
+        //     return;
+        // }
+        if(Player() == null){
+            State = MinionStates.Stoped;
             return;
         }
-        
-        if(components.status.isGoingToFixedArea){
-            State = MinionStates.GoingToFixedArea;
+      
+        if(DistFromPlayer() > distToStandOnPlayer){ //e se o minion ta longe do player
+            State = MinionStates.Follow; //ele segue o player
             return;
         }
-        
-        if(components.status.hasToWait){
-            State = MinionStates.Wait;
-            return;
-        }
-        if(Player()!= null){
-            if(DistFromPlayer() > distToFollow){
-                State = MinionStates.Follow;
-                return;
-            }
-        }
-
+        State = MinionStates.StandOnPlayer; //se nao, para do lado do player
     }
 
     private void ExecuteState(){
@@ -69,8 +70,12 @@ public class MinionStateChecker : MonoBehaviour
                 FollowMachine();
             break;
 
-            case MinionStates.Wait:
-                Wait();
+            case MinionStates.Stoped:
+                Stoped();
+            break;
+
+            case MinionStates.StandOnPlayer:
+                StandOnPlayer();
             break;
 
             default:
@@ -79,29 +84,34 @@ public class MinionStateChecker : MonoBehaviour
     }
 
     private void Locked(){
-        print ("locked");
+        //print ("locked");
     }
 
-    private void Wait(){
-        print("Waiting");
+    private void Stoped(){
+        //print("Stoped");
     }
 
     private void GoTo(){
         // components.GoToArea();
-        print("Going To Some Area");
+        //print("Going To Some Area");
     }
     private void FollowMachine(){
-        print("Following Player");
-        if(Player() == null){
+        
+        if(PlayerMov.isOnTile){ //se player ta no tile (grid)
+            if(DistFromPlayer() > distToSimpleFollow){
+                components.actions.AStartToPlayer();
+                return;
+            }
+            if(DistFromPlayer() > distToSimpleFollow / 2){
+                components.actions.SimpleFollowPlayer();
+                return;
+            }
             return;
         }
-        if(DistFromPlayer() > distToSimpleFollow){
-            components.actions.AStartToPlayer();
-            return;
-        }
-        if(DistFromPlayer() > distToSimpleFollow / 2){
-            components.actions.SimpleFollowPlayer();
-            return;
-        }
+        components.actions.SimpleFollowPlayer();// se nao, só segue o player sem pathfinding
+    }
+
+    private void StandOnPlayer(){
+        //print("standOnPlayer");
     }
 }

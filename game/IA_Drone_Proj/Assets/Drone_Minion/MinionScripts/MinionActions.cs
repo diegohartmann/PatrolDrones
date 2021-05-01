@@ -15,6 +15,7 @@ public class MinionActions : MonoBehaviour
     }
     public void SimpleFollowPlayer(){
         if(Player()!=null){
+            //print("simple following Player");
             RotateTo(Player().position, true, components.status.rotationSpeed);
             MoveForward(components.status.runSpeed);
         }
@@ -22,6 +23,7 @@ public class MinionActions : MonoBehaviour
 
     public void AStartToPlayer(){
         if(Player()!=null){
+            //print("aStar to Player");
             AStartTo(Player().position);
         }
     }
@@ -42,9 +44,7 @@ public class MinionActions : MonoBehaviour
             transform.rotation = interpolatedRotation;
             return;
         }
-        // else{
-            transform.LookAt(_target);
-        // }
+        transform.LookAt(_target);
         
     }
 
@@ -53,9 +53,10 @@ public class MinionActions : MonoBehaviour
     }
     
     private void AStartTo(Vector3 finalPos){
-        components.aStar.RequestAPath(finalPos);
-        components.aStar.UpdatePathWaypoints();
-        RotateTo(components.aStar.currentTargetWaypoint, true, components.status.rotationSpeed);
+        var _aStart = components.aStar;
+        _aStart.RequestAPath(finalPos);
+        _aStart.UpdatePathWaypoints();
+        RotateTo(_aStart.currentTargetWaypoint, true, components.status.rotationSpeed);
         MoveForward(components.status.runSpeed);    
     }
 }
