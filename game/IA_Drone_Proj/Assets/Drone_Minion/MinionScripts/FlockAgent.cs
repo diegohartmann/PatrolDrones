@@ -12,7 +12,7 @@ public class FlockAgent : MonoBehaviour
         agenteCollider = GetComponent<Collider>();        
     }
     public void Move(Vector2 _velocity){
-        transform.up = _velocity;
+        transform.forward = _velocity;
         transform.position += (Vector3)_velocity * Time.deltaTime;
     }
 
