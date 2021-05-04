@@ -10,7 +10,7 @@ public class Flock : MonoBehaviour
     [Range(10, 500)] [SerializeField] int startCount = 250;
     const float AgentDensity = 0.08f;
     [Range(1, 100)][SerializeField] float driveFactor = 10;
-    [Range(1, 100)][SerializeField] float maxSpeed = 5f;
+    [Range(.1f, 100)][SerializeField] float maxSpeed = 5f;
     [Range(1, 10)][SerializeField] float neighborRadius = 1.5f;
     [Range(0, 1)][SerializeField] float avoidanceRadiusMultiplier = 0.5f;
     float squareOfMaxSpeed;

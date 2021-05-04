@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/Composite")]
 public class FlockCompositeBehaviour : FlockBehaviour
 {
-    [SerializeField] FlockBehaviour[] behaviours;
-    [SerializeField] float[] weights;
+    [SerializeField] FlockBehaviour[] behaviours = null;
+    [SerializeField] float[] weights = null;
     public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock){
         //sem match
         if(weights.Length != behaviours.Length){
