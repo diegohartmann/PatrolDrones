@@ -197,10 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85804ed269a64ec4392c599fbe1acc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GFX: {fileID: 1166702066314084969}
+  moveMode: 0
+  rotatableObj: {fileID: 1166702066314084969}
   rotationFactor: 6
+  groundLayer: 11
   moveSpeed: 6
   rotateOffset: 0.3
+  isOnTile: 0
 --- !u!114 &2822787937260799855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +272,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 2
 --- !u!114 &1095153714506834031
 MonoBehaviour:
