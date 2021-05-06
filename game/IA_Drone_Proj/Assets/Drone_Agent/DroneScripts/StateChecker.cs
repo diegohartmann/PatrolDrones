@@ -14,7 +14,7 @@ public enum DroneStates{
 
 class StateChecker : MonoBehaviour
 {  
-    private DroneStates State;  
+    private DroneStates State =  DroneStates.BackToPatrol;  
     private DroneComponents comp;
     private GameObject thisDrone;
 
