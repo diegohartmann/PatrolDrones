@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/Cohesion")]
 public class FlockCohesion : FlockBehaviour
 {
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock){
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock, Transform target){
         if(context.Count == 0){
             return Vector2.zero;
         }

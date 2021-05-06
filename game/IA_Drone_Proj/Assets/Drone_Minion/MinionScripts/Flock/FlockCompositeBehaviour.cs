@@ -8,7 +8,7 @@ public class FlockCompositeBehaviour : FlockBehaviour
 {
     [SerializeField] FlockBehaviour[] behaviors = null;
     [SerializeField] float[] weights = null;
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock, Transform target)
     {
         //handle data mismatch
         if (weights.Length != behaviors.Length)
@@ -23,7 +23,7 @@ public class FlockCompositeBehaviour : FlockBehaviour
         //iterate through behaviors
         for (int i = 0; i < behaviors.Length; i++)
         {
-            Vector2 partialMove = behaviors[i].CalculateMove(agent, context, flock) * weights[i];
+            Vector2 partialMove = behaviors[i].CalculateMove(agent, context, flock, target) * weights[i];
 
             if (partialMove != Vector2.zero)
             {

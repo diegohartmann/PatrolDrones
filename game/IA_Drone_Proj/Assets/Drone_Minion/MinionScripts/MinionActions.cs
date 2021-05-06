@@ -32,7 +32,8 @@ public class MinionActions : MonoBehaviour
         AStartTo(_position);
     }
     public void Flocking(){
-        components.flockAgent.MoveFlockAgent();
+        // AStartTo(MinionsNetworking.leaderMinion.transform.position);
+        components.flockAgent.MoveFlockAgent(MinionsNetworking.leaderMinion.transform);
     }
     /// --------------------------------------------------------------------------------------------------------//////
     /// ------------  ALL METHODS UNDER THIS LINE ARE USED INSIDE THE METHODS ABOVE --------------------------- //////
@@ -47,7 +48,6 @@ public class MinionActions : MonoBehaviour
             return;
         }
         transform.LookAt(_target);
-        
     }
 
     private void MoveForward(float _speed){

@@ -43,11 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f31a2d238b36f049bf02f0a467c9d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 2051159668893086350, guid: f42dcf7087ef53849ae61624a3624d84, type: 3}
-  agents: []
-  behaviour: {fileID: 11400000, guid: 004b59caa26bfd44eaf51427df1d6692, type: 2}
-  startCount: 10
-  driveFactor: 2.4
-  maxSpeed: 0.1
+  behaviour: {fileID: 11400000, guid: b04f4092c7b499347b9c4141f1e58de8, type: 2}
+  driveFactor: 10
+  maxSpeed: 2
   neighborRadius: 2.4
-  avoidanceRadiusMultiplier: 0.084
+  avoidanceRadiusMultiplier: 0.5
+  squareOfMaxSpeed: 0
+  squareOfNeighborRadius: 0
+  squareOfAvoidanceRadius: 0
