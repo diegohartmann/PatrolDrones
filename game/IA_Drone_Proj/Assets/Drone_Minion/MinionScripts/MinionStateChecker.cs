@@ -5,15 +5,12 @@ using UnityEngine;
 public enum MinionStates{
     Locked,
     Stoped,
-    StandOnPlayer,
     Follow,
     GoingToFixedArea,
 }
 public class MinionStateChecker : MonoBehaviour
 {
     public bool tempLeader = false;
-    [SerializeField]private  float distToStandOnPlayer = 1.88f;
-    private const float distToSimpleFollow = 3f;
     [SerializeField]private MinionStates State = MinionStates.Locked;
     private exempleMove PlayerMov = null;
     private Transform Player;
@@ -45,11 +42,8 @@ public class MinionStateChecker : MonoBehaviour
             State = MinionStates.Stoped;
             return;
         }
-        if(DistFrom(Player) > distToStandOnPlayer){ //e se o minion ta longe do player
-            State = MinionStates.Follow; //ele segue o player
-            return;
-        }
-        State = MinionStates.StandOnPlayer; //se nao, para do lado do player
+        State = MinionStates.Follow;
+        return;
     }
 
     public void SetState(int _state){
@@ -64,10 +58,6 @@ public class MinionStateChecker : MonoBehaviour
             break;
 
             case 2:
-                State = MinionStates.StandOnPlayer;
-            break;
-
-            case 3:
                 State = MinionStates.Follow;
             break;
 
@@ -91,10 +81,6 @@ public class MinionStateChecker : MonoBehaviour
                 Stoped();
             break;
 
-            case MinionStates.StandOnPlayer:
-                StandOnPlayer();
-            break;
-
             default:
             break;
         }
@@ -113,24 +99,22 @@ public class MinionStateChecker : MonoBehaviour
         //print("Going To Some Area");
     }
     private void FollowMachine(){
-        if(MinionsNetworking.leaderMinion == this.gameObject){
-            // flock.agents.Remove(thisFlockAgent);
-            if(PlayerMov.isOnTile){ //se player ta no tile (grid)
-                if(DistFrom(Player) > distToSimpleFollow){
-                    components.actions.AStartToPlayer();
-                    return;
-                }
-                if(DistFrom(Player) > distToSimpleFollow / 2){
-                    components.actions.SimpleFollowPlayer();
-                    return;
-                }
-                return;
-            }
-            components.actions.SimpleFollowPlayer();// se nao, só segue o player sem pathfinding
+        if(DistFrom(Player) < 2){
+            StandOnPlayer();
             return;
         }
-        components.actions.Flocking();// comportamento de flocking, seguindo lider
-       
+        if(PlayerMov.isOnTile){
+            FollowDistanceChecker();
+            return;
+        }
+        components.actions.SimpleFollowPlayer();
+    }
+    private void FollowDistanceChecker(){
+        if(DistFrom(Player) < 3f){
+            components.actions.SimpleFollowPlayer();
+            return;
+        }
+        components.actions.AStartToPlayer();
     }
 
     private void StandOnPlayer(){

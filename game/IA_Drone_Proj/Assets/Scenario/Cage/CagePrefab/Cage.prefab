@@ -476,7 +476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8307824922627320403, guid: 6c027eea586c4b24093c00fe1ad039d8, type: 3}
       propertyPath: OnDestroyed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8307824922627320403, guid: 6c027eea586c4b24093c00fe1ad039d8, type: 3}
       propertyPath: OnDestroyed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
