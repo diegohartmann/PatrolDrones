@@ -7,7 +7,7 @@ public class FlockSteeredCoheisionBehaviour : FlockBehaviour
 {
     Vector2 currentVelocity;
     [SerializeField] float agentSmoothTime = 0.5f;
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock, Transform target){
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock){
         if(context.Count == 0){
             return Vector2.zero;
         }
@@ -18,8 +18,7 @@ public class FlockSteeredCoheisionBehaviour : FlockBehaviour
         cohesionMove /= context.Count;
         //offset
         cohesionMove -= (Vector2)(agent.transform.position);
-        cohesionMove = Vector2.SmoothDamp(target.position, cohesionMove, ref currentVelocity, agentSmoothTime);
-        // cohesionMove = Vector2.SmoothDamp(agent.transform.forward, cohesionMove, ref currentVelocity, agentSmoothTime);
+        cohesionMove = Vector2.SmoothDamp(agent.transform.forward, cohesionMove, ref currentVelocity, agentSmoothTime);
         return cohesionMove;
     }
 }

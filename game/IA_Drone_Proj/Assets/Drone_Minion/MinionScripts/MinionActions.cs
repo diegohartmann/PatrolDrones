@@ -12,10 +12,13 @@ public class MinionActions : MonoBehaviour
     private Transform Player(){
         return components.player;
     }
+    private Vector3 PlayerPos(){
+        return Player().position;
+    }
     public void SimpleFollowPlayer(){
         if(Player()!=null){
             //print("simple following Player");
-            RotateTo(Player().position, true, components.status.rotationSpeed);
+            RotateTo(PlayerPos(), true, components.status.rotationSpeed);
             MoveForward(components.status.runSpeed);
         }
     }
@@ -23,7 +26,7 @@ public class MinionActions : MonoBehaviour
     public void AStartToPlayer(){
         if(Player() != null){
             //print("aStar to Player");
-            AStartTo(Player().position);
+            AStartTo(PlayerPos());
         }
     }
 
@@ -32,7 +35,7 @@ public class MinionActions : MonoBehaviour
     }
     public void Flocking(){
         // AStartTo(MinionsNetworking.leaderMinion.transform.position);
-        components.flockAgent.MoveFlockAgent(MinionsNetworking.leaderMinion.transform);
+        components.flockAgent.MoveFlockAgent();
     }
     /// --------------------------------------------------------------------------------------------------------//////
     /// ------------  ALL METHODS UNDER THIS LINE ARE USED INSIDE THE METHODS ABOVE --------------------------- //////

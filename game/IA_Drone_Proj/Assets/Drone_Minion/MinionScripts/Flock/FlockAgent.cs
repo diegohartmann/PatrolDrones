@@ -12,16 +12,16 @@ public class FlockAgent : MonoBehaviour
         flock = FindObjectOfType<Flock>();
         agentCollider = GetComponent<Collider>();        
     }
-    public void MoveFlockAgent(Transform target){
-        Move(MovementDir(target));
+    public void MoveFlockAgent(){
+        Move(MovementDir());
     }
     private void Move(Vector2 _velocity){
         transform.forward = _velocity;
         transform.position += (Vector3)_velocity * Time.deltaTime;
     }
-    private Vector2 MovementDir(Transform target){
+    private Vector2 MovementDir(){
         List<Transform> context = GetNearbyObjects();
-        Vector2 move = flock.behaviour.CalculateMove(this, context, flock, target);
+        Vector2 move = flock.behaviour.CalculateMove(this, context, flock);
         move *= flock.driveFactor;
         if(move.sqrMagnitude > flock.squareOfMaxSpeed){
             move = (move.normalized * flock.maxSpeed);

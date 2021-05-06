@@ -106,6 +106,7 @@ public class MinionStateChecker : MonoBehaviour
             return;
         }
         components.actions.SimpleFollowPlayer();
+        // components.actions.Flocking();
     }
     private void FollowDistanceChecker(){
         if(DistFrom(Player()) < 3f){
