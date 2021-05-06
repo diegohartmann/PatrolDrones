@@ -8,7 +8,6 @@ public class MinionActions : MonoBehaviour
     private void Awake(){
         components = GetComponent<MinionComponents>();
     }
-   
     private Vector3 PlayerPos(){
         return components.player.position;
     }
@@ -20,21 +19,19 @@ public class MinionActions : MonoBehaviour
     public void AStartToPlayer(){
         print("aStar to Player");
         AStartTo(PlayerPos());
-        print(PlayerPos());
-
     }
     public void GoToArea(Vector3 _position){
         AStartTo(PlayerPos());
     }
     public void Flocking(){
         // AStartTo(MinionsNetworking.leaderMinion.transform.position);
+        print("flocking");
         components.flockAgent.MoveFlockAgent();
+        RotateTo(MinionsNetworking.leaderMinion.transform.position, true);
     }
     /// --------------------------------------------------------------------------------------------------------//////
     /// ------------  ALL METHODS UNDER THIS LINE ARE USED INSIDE THE METHODS ABOVE --------------------------- //////
     /// --------------------------------------------------------------------------------------------------------//////
-
-
     private void RotateTo(Vector3 _target, bool _isSmooth, float _rotSpeed = 1) {
         if (_isSmooth){
             var neededRotation = Quaternion.LookRotation(_target - transform.position);

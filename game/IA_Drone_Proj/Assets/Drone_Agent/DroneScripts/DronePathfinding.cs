@@ -22,7 +22,7 @@ public class DronePathfinding : MonoBehaviour
             path = newPath;
             startFollow = true;
             // if(path[0] != null){
-            //     currentTargetWaypoint = path[0];
+                // currentTargetWaypoint = path[0];
             //     return;
             // }
             return;

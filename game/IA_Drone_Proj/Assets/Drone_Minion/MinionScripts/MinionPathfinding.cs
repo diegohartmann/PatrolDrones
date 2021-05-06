@@ -48,7 +48,9 @@ public class MinionPathfinding : MonoBehaviour
     private void UpdateTargetWaypointByDistance(){
         if (DistanceFrom(this.targetIndex) < 0.4f){    
             this.targetIndex += 1;
-            this.currentTargetWaypoint = path[this.targetIndex];
+            if(path[this.targetIndex]!= null){
+                this.currentTargetWaypoint = path[this.targetIndex];
+            }
         }
     }
     private bool PathNull(){

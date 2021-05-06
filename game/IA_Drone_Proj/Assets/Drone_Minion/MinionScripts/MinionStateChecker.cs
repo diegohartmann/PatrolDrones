@@ -14,10 +14,12 @@ public class MinionStateChecker : MonoBehaviour
     [SerializeField]private MinionStates State = MinionStates.Locked;
     private exempleMove PlayerMov = null;
     private MinionComponents components;
+    private GameObject thisMinion;
 
     private void Start() {
         components = GetComponent<MinionComponents>();
         PlayerMov = Player().gameObject.GetComponent<exempleMove>();
+        thisMinion = this.gameObject;
     }
         
     private Transform Player(){
@@ -92,6 +94,13 @@ public class MinionStateChecker : MonoBehaviour
         //print("Going To Some Area");
     }
     private void FollowMachine(){
+        if(GetLeaderMinion() == thisMinion){
+            LeaderMovement();
+            return;
+        }
+        components.actions.Flocking();
+    }
+    private void LeaderMovement(){
         if(DistFrom(Player()) < 2){
             StandOnPlayer();
             return;
@@ -101,7 +110,6 @@ public class MinionStateChecker : MonoBehaviour
             return;
         }
         components.actions.SimpleFollowPlayer();
-        // components.actions.Flocking();
     }
     private void FollowDistanceChecker(){
         if(DistFrom(Player()) < 3f){
@@ -110,8 +118,19 @@ public class MinionStateChecker : MonoBehaviour
         }
         components.actions.AStartToPlayer();
     }
-
     private void StandOnPlayer(){
         print("standOnPlayer");
+    }
+    public void TryToSetAsLeaderMinion(){
+        if(GetLeaderMinion() == null){
+            SetLeaderMinion(thisMinion);
+        }
+    }
+
+    private GameObject GetLeaderMinion(){
+        return MinionsNetworking.leaderMinion;
+    }
+    private void SetLeaderMinion(GameObject _minion){
+        MinionsNetworking.leaderMinion = _minion;
     }
 }
