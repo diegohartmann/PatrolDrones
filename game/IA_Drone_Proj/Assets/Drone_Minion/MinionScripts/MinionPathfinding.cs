@@ -8,10 +8,8 @@ public class MinionPathfinding : MonoBehaviour
     [HideInInspector]public Vector3[] path; //taken from grid
     [HideInInspector]public Vector3 LastFinalTarget;
     private int targetIndex;
-    // private int lastTargetIndex = -1;
-    public bool reachedTargetTransform;
-    public bool pathSuccedded;
-    // [HideInInspector] public bool canRequestAPath = true;
+    [HideInInspector]public bool reachedTargetTransform;
+    [HideInInspector]public bool pathSuccedded;
 
     public void RequestAPath(Vector3 _finalTarget){
         targetIndex = 0; 
@@ -38,7 +36,7 @@ public class MinionPathfinding : MonoBehaviour
             return;
         }
         if (PathNull()){
-            print("PathNull()");
+            print("Path Null");
             return;
         }
         if(EmptyPath()){
@@ -50,11 +48,9 @@ public class MinionPathfinding : MonoBehaviour
         }
         pathSuccedded = false;
         reachedTargetTransform = true;
-        // print("Chegou no ultimo waypoint do aStart");
     }
     private void UpdateTargetWaypointByDistance(){
-        if (DistanceFrom(this.targetIndex) < 0.4f)
-        {    
+        if (DistanceFrom(this.targetIndex) < 0.4f){    
             this.targetIndex += 1;
             this.currentTargetWaypoint = path[this.targetIndex];
         }
@@ -73,7 +69,7 @@ public class MinionPathfinding : MonoBehaviour
     }
     
     private void OnDrawGizmos() {
-        if (this.path != null){
+        // if (this.path != null){
             for (int i = targetIndex; i < this.path.Length; i++)
             {
                 Gizmos.color = Color.blue;
@@ -85,6 +81,6 @@ public class MinionPathfinding : MonoBehaviour
                     Gizmos.DrawLine(this.path[i-1], this.path[i]);
                 }
             }
-        }
+        // }
     }
 }

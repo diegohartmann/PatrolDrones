@@ -6,7 +6,6 @@ public class MinionActions : MonoBehaviour
 {
 
     private MinionComponents components;
-
     private void Awake(){
         components = GetComponent<MinionComponents>();
     }
@@ -22,7 +21,7 @@ public class MinionActions : MonoBehaviour
     }
 
     public void AStartToPlayer(){
-        if(Player()!=null){
+        if(Player() != null){
             //print("aStar to Player");
             AStartTo(Player().position);
         }

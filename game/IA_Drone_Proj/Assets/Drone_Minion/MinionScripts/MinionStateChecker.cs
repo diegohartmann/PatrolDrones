@@ -10,10 +10,9 @@ public enum MinionStates{
 }
 public class MinionStateChecker : MonoBehaviour
 {
-    public bool tempLeader = false;
+    // public bool tempLeader = false;
     [SerializeField]private MinionStates State = MinionStates.Locked;
     private exempleMove PlayerMov = null;
-    private Transform Player;
     private MinionComponents components;
     private FlockAgent thisFlockAgent;
     private Flock flock;
@@ -24,11 +23,10 @@ public class MinionStateChecker : MonoBehaviour
         components = GetComponent<MinionComponents>();
     }
     private void Start() {
-        Player = components.player;
-        PlayerMov = Player.gameObject.GetComponent<exempleMove>();
-        if(tempLeader){
-            MinionsNetworking.leaderMinion = this.gameObject;
-        }
+        PlayerMov = Player().gameObject.GetComponent<exempleMove>();
+    }
+    private Transform Player(){
+        return components.player;
     }
     private void Update() {
         // SetState();
@@ -38,7 +36,7 @@ public class MinionStateChecker : MonoBehaviour
         return Vector3.Distance(transform.position, target.position);
     }
     private void SetState(){
-        if(Player == null){
+        if(Player() == null){
             State = MinionStates.Stoped;
             return;
         }
@@ -99,7 +97,7 @@ public class MinionStateChecker : MonoBehaviour
         //print("Going To Some Area");
     }
     private void FollowMachine(){
-        if(DistFrom(Player) < 2){
+        if(DistFrom(Player()) < 2){
             StandOnPlayer();
             return;
         }
@@ -110,14 +108,16 @@ public class MinionStateChecker : MonoBehaviour
         components.actions.SimpleFollowPlayer();
     }
     private void FollowDistanceChecker(){
-        if(DistFrom(Player) < 3f){
+        if(DistFrom(Player()) < 3f){
             components.actions.SimpleFollowPlayer();
+            print("SimpleFollow");
             return;
         }
         components.actions.AStartToPlayer();
+        print("Pathfinding");
     }
 
     private void StandOnPlayer(){
-        //print("standOnPlayer");
+        print("standOnPlayer");
     }
 }
