@@ -21,10 +21,10 @@ public class DronePathfinding : MonoBehaviour
         if (pathSuccessful){
             path = newPath;
             startFollow = true;
-            if(path[0] != null){
-                currentTargetWaypoint = path[0];
-                return;
-            }
+            // if(path[0] != null){
+            //     currentTargetWaypoint = path[0];
+            //     return;
+            // }
             return;
         }
         print("não conseguiu criar caminho");

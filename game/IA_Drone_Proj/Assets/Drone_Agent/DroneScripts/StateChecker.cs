@@ -24,8 +24,7 @@ class StateChecker : MonoBehaviour
         comp.status.searchTimer = DroneStatus.minSearchTimerValue;
     }
     
-    private void Update()
-    {
+    private void Update(){
         LookForTargets();
         SetState();
         ExecuteState();

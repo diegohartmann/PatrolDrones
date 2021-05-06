@@ -5,18 +5,18 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/Avoidance")]
 public class FlockAvoidance : FlockBehaviour
 {
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock){
+    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock){
         if(context.Count == 0){
-            return Vector2.zero;
+            return Vector3.zero;
         }
-        Vector2 avoidanceMove = Vector2.zero;
+        Vector3 avoidanceMove = Vector3.zero;
         int nAvoid = 0;
         foreach (Transform item in context)
         {
-            float magnitude = Vector2.SqrMagnitude(item.position - agent.transform.position);
+            float magnitude = Vector3.SqrMagnitude(item.position - agent.transform.position);
             if(magnitude < flock.SquareOfAvoidanceRadious){
                 nAvoid ++;
-                avoidanceMove += (Vector2)(agent.transform.position - item.position);
+                avoidanceMove += (agent.transform.position - item.position);
             }
         }
         if(nAvoid > 0){

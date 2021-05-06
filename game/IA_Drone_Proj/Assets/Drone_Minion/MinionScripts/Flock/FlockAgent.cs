@@ -15,18 +15,18 @@ public class FlockAgent : MonoBehaviour
     public void MoveFlockAgent(){
         Move(MovementDir());
     }
-    private void Move(Vector2 _velocity){
+    private void Move(Vector3 _velocity){
         transform.forward = _velocity;
-        transform.position += (Vector3)_velocity * Time.deltaTime;
+        transform.position += _velocity * Time.deltaTime;
     }
-    private Vector2 MovementDir(){
+    private Vector3 MovementDir(){
         List<Transform> context = GetNearbyObjects();
-        Vector2 move = flock.behaviour.CalculateMove(this, context, flock);
+        Vector3 move = flock.behaviour.CalculateMove(this, context, flock);
         move *= flock.driveFactor;
         if(move.sqrMagnitude > flock.squareOfMaxSpeed){
             move = (move.normalized * flock.maxSpeed);
         }
-        return move;
+        return (new Vector3(move.x, 0, move.z));
     }
 
     private List<Transform> GetNearbyObjects(){

@@ -69,16 +69,16 @@ GameObject:
   m_Component:
   - component: {fileID: 4607965237465336869}
   - component: {fileID: 8460552564105427621}
-  - component: {fileID: 8837457422717372947}
   - component: {fileID: 335638285436176071}
   - component: {fileID: 833665133220479932}
   - component: {fileID: 1246031937113912813}
   - component: {fileID: 1016385377114272139}
   - component: {fileID: 6179932294881299209}
   - component: {fileID: 2051159668893086350}
-  m_Layer: 0
+  - component: {fileID: 4579950052001671418}
+  m_Layer: 9
   m_Name: minion
-  m_TagString: Untagged
+  m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,23 +111,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.47, z: 0}
---- !u!114 &8837457422717372947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8781391948004095150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3112683fd3b4a154ab9b0bff954bc00d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTargetWaypoint: {x: 0, y: 0, z: 0}
-  path: []
-  LastFinalTarget: {x: 0, y: 0, z: 0}
-  reachedTargetTransform: 0
-  pathSuccedded: 0
 --- !u!114 &335638285436176071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aStar: {fileID: 0}
   status: {fileID: 0}
+  flockAgent: {fileID: 0}
   actions: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &833665133220479932
@@ -158,9 +142,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 3
   rotationSpeed: 3
-  isLocked: 0
-  isGoingToFixedArea: 0
-  hasToWait: 0
 --- !u!114 &1246031937113912813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6432b7b2241e0ba45a8c214b5ee29ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distToStandOnPlayer: 1.88
   State: 3
 --- !u!114 &1016385377114272139
 MonoBehaviour:
@@ -241,6 +221,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f34361d7828a48b7631f492017346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4579950052001671418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781391948004095150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3112683fd3b4a154ab9b0bff954bc00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTargetWaypoint: {x: 0, y: 0, z: 0}
+  path: []
+  LastFinalTarget: {x: 0, y: 0, z: 0}
+  reachedTargetTransform: 0
+  pathSuccedded: 0
 --- !u!1001 &6947422098190168983
 PrefabInstance:
   m_ObjectHideFlags: 0

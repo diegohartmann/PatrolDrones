@@ -8,29 +8,23 @@ public class MinionActions : MonoBehaviour
     private void Awake(){
         components = GetComponent<MinionComponents>();
     }
-    private Transform Player(){
-        return components.player;
-    }
+   
     private Vector3 PlayerPos(){
-        return Player().position;
+        return components.player.position;
     }
     public void SimpleFollowPlayer(){
-        if(Player()!=null){
-            //print("simple following Player");
-            RotateTo(PlayerPos(), true, components.status.rotationSpeed);
-            MoveForward(components.status.runSpeed);
-        }
+        print("simple following Player");
+        RotateTo(PlayerPos(), true, components.status.rotationSpeed);
+        MoveForward(components.status.runSpeed);
     }
-
     public void AStartToPlayer(){
-        if(Player() != null){
-            //print("aStar to Player");
-            AStartTo(PlayerPos());
-        }
-    }
+        print("aStar to Player");
+        AStartTo(PlayerPos());
+        print(PlayerPos());
 
+    }
     public void GoToArea(Vector3 _position){
-        AStartTo(_position);
+        AStartTo(PlayerPos());
     }
     public void Flocking(){
         // AStartTo(MinionsNetworking.leaderMinion.transform.position);
@@ -60,6 +54,6 @@ public class MinionActions : MonoBehaviour
         _aStart.RequestAPath(finalPos);
         _aStart.UpdatePathWaypoints();
         RotateTo(_aStart.currentTargetWaypoint, true, components.status.rotationSpeed);
-        MoveForward(components.status.runSpeed);    
+        MoveForward(components.status.runSpeed);
     }
 }

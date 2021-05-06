@@ -14,17 +14,12 @@ public class MinionStateChecker : MonoBehaviour
     [SerializeField]private MinionStates State = MinionStates.Locked;
     private exempleMove PlayerMov = null;
     private MinionComponents components;
-    private FlockAgent thisFlockAgent;
-    private Flock flock;
 
-    private void Awake() {
-        thisFlockAgent = GetComponent<FlockAgent>();
-        flock = FindObjectOfType<Flock>();
-        components = GetComponent<MinionComponents>();
-    }
     private void Start() {
+        components = GetComponent<MinionComponents>();
         PlayerMov = Player().gameObject.GetComponent<exempleMove>();
     }
+        
     private Transform Player(){
         return components.player;
     }
@@ -97,25 +92,23 @@ public class MinionStateChecker : MonoBehaviour
         //print("Going To Some Area");
     }
     private void FollowMachine(){
-        if(DistFrom(Player()) < 2){
-            StandOnPlayer();
-            return;
-        }
-        if(PlayerMov.isOnTile){
-            FollowDistanceChecker();
-            return;
-        }
-        components.actions.SimpleFollowPlayer();
-        // components.actions.Flocking();
+        // if(DistFrom(Player()) < 2){
+        //     StandOnPlayer();
+        //     return;
+        // }
+        // if(PlayerMov.isOnTile){
+        //     FollowDistanceChecker();
+        //     return;
+        // }
+        // components.actions.SimpleFollowPlayer();
+        components.actions.Flocking();
     }
     private void FollowDistanceChecker(){
         if(DistFrom(Player()) < 3f){
             components.actions.SimpleFollowPlayer();
-            print("SimpleFollow");
             return;
         }
         components.actions.AStartToPlayer();
-        print("Pathfinding");
     }
 
     private void StandOnPlayer(){

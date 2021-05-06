@@ -15,8 +15,7 @@ public class Flock : MonoBehaviour
     [HideInInspector]public float squareOfAvoidanceRadius;
     [HideInInspector] public float SquareOfAvoidanceRadious{get {return squareOfAvoidanceRadius;}}
     
-    void Awake()
-    {
+    void Awake(){
         SetSquareStuff();
     }
     void SetSquareStuff(){
@@ -24,8 +23,6 @@ public class Flock : MonoBehaviour
         squareOfNeighborRadius = SquareOf(neighborRadius);
         squareOfAvoidanceRadius = SquareOf(avoidanceRadiusMultiplier) * squareOfNeighborRadius;
     }
-    
-    
     private float SquareOf(float _n){
         return _n*_n;
     }

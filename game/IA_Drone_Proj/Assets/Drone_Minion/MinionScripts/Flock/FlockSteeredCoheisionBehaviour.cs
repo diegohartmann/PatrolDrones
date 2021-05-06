@@ -5,20 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/SteeredCoheision")]
 public class FlockSteeredCoheisionBehaviour : FlockBehaviour
 {
-    Vector2 currentVelocity;
+    Vector3 currentVelocity;
     [SerializeField] float agentSmoothTime = 0.5f;
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock){
+    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock){
         if(context.Count == 0){
-            return Vector2.zero;
+            return Vector3.zero;
         }
-        Vector2 cohesionMove = Vector2.zero;
+        Vector3 cohesionMove = Vector3.zero;
         foreach (Transform item in context){
-            cohesionMove += (Vector2)(item.position);
+            cohesionMove += (item.position);
         }
         cohesionMove /= context.Count;
         //offset
-        cohesionMove -= (Vector2)(agent.transform.position);
-        cohesionMove = Vector2.SmoothDamp(agent.transform.forward, cohesionMove, ref currentVelocity, agentSmoothTime);
+        cohesionMove -= (agent.transform.position);
+        cohesionMove = Vector3.SmoothDamp(agent.transform.forward, cohesionMove, ref currentVelocity, agentSmoothTime);
         return cohesionMove;
     }
 }

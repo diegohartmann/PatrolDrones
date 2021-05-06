@@ -13,8 +13,16 @@ public class MinionComponents : MonoBehaviour
     private void Awake() {
         aStar = GetComponent<MinionPathfinding>();
         status = GetComponent<MinionStatus>();
-        actions = GetComponent<MinionActions>();
         flockAgent = GetComponent<FlockAgent>();
+        actions = GetComponent<MinionActions>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        transform.parent = null;
+
+        // foreach (var item in GameObjects.FindGameObjectWithTag("Player"))
+        // {
+            
+        // }
     }
+   
+  
 }
