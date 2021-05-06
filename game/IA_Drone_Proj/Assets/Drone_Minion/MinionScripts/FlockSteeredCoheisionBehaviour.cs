@@ -18,7 +18,7 @@ public class FlockSteeredCoheisionBehaviour : FlockBehaviour
         cohesionMove /= context.Count;
         //offset
         cohesionMove -= (Vector2)(agent.transform.position);
-        cohesionMove = Vector2.SmoothDamp(agent.transform.up, cohesionMove, ref currentVelocity, agentSmoothTime);
+        cohesionMove = Vector2.SmoothDamp(agent.transform.forward, cohesionMove, ref currentVelocity, agentSmoothTime);
         return cohesionMove;
     }
 }

@@ -10,8 +10,7 @@ public class FlockCohesion : FlockBehaviour
             return Vector2.zero;
         }
         Vector2 cohesionMove = Vector2.zero;
-        foreach (Transform item in context)
-        {
+        foreach (Transform item in context){
             cohesionMove += (Vector2)(item.position);
         }
         cohesionMove /= context.Count;

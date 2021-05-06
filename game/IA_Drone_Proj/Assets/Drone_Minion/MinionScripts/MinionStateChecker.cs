@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum MinionStates{
     Locked,
     Stoped,
@@ -12,17 +11,25 @@ public enum MinionStates{
 }
 public class MinionStateChecker : MonoBehaviour
 {
+    public bool tempLeader = false;
     [SerializeField]private  float distToStandOnPlayer = 1.88f;
     private const float distToSimpleFollow = 3f;
     [SerializeField]private MinionStates State = MinionStates.Locked;
     private exempleMove PlayerMov = null;
     private MinionComponents components;
+    private FlockAgent thisFlockAgent;
+    private Flock flock;
 
     private void Awake() {
+        thisFlockAgent = GetComponent<FlockAgent>();
+        flock = FindObjectOfType<Flock>();
         components = GetComponent<MinionComponents>();
     }
     private void Start() {
         PlayerMov = Player().gameObject.GetComponent<exempleMove>();
+        if(tempLeader){
+            MinionsNetworking.leaderMinion = this.gameObject;
+        }
     }
     private void Update() {
        SetState();
@@ -96,19 +103,24 @@ public class MinionStateChecker : MonoBehaviour
         //print("Going To Some Area");
     }
     private void FollowMachine(){
-        
-        if(PlayerMov.isOnTile){ //se player ta no tile (grid)
-            if(DistFromPlayer() > distToSimpleFollow){
-                components.actions.AStartToPlayer();
+        if(MinionsNetworking.leaderMinion == this.gameObject){
+            // flock.agents.Remove(thisFlockAgent);
+            if(PlayerMov.isOnTile){ //se player ta no tile (grid)
+                if(DistFromPlayer() > distToSimpleFollow){
+                    components.actions.AStartToPlayer();
+                    return;
+                }
+                if(DistFromPlayer() > distToSimpleFollow / 2){
+                    components.actions.SimpleFollowPlayer();
+                    return;
+                }
                 return;
             }
-            if(DistFromPlayer() > distToSimpleFollow / 2){
-                components.actions.SimpleFollowPlayer();
-                return;
-            }
+            components.actions.SimpleFollowPlayer();// se nao, só segue o player sem pathfinding
             return;
         }
-        components.actions.SimpleFollowPlayer();// se nao, só segue o player sem pathfinding
+        components.actions.Flocking();// comportamento de flocking, seguindo lider
+       
     }
 
     private void StandOnPlayer(){

@@ -31,7 +31,9 @@ public class MinionActions : MonoBehaviour
     public void GoToArea(Vector3 _position){
         AStartTo(_position);
     }
-    
+    public void Flocking(){
+        components.flockAgent.MoveFlockAgent();
+    }
     /// --------------------------------------------------------------------------------------------------------//////
     /// ------------  ALL METHODS UNDER THIS LINE ARE USED INSIDE THE METHODS ABOVE --------------------------- //////
     /// --------------------------------------------------------------------------------------------------------//////

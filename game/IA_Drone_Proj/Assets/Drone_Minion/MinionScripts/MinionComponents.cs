@@ -6,6 +6,7 @@ public class MinionComponents : MonoBehaviour
 {
     [HideInInspector] public MinionPathfinding aStar;
     [HideInInspector] public MinionStatus status;
+    [HideInInspector] public FlockAgent flockAgent;
     [HideInInspector] public MinionActions actions;
     [HideInInspector] public Transform player;
 
@@ -13,6 +14,7 @@ public class MinionComponents : MonoBehaviour
         aStar = GetComponent<MinionPathfinding>();
         status = GetComponent<MinionStatus>();
         actions = GetComponent<MinionActions>();
+        flockAgent = GetComponent<FlockAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }

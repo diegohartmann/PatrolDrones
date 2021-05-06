@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4607965237465336869}
   - component: {fileID: 8460552564105427621}
   - component: {fileID: 2051159668893086350}
+  - component: {fileID: 6478739548351247639}
   m_Layer: 0
   m_Name: minionTest
   m_TagString: Untagged
@@ -89,6 +90,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f34361d7828a48b7631f492017346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6478739548351247639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781391948004095150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc7e975176b1ba41ae3d81f38bfa626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructble: 1
+  maxHealth: 0.1
+  healthSlider: {fileID: 0}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6478739548351247639}
+        m_TargetAssemblyTypeName: DamageFromBullet, Assembly-CSharp
+        m_MethodName: SplashObjectsIn
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5113931180897670206}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6478739548351247639}
+        m_TargetAssemblyTypeName: DamageFromBullet, Assembly-CSharp
+        m_MethodName: _DestroyObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8781391948004095150}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &6947422098190168983
 PrefabInstance:
   m_ObjectHideFlags: 0

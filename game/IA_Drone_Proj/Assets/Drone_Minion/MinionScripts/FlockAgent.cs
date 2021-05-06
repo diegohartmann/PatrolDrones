@@ -5,15 +5,39 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class FlockAgent : MonoBehaviour
 {
-    Collider agenteCollider;
-    [HideInInspector]public Collider AgentCollider {get {return agenteCollider;}}
-    void Awake()
-    {
-        agenteCollider = GetComponent<Collider>();        
+    Collider agentCollider;
+    Flock flock;
+    [HideInInspector]public Collider AgentCollider {get {return agentCollider;}}
+    void Awake(){
+        flock = FindObjectOfType<Flock>();
+        agentCollider = GetComponent<Collider>();        
     }
-    public void Move(Vector2 _velocity){
+    public void MoveFlockAgent(){
+        Move(MovementDir());
+    }
+    private void Move(Vector2 _velocity){
         transform.forward = _velocity;
         transform.position += (Vector3)_velocity * Time.deltaTime;
+    }
+    private Vector2 MovementDir(){
+        List<Transform> context = GetNearbyObjects();
+        Vector2 move = flock.behaviour.CalculateMove(this, context, flock);
+        move *= flock.driveFactor;
+        if(move.sqrMagnitude > flock.squareOfMaxSpeed){
+            move = (move.normalized * flock.maxSpeed);
+        }
+        return move;
+    }
+
+    private List<Transform> GetNearbyObjects(){
+        List<Transform> context = new List<Transform>();
+        Collider[] contextColliders = Physics.OverlapSphere(transform.position, flock.neighborRadius);
+        foreach (Collider c in contextColliders){
+            if(c != this.agentCollider){
+                context.Add(c.transform);
+            }
+        }
+        return context;
     }
 
 }
