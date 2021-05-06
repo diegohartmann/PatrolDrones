@@ -22,7 +22,7 @@ public class MinionPathfinding : MonoBehaviour
         if (pathSuccessful){
             reachedTargetTransform = false;
             this.path = newPath;
-            // this.currentTargetWaypoint = path[0];
+            this.currentTargetWaypoint = path[0];
             return;
         }
         Debug.LogWarning("path failed");

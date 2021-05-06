@@ -92,16 +92,16 @@ public class MinionStateChecker : MonoBehaviour
         //print("Going To Some Area");
     }
     private void FollowMachine(){
-        // if(DistFrom(Player()) < 2){
-        //     StandOnPlayer();
-        //     return;
-        // }
-        // if(PlayerMov.isOnTile){
-        //     FollowDistanceChecker();
-        //     return;
-        // }
-        // components.actions.SimpleFollowPlayer();
-        components.actions.Flocking();
+        if(DistFrom(Player()) < 2){
+            StandOnPlayer();
+            return;
+        }
+        if(PlayerMov.isOnTile){
+            FollowDistanceChecker();
+            return;
+        }
+        components.actions.SimpleFollowPlayer();
+        // components.actions.Flocking();
     }
     private void FollowDistanceChecker(){
         if(DistFrom(Player()) < 3f){

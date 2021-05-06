@@ -11,18 +11,11 @@ public class MinionComponents : MonoBehaviour
     [HideInInspector] public Transform player;
 
     private void Awake() {
+        transform.parent = null;
         aStar = GetComponent<MinionPathfinding>();
         status = GetComponent<MinionStatus>();
         flockAgent = GetComponent<FlockAgent>();
         actions = GetComponent<MinionActions>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        transform.parent = null;
-
-        // foreach (var item in GameObjects.FindGameObjectWithTag("Player"))
-        // {
-            
-        // }
     }
-   
-  
 }
