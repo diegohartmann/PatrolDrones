@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MinionActions : MonoBehaviour
 {
-
     private MinionComponents components;
     private void Awake(){
         components = GetComponent<MinionComponents>();
