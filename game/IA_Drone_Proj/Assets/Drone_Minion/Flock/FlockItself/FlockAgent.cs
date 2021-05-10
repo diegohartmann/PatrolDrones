@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class FlockAgent : MonoBehaviour
 {
-    [SerializeField]Flock agentFlock = null;
-    [HideInInspector]public Flock AgentFlock {get{return agentFlock;}}
+    [SerializeField]int flockGroup = 0;
+    [HideInInspector]public int FlockGroup {get{return flockGroup;}}
     
     Collider agentCollider;
     Flock flock;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //tuto: https://www.youtube.com/watch?v=qzQZl09HDmI&list=RDCMUCifiUB82IZ6kCkjNXN8dwsQ&index=5&ab_channel=BoardToBitsGames
 [CreateAssetMenu(menuName = "Flock/Behaviour/SteeredCoheision")]
-public class FlockSteeredCoheisionBehaviour : FlockBehaviour
+public class FlockSteeredCoheisionBehaviour : FilteredFlockBehaviour
 {
     Vector3 currentVelocity;
     [SerializeField] float agentSmoothTime = 0.5f;
@@ -12,7 +12,8 @@ public class FlockSteeredCoheisionBehaviour : FlockBehaviour
             return Vector3.zero;
         }
         Vector3 cohesionMove = Vector3.zero;
-        foreach (Transform item in context){
+        List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+        foreach (Transform item in filteredContext){
             cohesionMove += (item.position);
         }
         cohesionMove /= context.Count;
