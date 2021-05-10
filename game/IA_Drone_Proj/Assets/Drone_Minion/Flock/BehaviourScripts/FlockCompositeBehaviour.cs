@@ -12,7 +12,7 @@ public class FlockCompositeBehaviour : FlockBehaviour
     {
         //handle data mismatch
         if (weights.Length != behaviors.Length){
-            Debug.LogError("Data mismatch in " + name, this);
+            Debug.LogError("numero de behaviours é diferente do numero de pesos, em " + name, this);
             return Vector3.zero;
         }
         //set up move
