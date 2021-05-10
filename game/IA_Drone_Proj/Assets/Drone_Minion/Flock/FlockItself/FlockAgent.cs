@@ -15,7 +15,6 @@ public class FlockAgent : MonoBehaviour
         flock = FindObjectOfType<Flock>();
         agentCollider = GetComponent<Collider>();        
     }
-    
     public void MoveFlockAgent(){
         Move(MovementDir());
     }
@@ -32,7 +31,6 @@ public class FlockAgent : MonoBehaviour
         }
         return (new Vector3(move.x, 0, move.z));
     }
-
     private List<Transform> GetNearbyObjects(){
         List<Transform> context = new List<Transform>();
         Collider[] contextColliders = Physics.OverlapSphere(transform.position, flock.neighborRadius);
@@ -43,5 +41,4 @@ public class FlockAgent : MonoBehaviour
         }
         return context;
     }
-
 }

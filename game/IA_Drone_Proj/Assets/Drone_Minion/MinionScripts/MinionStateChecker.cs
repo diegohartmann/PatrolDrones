@@ -10,6 +10,7 @@ public enum MinionStates{
 }
 public class MinionStateChecker : MonoBehaviour
 {
+    public bool instaFlock;
     // public bool tempLeader = false;
     [SerializeField]private MinionStates State = MinionStates.Locked;
     private exempleMove PlayerMov = null;
@@ -26,6 +27,10 @@ public class MinionStateChecker : MonoBehaviour
         return components.player;
     }
     private void Update() {
+        if(instaFlock){
+            FlockMovement();
+            return;
+        }
         // SetState();
         ExecuteState();
     }
@@ -98,6 +103,9 @@ public class MinionStateChecker : MonoBehaviour
             LeaderMovement();
             return;
         }
+        FlockMovement();
+    }
+    private void FlockMovement(){
         components.actions.Flocking();
     }
     private void LeaderMovement(){

@@ -27,7 +27,7 @@ public class MinionActions : MonoBehaviour
         // AStartTo(MinionsNetworking.leaderMinion.transform.position);
         print("flocking");
         components.flockAgent.MoveFlockAgent();
-        RotateTo(MinionsNetworking.leaderMinion.transform.position, true);
+        // RotateTo(MinionsNetworking.leaderMinion.transform.position, true);
     }
     /// --------------------------------------------------------------------------------------------------------//////
     /// ------------  ALL METHODS UNDER THIS LINE ARE USED INSIDE THE METHODS ABOVE --------------------------- //////
