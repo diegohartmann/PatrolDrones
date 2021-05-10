@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class FlockAgent : MonoBehaviour
 {
+    [SerializeField]Flock agentFlock = null;
+    [HideInInspector]public Flock AgentFlock {get{return agentFlock;}}
+    
     Collider agentCollider;
     Flock flock;
     [HideInInspector]public Collider AgentCollider {get {return agentCollider;}}
@@ -12,6 +15,7 @@ public class FlockAgent : MonoBehaviour
         flock = FindObjectOfType<Flock>();
         agentCollider = GetComponent<Collider>();        
     }
+    
     public void MoveFlockAgent(){
         Move(MovementDir());
     }
