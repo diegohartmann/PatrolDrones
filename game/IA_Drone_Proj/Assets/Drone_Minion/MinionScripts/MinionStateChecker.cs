@@ -31,6 +31,10 @@ public class MinionStateChecker : MonoBehaviour
             FlockMovement();
             return;
         }
+         if(Player() == null){
+            State = MinionStates.Stoped;
+            return;
+        }
         // SetState();
         ExecuteState();
     }
