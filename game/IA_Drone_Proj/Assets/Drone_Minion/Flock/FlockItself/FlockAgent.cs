@@ -18,9 +18,9 @@ public class FlockAgent : MonoBehaviour
     public void MoveFlockAgent(){
         Move(MovementDir());
     }
-    private void Move(Vector3 _velocity){
-        transform.forward = _velocity;
-        transform.position += _velocity * Time.deltaTime;
+    private void Move(Vector3 _direction){
+        transform.forward = _direction;
+        transform.position += _direction * Time.deltaTime;
     }
     private Vector3 MovementDir(){
         List<Transform> context = GetNearbyObjects();

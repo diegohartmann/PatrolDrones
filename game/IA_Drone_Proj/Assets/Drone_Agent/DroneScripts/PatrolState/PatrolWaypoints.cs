@@ -35,6 +35,17 @@ public class PatrolWaypoints : MonoBehaviour
             TargetIndexEqualsTo(_index + direction);
         }
     }
+    
+    private void TargetIndexEqualsTo(int _newTargetIndex){
+        targetIndex = _newTargetIndex;
+        if (targetIndex == _PatrolWaypoints.childCount){
+            targetIndex = 0;
+        }
+        else if(targetIndex < 0){
+            targetIndex  = _PatrolWaypoints.childCount -1;
+        }
+        UpdateTargetWaypoint();
+    }
 
     private void SetBoolFlag(){
         if (!reachedPatrol){
@@ -44,18 +55,6 @@ public class PatrolWaypoints : MonoBehaviour
 
     private float DistanceFrom(int _index){
         return Vector3.Distance(transform.position, _PatrolWaypoints.GetChild(_index).position);
-    }
-    
-    private void TargetIndexEqualsTo(int _newTargetIndex){
-
-        targetIndex = _newTargetIndex;
-
-        if (targetIndex == _PatrolWaypoints.childCount)
-            targetIndex = 0;
-        else if(targetIndex < 0)
-            targetIndex  = _PatrolWaypoints.childCount -1;
-
-        UpdateTargetWaypoint();
     }
 
     private void UpdateTargetWaypoint(){

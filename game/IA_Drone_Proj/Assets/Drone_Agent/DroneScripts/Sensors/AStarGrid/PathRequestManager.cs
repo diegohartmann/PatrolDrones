@@ -26,7 +26,7 @@ public class PathRequestManager : MonoBehaviour
         instante.TryProcessNext();
     }
 
-  void TryProcessNext() {
+    private void TryProcessNext() {
 		if (!isProcessingPath && pathRequestQueue.Count > 0) {
 			currentPathRequest = pathRequestQueue.Dequeue();
 			isProcessingPath = true;

@@ -60,18 +60,21 @@ public class StateActions : MonoBehaviour
         else{
             transform.LookAt(_target);
         }
-        
     }
     private void MoveForward(float _speed){
         transform.Translate(Vector3.forward * Time.deltaTime * (_speed));
     }
     
     private void AStartTo(Vector3 finalPos){
+        CreatePathTo(finalPos);
+        RotateTo(comp.aStar.currentTargetWaypoint, true, comp.status.aStarRotationSpeed);
+        MoveForward(comp.status.aStarSpeed);    
+    }
+
+    private void CreatePathTo(Vector3 finalPos){
         if(comp.aStar.canRequestAPath){
             comp.aStar.RequestAPath(finalPos);
         }
         comp.aStar.UpdatePathfindingWay();
-        RotateTo(comp.aStar.currentTargetWaypoint, true, comp.status.aStarRotationSpeed);
-        MoveForward(comp.status.aStarSpeed);    
     }
 }

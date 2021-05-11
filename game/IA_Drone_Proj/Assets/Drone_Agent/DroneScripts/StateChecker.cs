@@ -19,16 +19,21 @@ class StateChecker : MonoBehaviour
     private GameObject thisDrone;
 
     private void Start(){
+        SetStuff();
+    }
+
+    private void SetStuff(){
         comp = GetComponent<DroneComponents>();
         thisDrone = this.gameObject;
         comp.status.searchTimer = DroneStatus.minSearchTimerValue;
     }
-    
+
     private void Update(){
         LookForTargets();
         SetState();
         ExecuteState();
     }
+
     private void LateUpdate() {
         comp.fieldOfView.DrawFieldOfView();
     }
@@ -48,19 +53,16 @@ class StateChecker : MonoBehaviour
             if(!DroneCanRequestAPathAStar()){
                 DroneCanRequestAPathAStar(true);
             }
-            if (DistFromTarget_GraterThan(comp.status.distanceToAttack))
-            {
+            if (DistFromTarget_GraterThan(comp.status.distanceToAttack)){
                 State = DroneStates.Chase;
                 return;
-            }    
+            }
             State = DroneStates.Attack;
-           
-           return;
+            return;
         }
         SeesTarget(false);
-        if (AnotherDroneHasATarget())
-        {
-            RefillSearchTimer(); 
+        if (AnotherDroneHasATarget()){
+            RefillSearchTimer();
             State = DroneStates.Search;
             return;
         }
@@ -69,8 +71,7 @@ class StateChecker : MonoBehaviour
             comp.status.searchTimer -= Time.deltaTime;
             return;
         }
-        if (!ReachedAnyPatrolPoint())
-        {
+        if (!ReachedAnyPatrolPoint()){
             State = DroneStates.BackToPatrol;
             return;
         }
@@ -80,7 +81,7 @@ class StateChecker : MonoBehaviour
         State = DroneStates.Patrol;
     }
 
-     private void ExecuteState(){
+    private void ExecuteState(){
         switch (State)
         {
             case DroneStates.Attack:
@@ -88,7 +89,7 @@ class StateChecker : MonoBehaviour
             break;
 
             case DroneStates.Chase:
-                comp.actions.Chase(); 
+                comp.actions.Chase();
             break;
 
             case DroneStates.Search:
@@ -100,7 +101,7 @@ class StateChecker : MonoBehaviour
             break;
 
             case DroneStates.Patrol:
-                comp.actions.Patrol(); 
+                comp.actions.Patrol();
             break;
             
             default:

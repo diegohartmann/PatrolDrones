@@ -15,7 +15,7 @@ public class FlockCohesion : FilteredFlockBehaviour
             cohesionMove += (item.position);
         }
         cohesionMove /= context.Count;
-        //offset
+        //diferença
         cohesionMove -= (agent.transform.position);
         return cohesionMove;
     }

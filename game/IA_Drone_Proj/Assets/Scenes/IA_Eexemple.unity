@@ -4837,10 +4837,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8296685239176654613, guid: ed72ee2a2e9ae1b41b9909005da7586d, type: 3}
-      propertyPath: maxSpeed
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed72ee2a2e9ae1b41b9909005da7586d, type: 3}
 --- !u!1001 &3021789287747252038
