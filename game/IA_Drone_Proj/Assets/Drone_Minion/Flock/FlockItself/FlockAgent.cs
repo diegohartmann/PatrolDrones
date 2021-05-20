@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
+
 public class FlockAgent : MonoBehaviour
 {
+    // private MinionComponents components;
     [SerializeField]int flockGroup = 0;
     [HideInInspector]public int FlockGroup {get{return flockGroup;}}
     
@@ -12,6 +14,7 @@ public class FlockAgent : MonoBehaviour
     Flock flock;
     [HideInInspector]public Collider AgentCollider {get {return agentCollider;}}
     void Awake(){
+        // components = GetComponents<MinionComponents>();
         flock = FindObjectOfType<Flock>();
         agentCollider = GetComponent<Collider>();        
     }

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class exempleMove : MonoBehaviour
 {
+    public GameObject flockTest;
     [SerializeField]private bool rbMove = true;
     [SerializeField]private Transform rotatableObj = null;
     [SerializeField]private float rotationFactor = 3f;
@@ -25,6 +26,12 @@ public class exempleMove : MonoBehaviour
         Move();
         TurnToMouse();
         CheckIfIsOnTile();
+        ActiveFlock();
+    }
+    void ActiveFlock(){
+        if(Input.GetKeyDown(KeyCode.F)){
+            flockTest.SetActive(!(flockTest.activeSelf));
+        }
     }
     void CheckIfIsOnTile(){
         RaycastHit hit;
