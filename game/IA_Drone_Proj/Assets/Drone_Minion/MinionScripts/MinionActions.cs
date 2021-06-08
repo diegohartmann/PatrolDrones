@@ -12,12 +12,12 @@ public class MinionActions : MonoBehaviour
         return components.player.position;
     }
     public void SimpleFollowPlayer(){
-        print("simple following Player");
+        p("simple following Player");
         RotateTo(PlayerPos(), true, components.status.rotationSpeed);
         MoveForward(components.status.runSpeed);
     }
     public void AStartToPlayer(){
-        print("aStar to Player");
+        p("aStar to Player");
         AStartTo(PlayerPos());
     }
     public void GoToArea(Vector3 _position){
@@ -25,7 +25,7 @@ public class MinionActions : MonoBehaviour
     }
     public void Flocking(){
         // AStartTo(MinionsNetworking.leaderMinion.transform.position);
-        print("flocking");
+        p("flocking");
         components.flockAgent.MoveFlockAgent();
         // RotateTo(MinionsNetworking.leaderMinion.transform.position, true);
     }
@@ -52,5 +52,8 @@ public class MinionActions : MonoBehaviour
         _aStart.UpdatePathWaypoints();
         RotateTo(_aStart.currentTargetWaypoint, true, components.status.rotationSpeed);
         MoveForward(components.status.runSpeed);
+    }
+    void p (string _string){
+        //print(_string);
     }
 }

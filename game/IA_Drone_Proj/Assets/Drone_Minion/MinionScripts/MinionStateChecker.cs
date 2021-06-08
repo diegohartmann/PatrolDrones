@@ -50,26 +50,26 @@ public class MinionStateChecker : MonoBehaviour
         return;
     }
 
-    public void SetState(int _state){
-        switch (_state)
-        {
-            case 0:
-                State = MinionStates.Locked;
-            break;
+    // public void SetState(int _state){
+    //     switch (_state)
+    //     {
+    //         case 0:
+    //             State = MinionStates.Locked;
+    //         break;
             
-            case 1:
-                State = MinionStates.Stoped;
-            break;
+    //         case 1:
+    //             State = MinionStates.Stoped;
+    //         break;
 
-            case 2:
-                State = MinionStates.Follow;
-            break;
+    //         case 2:
+    //             State = MinionStates.Follow;
+    //         break;
 
-            default:
-                Debug.LogWarning("não há estado para esse número");
-            break;
-        }   
-    }
+    //         default:
+    //             Debug.LogWarning("não há estado para esse número");
+    //         break;
+    //     }   
+    // }
     private void ExecuteState(){
         switch (State)
         {
@@ -91,16 +91,16 @@ public class MinionStateChecker : MonoBehaviour
     }
 
     private void Locked(){
-        //print ("locked");
+        p("locked");
     }
 
     private void Stoped(){
-        //print("Stoped");
+        p("Stoped");
     }
 
     private void GoTo(){
         // components.GoToArea();
-        //print("Going To Some Area");
+        p("Going To Some Area");
     }
     private void FollowMachine(){
         if(GetLeaderMinion() == thisMinion){
@@ -131,7 +131,7 @@ public class MinionStateChecker : MonoBehaviour
         components.actions.AStartToPlayer();
     }
     private void StandOnPlayer(){
-        print("standOnPlayer");
+        p("standOnPlayer");
     }
     public void TryToSetAsLeaderMinion(){
         if(GetLeaderMinion() == null){
@@ -144,5 +144,8 @@ public class MinionStateChecker : MonoBehaviour
     }
     private void SetLeaderMinion(GameObject _minion){
         MinionsNetworking.leaderMinion = _minion;
+    }
+    void p (string _string){
+        //print(_string);
     }
 }
