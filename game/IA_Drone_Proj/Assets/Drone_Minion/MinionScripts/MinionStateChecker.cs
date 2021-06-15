@@ -6,7 +6,7 @@ public enum MinionStates{
     Locked,
     Stoped,
     Follow,
-    GoingToFixedArea,
+    // GoingToFixedArea,
 }
 public class MinionStateChecker : MonoBehaviour
 {
@@ -98,35 +98,28 @@ public class MinionStateChecker : MonoBehaviour
         p("Stoped");
     }
 
-    private void GoTo(){
-        // components.GoToArea();
-        p("Going To Some Area");
-    }
+    // private void GoTo(){
+    //     // components.GoToArea();
+    //     p("Going To Some Area");
+    // }
     private void FollowMachine(){
         if(DistFrom(Player()) < 2){
             StandOnPlayer();
             return;
         }
-        if(GetLeaderMinion() == thisMinion){
-            LeaderMovement();
-            return;
-        }
-        FlockMovement();
+        MoveToPlayer();
     }
-    private void FlockMovement(){
-        components.actions.Flocking();
-    }
-    private void LeaderMovement(){
-        // if(DistFrom(Player()) < 2){
-        //     StandOnPlayer();
-        //     return;
-        // }
+    private void MoveToPlayer(){
         if(PlayerMov.isOnTile){
             FollowDistanceChecker();
             return;
         }
         components.actions.SimpleFollowPlayer();
     }
+
+    // private void FlockMovement(){
+    //     components.actions.Flocking();
+    // }
     private void FollowDistanceChecker(){
         if(DistFrom(Player()) < 3f){
             components.actions.SimpleFollowPlayer();
