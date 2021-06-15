@@ -163,6 +163,8 @@ GameObject:
   - component: {fileID: 4310559716548637385}
   - component: {fileID: 1095153714506834031}
   - component: {fileID: 827447161718132800}
+  - component: {fileID: 7445397273315870551}
+  - component: {fileID: 1395258489778546014}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -197,7 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85804ed269a64ec4392c599fbe1acc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveMode: 0
+  flockTest: {fileID: 0}
+  rbMove: 1
   rotatableObj: {fileID: 1166702066314084969}
   rotationFactor: 6
   groundLayer: 11
@@ -305,6 +308,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 537277265012669328, guid: 86eb5613498a9fc40b9c5dc666daa8a4, type: 3}
   FirePointsHandler: {fileID: 64646298154587925}
+--- !u!114 &7445397273315870551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552253401467005495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b121e62affc7841af82fbc046ff723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fire: {fileID: 0}
+  WaspAttack: 32
+--- !u!114 &1395258489778546014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552253401467005495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0caa9100d357df34aa5a27155b9c4612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7059125996277433165
 PrefabInstance:
   m_ObjectHideFlags: 0

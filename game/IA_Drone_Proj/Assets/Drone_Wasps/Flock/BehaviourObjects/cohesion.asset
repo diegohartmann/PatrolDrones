@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9162d44372e56c640a4b4a81a9079c52, type: 3}
-  m_Name: radious
+  m_Script: {fileID: 11500000, guid: 88e8f0ebf6c69a245981b4b8e17be0a6, type: 3}
+  m_Name: cohesion
   m_EditorClassIdentifier: 
-  center: {x: 0, y: 0, z: 0}
-  radius: 10
+  filter: {fileID: 11400000, guid: 39ba469a87ac75b49871ab231a4f9ba4, type: 2}
+  agentSmoothTime: 6

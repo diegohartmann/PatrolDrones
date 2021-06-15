@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 592432135612924243}
+  - component: {fileID: 1589986510154149969}
   - component: {fileID: 8296685239176654613}
   m_Layer: 0
   m_Name: Flock
@@ -31,6 +32,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1589986510154149969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4273657179428783288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b7b1b05cedba5f4e96e1f96b22c755b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlockPrefab:
+  - {fileID: 2752873090947485222, guid: 8de567696c1eb3a48b5966cc2513ee63, type: 3}
+  quantity: 05000000
+  WaspsHolder: {fileID: 0}
+  instantiate: 0
+  radiusBehaviour: {fileID: 11400000, guid: 2e569562ae86ec24b8975bdb531a2d9b, type: 2}
 --- !u!114 &8296685239176654613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,10 +63,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviour: {fileID: 11400000, guid: b04f4092c7b499347b9c4141f1e58de8, type: 2}
-  driveFactor: 10
-  maxSpeed: 3
-  neighborRadius: 2.4
-  avoidanceRadiusMultiplier: 0.5
-  squareOfMaxSpeed: 0
-  squareOfNeighborRadius: 0
-  squareOfAvoidanceRadius: 0
+  driveFactor: 8.5
+  maxSpeed: 5
+  neighborRadius: 3
+  avoidanceRadiusMultiplier: 0.282
+  squareOfMaxSpeed: 9
+  squareOfNeighborRadius: 2.5281
+  squareOfAvoidanceRadius: 0.20104463

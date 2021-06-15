@@ -9,8 +9,8 @@ public class PlayerFire : MonoBehaviour
     public float bulletSpeed = 20f;
     public float bulletDamage = 0.01f;
     public float charge = 0;    
-    void Update()
-    {
+
+    public void CheckFire(){
         if(Input.GetMouseButton(0)){
             Shoot(1);
         }
@@ -18,7 +18,7 @@ public class PlayerFire : MonoBehaviour
     private void Shoot (float _rate){
         charge += Time.deltaTime * fireRate * _rate;
         if (charge >=1){
-            pool.Fire();
+            pool.Fire(this);
             charge = 0;
         }
     }

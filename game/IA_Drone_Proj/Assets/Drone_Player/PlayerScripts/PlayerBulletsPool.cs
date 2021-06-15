@@ -8,13 +8,12 @@ public class PlayerBulletsPool : MonoBehaviour
 {
     [SerializeField] GameObject BulletPrefab = null;
     [SerializeField] Transform FirePointsHandler = null;
-    private PlayerFire fire ;
     private List<GameObject> InstantiatedBullets = null;
-    private void Start(){
-        fire = GetComponent<PlayerFire>();
-        InstantiateBullets();
+    
+    public void SetUpBullets(PlayerFire _fire){
+        InstantiateBullets(_fire);
     }
-    private void InstantiateBullets(){
+    private void InstantiateBullets(PlayerFire fire){
         InstantiatedBullets = new List<GameObject>();
         foreach (Transform _firePoint in FirePointsHandler)
             for (int i = 0; i < (fire.fireRate * 10); i++)
@@ -24,7 +23,7 @@ public class PlayerBulletsPool : MonoBehaviour
                 _bullet.SetActive(false);
             }
     }
-    public void Fire(){
+    public void Fire(PlayerFire fire){
         foreach (Transform _firePoint in FirePointsHandler)
         {
             List<GameObject> BulletsReadyToBeShooted = new List<GameObject>();;
@@ -42,7 +41,6 @@ public class PlayerBulletsPool : MonoBehaviour
             bull.bullSpeed = fire.bulletSpeed;
             bull.bullDamage = fire.bulletDamage;
             bull.shooter = this.gameObject;
-            // _bulletToShoot.GetComponent<Rigidbody>().AddForce(transform.forward * (components.status.bulletSpeed));
         }
     }
     private bulletMovement BulletMovFrom(GameObject obj){
