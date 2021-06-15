@@ -23,12 +23,12 @@ public class MinionActions : MonoBehaviour
     public void GoToArea(Vector3 _position){
         AStartTo(PlayerPos());
     }
-    public void Flocking(){
-        // AStartTo(MinionsNetworking.leaderMinion.transform.position);
-        p("flocking");
-        components.flockAgent.MoveFlockAgent();
-        // RotateTo(MinionsNetworking.leaderMinion.transform.position, true);
-    }
+    // public void Flocking(){
+    //     // AStartTo(MinionsNetworking.leaderMinion.transform.position);
+    //     p("flocking");
+    //     components.flockAgent.MoveFlockAgent();
+    //     // RotateTo(MinionsNetworking.leaderMinion.transform.position, true);
+    // }
     /// --------------------------------------------------------------------------------------------------------//////
     /// ------------  ALL METHODS UNDER THIS LINE ARE USED INSIDE THE METHODS ABOVE --------------------------- //////
     /// --------------------------------------------------------------------------------------------------------//////

@@ -6,14 +6,14 @@ public class MinionComponents : MonoBehaviour
 {
     [HideInInspector] public MinionPathfinding aStar;
     [HideInInspector] public MinionStatus status;
-    [HideInInspector] public FlockAgent flockAgent;
+    // [HideInInspector] public FlockAgent flockAgent;
     [HideInInspector] public MinionActions actions;
     [HideInInspector] public Transform player;
 
     private void Awake() {
         aStar = GetComponent<MinionPathfinding>();
         status = GetComponent<MinionStatus>();
-        flockAgent = GetComponent<FlockAgent>();
+        // flockAgent = GetComponent<FlockAgent>();
         actions = GetComponent<MinionActions>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }

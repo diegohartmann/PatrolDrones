@@ -27,10 +27,10 @@ public class MinionStateChecker : MonoBehaviour
         return components.player;
     }
     private void Update() {
-        if(instaFlock){
-            FlockMovement();
-            return;
-        }
+        // if(instaFlock){
+        //     FlockMovement();
+        //     return;
+        // }
          if(Player() == null){
             State = MinionStates.Stoped;
             return;

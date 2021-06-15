@@ -18,11 +18,9 @@ public class DamageFromBullet : MonoBehaviour
         loader = FindObjectOfType<SceneLoader>();
         currHealth = maxHealth;
     }
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            ReloadGame(0);
-        }
-    }
+   private void Update() {
+       ReloadGameChecker();
+   }
     private void OnTriggerEnter(Collider other) {
         GameObject otherObj = other.gameObject;
         if (otherObj.CompareTag("Bullet")){
@@ -94,7 +92,14 @@ public class DamageFromBullet : MonoBehaviour
             Destroy(part.gameObject);
         }
     }
+      //TEMP
+    private void ReloadGameChecker() {
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            ReloadGame(0);
+        }
+    }
     public void ReloadGame(float t){
         loader.Load("IA_Eexemple", t);
     }
+   
 }

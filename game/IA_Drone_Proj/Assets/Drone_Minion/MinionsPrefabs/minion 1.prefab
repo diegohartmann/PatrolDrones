@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 1246031937113912813}
   - component: {fileID: 1016385377114272139}
   - component: {fileID: 6179932294881299209}
-  - component: {fileID: 2051159668893086350}
   - component: {fileID: 4579950052001671418}
   m_Layer: 9
   m_Name: minion 1
@@ -154,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6432b7b2241e0ba45a8c214b5ee29ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instaFlock: 0
   State: 3
 --- !u!114 &1016385377114272139
 MonoBehaviour:
@@ -209,19 +209,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2051159668893086350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8781391948004095150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b9f34361d7828a48b7631f492017346, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flockGroup: 1
 --- !u!114 &4579950052001671418
 MonoBehaviour:
   m_ObjectHideFlags: 0

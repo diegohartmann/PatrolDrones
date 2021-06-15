@@ -26,13 +26,8 @@ public class CameraController : MonoBehaviour
         thisCam = GetComponent<Camera>();
     }
 
-    void Update() {
-        SwapCameraMode();
-    }
-    void LateUpdate(){
-        CheckCameraMode();
-    }
-    void SwapCameraMode(){
+    
+    public void SwapCameraMode(){
         if(Input.GetKeyDown(zoomButtom)){
             
             zoomOut = !zoomOut;
@@ -43,7 +38,7 @@ public class CameraController : MonoBehaviour
             cameraMode = CameraMode.FollowingTarget;
         }
     }
-    void CheckCameraMode()
+    public void CheckCameraMode()
     {
         switch (cameraMode)
         {
@@ -68,21 +63,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    void Follow(Transform _target, Vector3 _offset, float smoothSpeed){
+    private void Follow(Transform _target, Vector3 _offset, float smoothSpeed){
         Vector3 desiredPos = _target.position + _offset;
         Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, Time.deltaTime*10* smoothSpeed);
         transform.position = smoothPos;
     }
-
-    // void EnableOrthographic(){
-    //     thisCam.orthographic = true;
-    //     thisCam.orthographicSize = orthoSize;
-    // }
-    // void EnablePerspective(){
-    //     thisCam.orthographic = false;
-    // }
-    // void SetPosition(float x, float y, float z){
-    //     transform.position = new Vector3(x, y, z);
-    // }
-  
 }
