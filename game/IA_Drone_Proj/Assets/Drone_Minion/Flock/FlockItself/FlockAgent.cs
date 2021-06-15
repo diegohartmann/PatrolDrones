@@ -20,6 +20,7 @@ public class FlockAgent : MonoBehaviour
     }
     public void MoveFlockAgent(){
         Move(MovementDir());
+        RotateToLeader();
     }
     private void Move(Vector3 _direction){
         transform.forward = _direction;
@@ -43,5 +44,25 @@ public class FlockAgent : MonoBehaviour
             }
         }
         return context;
+    }
+    private GameObject GetLeaderMinion(){
+        return MinionsNetworking.leaderMinion;
+    }
+    private void RotateTo(Vector3 _target, bool _isSmooth, float _rotSpeed = 1) {
+        if (_isSmooth){
+            var neededRotation = Quaternion.LookRotation(_target - transform.position);
+            var interpolatedRotation = Quaternion.Slerp(transform.rotation, neededRotation, Time.deltaTime * _rotSpeed);
+            transform.rotation = interpolatedRotation;
+        }
+        else{
+            transform.LookAt(_target);
+        }
+    }
+    private void RotateToLeader(){
+        GameObject leader = GetLeaderMinion();
+        if(leader == null){
+            return;
+        }
+        RotateTo(leader.transform.position, true , 5);
     }
 }

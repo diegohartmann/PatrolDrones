@@ -485,6 +485,10 @@ PrefabInstance:
       propertyPath: instaFlock
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2051159668893086350, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
+      propertyPath: flockGroup
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4607965237465336869, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.902545
@@ -559,6 +563,10 @@ PrefabInstance:
     - target: {fileID: 1246031937113912813, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: instaFlock
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051159668893086350, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
+      propertyPath: flockGroup
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4607965237465336869, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1686,6 +1694,10 @@ PrefabInstance:
       propertyPath: instaFlock
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2051159668893086350, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
+      propertyPath: flockGroup
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4607965237465336869, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.057852
@@ -2262,6 +2274,10 @@ PrefabInstance:
     - target: {fileID: 1246031937113912813, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: instaFlock
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051159668893086350, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
+      propertyPath: flockGroup
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4607965237465336869, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3073,6 +3089,10 @@ PrefabInstance:
       propertyPath: instaFlock
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2051159668893086350, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
+      propertyPath: flockGroup
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4607965237465336869, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.415777
@@ -3388,6 +3408,10 @@ PrefabInstance:
       propertyPath: instaFlock
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2051159668893086350, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
+      propertyPath: flockGroup
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4607965237465336869, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.719633
@@ -3452,6 +3476,10 @@ PrefabInstance:
     - target: {fileID: 1246031937113912813, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: instaFlock
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051159668893086350, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
+      propertyPath: flockGroup
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4607965237465336869, guid: 6465288fb4adc434392a15b10d822cb7, type: 3}
       propertyPath: m_LocalPosition.x

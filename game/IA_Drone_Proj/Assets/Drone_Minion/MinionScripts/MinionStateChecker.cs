@@ -50,26 +50,26 @@ public class MinionStateChecker : MonoBehaviour
         return;
     }
 
-    // public void SetState(int _state){
-    //     switch (_state)
-    //     {
-    //         case 0:
-    //             State = MinionStates.Locked;
-    //         break;
+    public void SetState(int _state){
+        switch (_state)
+        {
+            case 0:
+                State = MinionStates.Locked;
+            break;
             
-    //         case 1:
-    //             State = MinionStates.Stoped;
-    //         break;
+            case 1:
+                State = MinionStates.Stoped;
+            break;
 
-    //         case 2:
-    //             State = MinionStates.Follow;
-    //         break;
+            case 2:
+                State = MinionStates.Follow;
+            break;
 
-    //         default:
-    //             Debug.LogWarning("não há estado para esse número");
-    //         break;
-    //     }   
-    // }
+            default:
+                Debug.LogWarning("não há estado para esse número");
+            break;
+        }   
+    }
     private void ExecuteState(){
         switch (State)
         {
@@ -103,6 +103,10 @@ public class MinionStateChecker : MonoBehaviour
         p("Going To Some Area");
     }
     private void FollowMachine(){
+        if(DistFrom(Player()) < 2){
+            StandOnPlayer();
+            return;
+        }
         if(GetLeaderMinion() == thisMinion){
             LeaderMovement();
             return;
@@ -113,10 +117,10 @@ public class MinionStateChecker : MonoBehaviour
         components.actions.Flocking();
     }
     private void LeaderMovement(){
-        if(DistFrom(Player()) < 2){
-            StandOnPlayer();
-            return;
-        }
+        // if(DistFrom(Player()) < 2){
+        //     StandOnPlayer();
+        //     return;
+        // }
         if(PlayerMov.isOnTile){
             FollowDistanceChecker();
             return;
