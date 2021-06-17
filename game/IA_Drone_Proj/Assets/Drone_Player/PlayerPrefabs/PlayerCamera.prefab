@@ -96,10 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfade7258378ac46b518d0d0540a134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraMode: 0
   zoomButtom: 32
   zoomSmoothSpeed: 0.8
   zoomCamTarget: {fileID: 5823723715040793336, guid: 34fa7d45899ce9a4d8a6ca0bfbb9f48d, type: 3}
-  orthoSize: 10.5
   followTarget: {fileID: 8552253401467005483, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
   playerSmoothSpeed: 0.5
   playerOffset: {x: 0, y: 10, z: 0}

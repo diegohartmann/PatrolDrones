@@ -6,6 +6,7 @@ public class DronesNetworkComunication
 {
     // public static bool intruserFound;
     public static List <GameObject> dronesViewingIntruser = new List<GameObject>();
+    public static int deadDrones;
     // public static Transform Target;
-    public static bool deadDroneFound;
+    // public static bool deadDroneFound;
 }

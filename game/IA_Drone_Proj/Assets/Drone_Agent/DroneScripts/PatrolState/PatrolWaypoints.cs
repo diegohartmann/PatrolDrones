@@ -16,9 +16,13 @@ public class PatrolWaypoints : MonoBehaviour
     private int lastTargetIndex = -1;
     [HideInInspector] public bool reachedPatrol = false;
     private void Awake() {
-        targetWaypoint = _PatrolWaypoints.GetChild(0);
+        if(hasPatrolPoints()){
+            targetWaypoint = _PatrolWaypoints.GetChild(0);
+        }
     }
-    
+    public bool hasPatrolPoints(){
+        return _PatrolWaypoints!=null;
+    }
     public void SmartWaypoints(){
         for(int i = 0; i < _PatrolWaypoints.childCount; i++){
             SetNextWaypointBasedOn(i);

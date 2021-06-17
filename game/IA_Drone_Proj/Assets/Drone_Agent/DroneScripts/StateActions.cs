@@ -17,13 +17,21 @@ public class StateActions : MonoBehaviour
     /// -----  ALL METHODS UNDER THIS LINE ARE THE DRONE STATES, CALLED INTO StateChecker's Update() method ----//////
     /// --------------------------------------------------------------------------------------------------------//////
     public void GoingBackToPatrol(){
-        AStartTo(comp.patrol.targetWaypoint.position);
-        comp.patrol.SmartWaypoints();
+        if(comp.patrol.hasPatrolPoints()){
+            AStartTo(comp.patrol.targetWaypoint.position);
+            comp.patrol.SmartWaypoints();
+            return;
+        }
+        Search();
     }
     public void Patrol(){
-        comp.patrol.SimpleWaypoints();
-        RotateTo(comp.patrol.targetWaypoint.position, true, comp.status.patrolRotationSpeed);
-        MoveForward(comp.status.patrolSpeed);    
+        if(comp.patrol.hasPatrolPoints()){
+            comp.patrol.SimpleWaypoints();
+            RotateTo(comp.patrol.targetWaypoint.position, true, comp.status.patrolRotationSpeed);
+            MoveForward(comp.status.patrolSpeed);
+            return;  
+        }
+        Search();
     }
     public void Search(){
         transform.Rotate(new Vector3(0, 150*Time.deltaTime, 0));//AStartTo(randomTransforms);

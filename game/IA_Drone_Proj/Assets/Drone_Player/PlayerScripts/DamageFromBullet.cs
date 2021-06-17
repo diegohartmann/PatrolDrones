@@ -101,5 +101,7 @@ public class DamageFromBullet : MonoBehaviour
     public void ReloadGame(float t){
         loader.Load("IA_Eexemple", t);
     }
-   
+   public void IncrementDeadDrones(int amt){
+        DronesNetworkComunication.deadDrones += amt;
+   }
 }

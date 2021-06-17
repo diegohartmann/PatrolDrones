@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class exempleMove : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]private bool rbMove = true;
     [SerializeField]private Transform rotatableObj = null;

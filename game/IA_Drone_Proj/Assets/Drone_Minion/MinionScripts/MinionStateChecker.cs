@@ -13,13 +13,13 @@ public class MinionStateChecker : MonoBehaviour
     public bool instaFlock;
     // public bool tempLeader = false;
     [SerializeField]private MinionStates State = MinionStates.Locked;
-    private exempleMove PlayerMov = null;
+    private PlayerMovement PlayerMov = null;
     private MinionComponents components;
     private GameObject thisMinion;
 
     private void Start() {
         components = GetComponent<MinionComponents>();
-        PlayerMov = Player().gameObject.GetComponent<exempleMove>();
+        PlayerMov = Player().gameObject.GetComponent<PlayerMovement>();
         thisMinion = this.gameObject;
     }
         

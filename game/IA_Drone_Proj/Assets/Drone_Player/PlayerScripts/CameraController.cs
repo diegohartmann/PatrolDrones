@@ -25,8 +25,6 @@ public class CameraController : MonoBehaviour
     private void Awake() {
         thisCam = GetComponent<Camera>();
     }
-
-    
     public void SwapCameraMode(){
         if(Input.GetKeyDown(zoomButtom)){
             

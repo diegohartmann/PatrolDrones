@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerUpdate : MonoBehaviour
 {
     private PlayerFire fire;
-    private exempleMove move;
+    private PlayerMovement move;
     private PlayerWaspAttack wasps;
     private PlayerBulletsPool pool;
     [SerializeField] private CameraController cameraController = null;
@@ -32,7 +32,7 @@ public class PlayerUpdate : MonoBehaviour
 
     private void GettingComponents(){
         fire = GetComponent<PlayerFire>();
-        move = GetComponent<exempleMove>();
+        move = GetComponent<PlayerMovement>();
         wasps = GetComponent<PlayerWaspAttack>();
         pool = GetComponent<PlayerBulletsPool>();
     }

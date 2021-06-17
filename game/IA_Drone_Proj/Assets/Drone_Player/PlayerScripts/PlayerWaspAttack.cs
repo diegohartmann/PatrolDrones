@@ -11,14 +11,49 @@ public class PlayerWaspAttack : MonoBehaviour{
     [SerializeField] private KeyCode cancelAimButton = KeyCode.C;
     private bool canUseWasps = false;
     private Camera mainCamera;
+    [SerializeField][Range(0,1)]private float fuel = 1;
+    private bool waspsAreAttacking = false;
+    [SerializeField] private float fuelTimer = 3;
     private void Awake() {
         mainCamera = FindObjectOfType<Camera>();
     }
     public void CheckWapsAttack(){
+        if(DronesNetworkComunication.deadDrones < 3){
+            return;
+        }
+        if(fuel<= 0){
+            fuel=0;
+            return;
+        }
         TougleAimCheck(MouseClick(1));
         if(canUseWasps){
-            OtherClicksCheck(MouseHold(1), MouseRelease(1));
+            if(MouseHold(1)){
+                SetAttackPosition();
+                TougleAimCheck(CancelAimButton());
+                return;
+            }
+            if(MouseRelease(1)){
+                AimEffect(false);
+                // if(fuel>=0){
+                    TimerEffect(true);
+                    SendWasps(true);
+                    waspsAreAttacking = true;
+                // }
+            }
+            if(waspsAreAttacking){
+                DecrementFuel();
+                if(fuel<=0){
+                    TimerEffect(false);
+                    SendWasps(false);
+                }
+            }
         }
+        
+    }
+    private void DecrementFuel(){
+        fuel -= (Time.deltaTime / fuelTimer);
+        waspsTimer.fillAmount = fuel;
+        return;
     }
     private void TougleAimCheck(bool aimToggle){
         if(aimToggle){
@@ -27,24 +62,6 @@ public class PlayerWaspAttack : MonoBehaviour{
             canUseWasps = !canUseWasps;
             AimEffect(canUseWasps);
         }
-    }
-    private void OtherClicksCheck(bool _aiming, bool _releasedAim){
-        if(_aiming){
-            SetAttackPosition();
-            TougleAimCheck(CancelAimButton());
-            return;
-        }
-        if(_releasedAim){
-            AimEffect(false);
-            TryToAttack();
-            return;
-        }
-        return;
-    }
-    private void TryToAttack(){
-        TimerEffect(true);
-        SendWasps(true);
-        return;
     }
     private void SendWasps(bool b){
         wasps.SetActive(b);
@@ -77,9 +94,6 @@ public class PlayerWaspAttack : MonoBehaviour{
         waspsHolder.transform.position = new Vector3 (pos.x, 0.3f, pos.z);
     }
 
-    private void UpdateTimerUI(float amt){
-        waspsTimer.fillAmount = amt;
-    }
 
     private void TimerEffect(bool active){
         waspsTimer.gameObject.SetActive(active);

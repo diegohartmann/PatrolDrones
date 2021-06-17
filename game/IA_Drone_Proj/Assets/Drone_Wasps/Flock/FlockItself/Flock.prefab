@@ -44,11 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7b1b05cedba5f4e96e1f96b22c755b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlockPrefab:
-  - {fileID: 2752873090947485222, guid: 8de567696c1eb3a48b5966cc2513ee63, type: 3}
-  quantity: 05000000
   WaspsHolder: {fileID: 0}
-  instantiate: 0
   radiusBehaviour: {fileID: 11400000, guid: 2e569562ae86ec24b8975bdb531a2d9b, type: 2}
 --- !u!114 &8296685239176654613
 MonoBehaviour:
