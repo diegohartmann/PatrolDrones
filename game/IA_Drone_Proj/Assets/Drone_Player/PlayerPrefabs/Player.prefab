@@ -199,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85804ed269a64ec4392c599fbe1acc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockTest: {fileID: 0}
   rbMove: 1
   rotatableObj: {fileID: 1166702066314084969}
   rotationFactor: 6
@@ -320,8 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b121e62affc7841af82fbc046ff723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire: {fileID: 0}
-  WaspAttack: 32
+  cameraController: {fileID: 0}
 --- !u!114 &1395258489778546014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +332,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caa9100d357df34aa5a27155b9c4612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waspsHolder: {fileID: 0}
+  wasps: {fileID: 0}
+  waspsTimer: {fileID: 0}
+  waspsAimEffect: {fileID: 0}
+  CancelAimButton: 99
 --- !u!1001 &7059125996277433165
 PrefabInstance:
   m_ObjectHideFlags: 0
