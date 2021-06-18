@@ -7,9 +7,8 @@ using UnityEngine.Events;
 public class DamageFromBullet : MonoBehaviour
 {
     [SerializeField] private bool destructble = true;
-    [SerializeField] private float maxHealth = 1;
+    [SerializeField] [Range(0.1f, 1.0f)] private float maxHealth = 1;
     [SerializeField] private Slider healthSlider = null;
-    // [SerializeField] private Transform GFXChild = null;
     [SerializeField] private UnityEvent OnDestroyed = null;
     private float currHealth = 0;
     private SceneLoader loader;
@@ -18,9 +17,10 @@ public class DamageFromBullet : MonoBehaviour
         loader = FindObjectOfType<SceneLoader>();
         currHealth = maxHealth;
     }
-   private void Update() {
-       ReloadGameChecker();
-   }
+//    private void Update() {
+//        //TEMP
+//        ReloadGameChecker();
+//    }
     private void OnTriggerEnter(Collider other) {
         GameObject otherObj = other.gameObject;
         if (otherObj.CompareTag("Bullet")){
@@ -93,11 +93,11 @@ public class DamageFromBullet : MonoBehaviour
         }
     }
       //TEMP
-    private void ReloadGameChecker() {
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            ReloadGame(0);
-        }
-    }
+    // private void ReloadGameChecker() {
+    //     if(Input.GetKeyDown(KeyCode.Escape)){
+    //         ReloadGame(0);
+    //     }
+    // }
     public void ReloadGame(float t){
         loader.Load("IA_Eexemple", t);
     }

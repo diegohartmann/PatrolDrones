@@ -23,9 +23,10 @@ class StateChecker : MonoBehaviour
     }
 
     private void SetStuff(){
-        comp = GetComponent<DroneComponents>();
         thisDrone = this.gameObject;
+        comp = GetComponent<DroneComponents>();
         comp.status.searchTimer = DroneStatus.minSearchTimerValue;
+        comp.bulletsPool.InstantiateBullets();
     }
 
     private void Update(){

@@ -10,11 +10,11 @@ public class BulletsPool : MonoBehaviour
     [SerializeField] Transform FirePointsHandler = null;
     private List<GameObject> InstantiatedBullets = null;
     private DroneComponents components;
-    private void Start(){
+    private void Awake(){
         components = GetComponent<DroneComponents>();
-        InstantiateBullets();
+        // InstantiateBullets();
     }
-    private void InstantiateBullets(){
+    public void InstantiateBullets(){
         InstantiatedBullets = new List<GameObject>();
         foreach (Transform _firePoint in FirePointsHandler)
             for (int i = 0; i < (components.status.fireRate * 10); i++)

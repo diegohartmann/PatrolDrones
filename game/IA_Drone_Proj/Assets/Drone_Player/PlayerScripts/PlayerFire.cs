@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerFire : MonoBehaviour
 {
     [SerializeField]PlayerBulletsPool pool = null;
-    public float fireRate = 10f;
-    public float bulletSpeed = 20f;
-    public float bulletDamage = 0.01f;
-    public float charge = 0;    
+    [Range(1,20)]public float fireRate = 10f;
+    [Range(10,30)]public float bulletSpeed = 20f;
+    [Range(0.005f, 0.3f)]public float bulletDamage = 0.01f;
+    private float charge = 0;    
 
     public void CheckFire(){
         if(Input.GetMouseButton(0)){

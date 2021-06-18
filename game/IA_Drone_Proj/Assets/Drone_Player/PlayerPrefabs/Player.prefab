@@ -777,7 +777,7 @@ MonoBehaviour:
   pool: {fileID: 827447161718132800}
   fireRate: 10
   bulletSpeed: 20
-  bulletDamage: 0.3
+  bulletDamage: 0.01
   charge: 0
 --- !u!114 &827447161718132800
 MonoBehaviour:
