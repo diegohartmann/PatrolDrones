@@ -7,7 +7,6 @@ public class DronePathfinding : MonoBehaviour
 {
     [HideInInspector]public Vector3 currentTargetWaypoint;
     [HideInInspector]public Vector3[] path; //taken from grid
-    // [HideInInspector]public Vector3 LastFinalTarget;
     [HideInInspector]public bool startFollow = false;
     [HideInInspector]public bool canRequestAPath = true;
 

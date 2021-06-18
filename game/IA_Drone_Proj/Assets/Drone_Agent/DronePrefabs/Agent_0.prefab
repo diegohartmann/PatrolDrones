@@ -313,6 +313,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  waspChargerColor: {r: 1, g: 0.9312867, b: 0, a: 1}
 --- !u!114 &731811328501006585
 MonoBehaviour:
   m_ObjectHideFlags: 0

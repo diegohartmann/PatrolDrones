@@ -11,6 +11,7 @@ public class DroneComponents : MonoBehaviour
     [HideInInspector]public BulletsPool bulletsPool;
     [HideInInspector]public PatrolWaypoints patrol;
     [HideInInspector]public DronePathfinding aStar;
+   
 
     private void Awake(){
         fieldOfView = GetComponent<FieldOfView>();
