@@ -7,12 +7,14 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]private bool rbMove = true;
     [SerializeField]private Transform rotatableObj = null;
+    [SerializeField]private Transform zoomCamTarget = null;
     [SerializeField]private float rotationFactor = 3f;
     [SerializeField]private int groundLayer = 11;
     [SerializeField]private float moveSpeed = 6f;
     [SerializeField]private float rotateOffset = 0.3f;
     private Rigidbody thisRB;
     [HideInInspector]public bool isOnTile;
+    private Vector3 lastCamTargetPos = Vector3.zero;
     private Camera mainCamera;
     private void Awake() {
         SetStuff();
@@ -32,10 +34,19 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         bool rayCollided = Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity);
         if(rayCollided){
-            this.isOnTile = ( hit.collider.gameObject.layer == (groundLayer) );
+            GameObject colisionObject = hit.collider.gameObject; 
+            this.isOnTile = ( colisionObject.layer == (groundLayer) );
+            if(colisionObject.transform.position != lastCamTargetPos){
+                Vector3 newPos = new Vector3(colisionObject.transform.position.x, 18 , colisionObject.transform.position.z);
+                SetCameraTarget(newPos);
+            }
             return;
         }
         this.isOnTile = false;
+    }
+    void SetCameraTarget(Vector3 pos){
+        lastCamTargetPos = pos;
+        zoomCamTarget.transform.position = pos;
     }
     void TurnToMouse(){
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);

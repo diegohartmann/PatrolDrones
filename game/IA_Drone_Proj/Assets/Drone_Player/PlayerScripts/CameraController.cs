@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum CameraMode{
-    FollowingTarget,
-    ZoomedOut,
+    ZoomOut,
+    FollowPlayer,
 }
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private CameraMode cameraMode;
+    [SerializeField] private CameraMode cameraMode = CameraMode.FollowPlayer;
     [Header("zoomOut")]
     [SerializeField] private KeyCode zoomButtom = KeyCode.Space; 
     private Camera thisCam;
     private float size;
-    private bool zoomOut = false;
+    private bool followPlayer = true;
     [SerializeField][Range (0,1)] float zoomSmoothSpeed = 0.8f; //the higher the faster
     [SerializeField] Transform zoomCamTarget = null;
     // [SerializeField] float orthoSize = 10.5f;
@@ -24,33 +24,29 @@ public class CameraController : MonoBehaviour
     [SerializeField] Vector3 playerOffset = new Vector3 (0,5,0);
     private void Awake() {
         thisCam = GetComponent<Camera>();
+        ApplyMode(followPlayer);
     }
-    public void SwapCameraMode(){
+    public void CheckSwapCameraMode(){
         if(Input.GetKeyDown(zoomButtom)){
-            
-            zoomOut = !zoomOut;
-            if(zoomOut){
-                cameraMode = CameraMode.ZoomedOut;
-                return;
-            }            
-            cameraMode = CameraMode.FollowingTarget;
+            ApplyMode(ModeToggle());
         }
     }
-    public void CheckCameraMode()
-    {
-        switch (cameraMode)
-        {
-            case CameraMode.FollowingTarget:
+    public void CameraMovement(){
+        switch (cameraMode){
+            case CameraMode.ZoomOut:
                 ZoomOut();
             break;
-
-            case CameraMode.ZoomedOut:
+            case CameraMode.FollowPlayer:
                 FollowPlayer();
             break;
-
-            default:
-            break;
         }
+    }
+    private bool ModeToggle(){
+        followPlayer = !followPlayer;
+        return followPlayer;
+    }
+    private void ApplyMode(bool _followPlayer){
+        cameraMode = _followPlayer? CameraMode.FollowPlayer : CameraMode.ZoomOut;
     }
     private void ZoomOut(){
         Follow(zoomCamTarget, zoomOffset, zoomSmoothSpeed);

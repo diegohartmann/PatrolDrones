@@ -19,10 +19,10 @@ public class PlayerUpdate : MonoBehaviour
             return;
         }
         PlayerUpdateMethods();
-        cameraController.SwapCameraMode();
+        cameraController.CheckSwapCameraMode();
     }
     private void LateUpdate(){
-        cameraController.CheckCameraMode();
+        cameraController.CameraMovement();
     }
     private void PlayerUpdateMethods(){
         move.Movement();
