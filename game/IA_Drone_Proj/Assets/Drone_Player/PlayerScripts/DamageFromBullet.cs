@@ -10,13 +10,12 @@ public class DamageFromBullet : MonoBehaviour
     [SerializeField] [Range(0.1f, 1.0f)] private float maxHealth = 1;
     [SerializeField] private Slider healthSlider = null;
     [SerializeField] private UnityEvent OnDestroyed = null;
-    [SerializeField] private Color waspChargerColor = Color.yellow;
-    [SerializeField] private Color waspChargerColorFull = Color.green;
+    private PlayerWaspAttack player;
+   
     private float currHealth = 0;
     private SceneLoader loader;
-    private Transform waspsChargerHolder;
     private void Awake() {
-        waspsChargerHolder = GameObject.Find("waspsChargerHolder").transform;
+        player = FindObjectOfType<PlayerWaspAttack>();
         loader = FindObjectOfType<SceneLoader>();
         currHealth = maxHealth;
     }
@@ -95,20 +94,9 @@ public class DamageFromBullet : MonoBehaviour
     public void ReloadGame(float t){
         loader.Load("IA_Eexemple", t);
     }
-    public void IncrementDeadDrones(int amt){
-        DronesNetworkComunication.deadDrones += amt;
-        int contained = 0;
-        for (int i = 0; i < waspsChargerHolder.childCount; i++){
-            if(i+1 <= DronesNetworkComunication.deadDrones){
-                waspsChargerHolder.GetChild(i).GetComponent<Image>().color = waspChargerColor;
-                contained ++;
-            }
+    public void IncrementDeadDrones(int _amt){
+        if(DronesNetworkComunication.deadDrones < 3 ){
+            player.IncrementDeadDrones(_amt);
         }
-        if(contained >= 3){
-            foreach (Transform item in waspsChargerHolder)
-            {
-                item.GetComponent<Image>().color = waspChargerColorFull;
-            }
-        }
-   }
+    }
 }

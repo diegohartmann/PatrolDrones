@@ -14,8 +14,14 @@ public class PlayerWaspAttack : MonoBehaviour{
     [SerializeField][Range(0,1)]private float fuel = 1;
     private bool waspsAreAttacking = false;
     [SerializeField] private float fuelTimer = 3;
+    [SerializeField] private Color waspChargerColor = Color.yellow;
+    [SerializeField] private Color waspChargerColorFull = Color.green;
+    [SerializeField] private Color waspEmptyColor = Color.black;
+    private Transform waspsChargerHolder;
     private void Awake() {
+        waspsChargerHolder = GameObject.Find("waspsChargerHolder").transform;
         mainCamera = FindObjectOfType<Camera>();
+        IncrementDeadDrones(0);
     }
     public void CheckWapsAttack(){
         if(DronesNetworkComunication.deadDrones < 3){
@@ -34,26 +40,45 @@ public class PlayerWaspAttack : MonoBehaviour{
             }
             if(MouseRelease(1)){
                 AimEffect(false);
-                // if(fuel>=0){
-                    TimerEffect(true);
-                    SendWasps(true);
-                    waspsAreAttacking = true;
-                // }
+                TimerEffect(true);
+                SendWasps(true);
+                waspsAreAttacking = true;
+                
             }
             if(waspsAreAttacking){
                 DecrementFuel();
                 if(fuel<=0){
                     TimerEffect(false);
                     SendWasps(false);
+                    IncrementDeadDrones(-DeadDrones());
                 }
             }
         }
-        
     }
     private void DecrementFuel(){
         fuel -= (Time.deltaTime / fuelTimer);
         waspsTimer.fillAmount = fuel;
         return;
+    }
+    public void IncrementDeadDrones(int amt){
+        DronesNetworkComunication.deadDrones += amt;
+        int charge = 0;
+        for (int i = 0; i < waspsChargerHolder.childCount; i++){
+            Image img = waspsChargerHolder.GetChild(i).GetComponent<Image>();
+            // img.color = (i <= DeadDrones())? waspChargerColor : waspEmptyColor; 
+            img.color = waspEmptyColor;
+            if(i+1 <= DeadDrones()){
+                img.color = waspChargerColor;
+                charge ++;
+                // return;
+            }
+        }
+        if(charge >= 3){
+            foreach (Transform item in waspsChargerHolder)
+            {
+                item.GetComponent<Image>().color = waspChargerColorFull;
+            }
+        }
     }
     private void TougleAimCheck(bool aimToggle){
         if(aimToggle){
@@ -93,7 +118,9 @@ public class PlayerWaspAttack : MonoBehaviour{
     private void WaspsHolderPosition(Vector3 pos){
         waspsHolder.transform.position = new Vector3 (pos.x, 0.3f, pos.z);
     }
-
+    private int DeadDrones(){
+        return DronesNetworkComunication.deadDrones;
+    }
 
     private void TimerEffect(bool active){
         waspsTimer.gameObject.SetActive(active);
