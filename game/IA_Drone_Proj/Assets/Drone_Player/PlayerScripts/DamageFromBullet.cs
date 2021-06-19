@@ -21,7 +21,14 @@ public class DamageFromBullet : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        GameObject otherObj = other.gameObject;
+        CheckColl(other.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        CheckColl(other.gameObject);
+    }
+
+    private void CheckColl(GameObject otherObj){
         if (otherObj.CompareTag("Bullet")){
             bulletMovement bulletMov = otherObj.GetComponent<bulletMovement>();
             if(SameObj(bulletMov.shooter, gameObject)){
@@ -31,8 +38,17 @@ public class DamageFromBullet : MonoBehaviour
                 UpdateLife(-bulletMov.bullDamage);
             }
             otherObj.SetActive(false);
+            return;
+        }
+        if (otherObj.CompareTag("Wasp")){
+            if(destructble){
+                UpdateLife(-0.1f);
+            }
+            otherObj.SetActive(false);
         }
     }
+
+
     void UpdateLife(float _amt){
         currHealth += _amt;
         if(currHealth <= 0){
@@ -92,7 +108,7 @@ public class DamageFromBullet : MonoBehaviour
         }
     }
     public void ReloadGame(float t){
-        loader.Load("IA_Eexemple", t);
+        loader.Reload(t);
     }
     public void IncrementDeadDrones(int _amt){
         if(DronesNetworkComunication.deadDrones < 3 ){

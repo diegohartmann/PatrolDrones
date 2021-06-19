@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerWaspAttack : MonoBehaviour{
+    [SerializeField] private bool infiniteFuel = false;
     [SerializeField] private GameObject waspsHolder = null;
     [SerializeField] private GameObject wasps = null;
     [SerializeField] private Image waspsTimer = null;
@@ -15,24 +16,23 @@ public class PlayerWaspAttack : MonoBehaviour{
     [SerializeField] private Color waspChargerColorFull = Color.green;
     [SerializeField] private Color waspEmptyColor = Color.black;
     [Header("Wasp Bomb")]
+    [SerializeField] private GameObject throwerDrone = null;
     [SerializeField] private Transform WaspBombHolder = null;
     [SerializeField] private GameObject WaspBomb = null;
     private Spin WaspBombSpin = null;
     [SerializeField] private Vector3 BomberThrowerFinalOffset = new Vector3(0,5,0);
-    [SerializeField] private GameObject throwerDrone = null;
     
     private Camera mainCamera;
     private bool canUseWasps = false;
     private bool waspsAreAttacking = false;
-    private float BombThrowDistate;
     private Transform waspsChargerHolder;
     private Rigidbody WaspBombRB;
     private ThrowerDrone throwerDroneScript;
-    [SerializeField] [Range (0,3)] private int waspBombInitialFuel = 0;
+    [SerializeField] [Range (0,3)] private int initialDeadDronesBars = 0;
     private void Awake() {
         waspsChargerHolder = GameObject.Find("waspsChargerHolder").transform;
         mainCamera = FindObjectOfType<Camera>();
-        IncrementDeadDrones(waspBombInitialFuel);
+        IncrementDeadDrones(initialDeadDronesBars);
         WaspBombInit();
         ThrowerDroneInit();
     }
@@ -52,10 +52,11 @@ public class PlayerWaspAttack : MonoBehaviour{
         throwerDrone.transform.position = new Vector3 (transform.position.x, 1, transform.position.y);
     }
     public void CheckWapsAttack(){
-        if(DronesNetworkComunication.deadDrones < 3){
+
+        if(DronesNetworkComunication.deadDrones < 3 ){
             return;
         }
-        if(fuel<= 0){
+        if(fuel <= 0){
             fuel=0;
             return;
         }
@@ -69,7 +70,7 @@ public class PlayerWaspAttack : MonoBehaviour{
             if(MouseRelease(1)){
                 SendThrowerDrone();
             }
-            if(waspsAreAttacking){
+            if(waspsAreAttacking && !infiniteFuel){
                 FuelUpdate();
             }
         }

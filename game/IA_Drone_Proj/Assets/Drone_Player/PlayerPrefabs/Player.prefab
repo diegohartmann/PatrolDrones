@@ -817,6 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caa9100d357df34aa5a27155b9c4612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniteFuel: 0
   waspsHolder: {fileID: 0}
   wasps: {fileID: 0}
   waspsTimer: {fileID: 0}
@@ -827,12 +828,11 @@ MonoBehaviour:
   waspChargerColor: {r: 1, g: 0.015686274, b: 0.0364544, a: 1}
   waspChargerColorFull: {r: 1, g: 0.96657693, b: 0, a: 1}
   waspEmptyColor: {r: 0, g: 0, b: 0, a: 0.50980395}
+  throwerDrone: {fileID: 0}
   WaspBombHolder: {fileID: 0}
   WaspBomb: {fileID: 0}
-  WaspBombSpin: {fileID: 0}
-  BomberThrowerOffset: {x: 0, y: 5, z: 0}
-  throwerDrone: {fileID: 0}
-  waspBombInitialFuel: 1
+  BomberThrowerFinalOffset: {x: 0, y: 2, z: 0}
+  initialDeadDronesBars: 0
 --- !u!1001 &7059125996277433165
 PrefabInstance:
   m_ObjectHideFlags: 0
