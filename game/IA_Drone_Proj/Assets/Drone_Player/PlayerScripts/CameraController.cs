@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private KeyCode zoomButtom = KeyCode.Space; 
     private Camera thisCam;
     private float size;
-    private bool followPlayer = true;
+    [SerializeField]private bool followPlayer = false;
     [SerializeField][Range (0,1)] float zoomSmoothSpeed = 0.8f; //the higher the faster
     [SerializeField] Transform zoomCamTarget = null;
     // [SerializeField] float orthoSize = 10.5f;
