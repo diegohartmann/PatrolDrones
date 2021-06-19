@@ -829,8 +829,10 @@ MonoBehaviour:
   waspEmptyColor: {r: 0, g: 0, b: 0, a: 0.50980395}
   WaspBombHolder: {fileID: 0}
   WaspBomb: {fileID: 0}
-  BomberThrowerOffset: {x: 0, y: 10, z: 0}
+  WaspBombSpin: {fileID: 0}
+  BomberThrowerOffset: {x: 0, y: 5, z: 0}
   throwerDrone: {fileID: 0}
+  waspBombInitialFuel: 1
 --- !u!1001 &7059125996277433165
 PrefabInstance:
   m_ObjectHideFlags: 0

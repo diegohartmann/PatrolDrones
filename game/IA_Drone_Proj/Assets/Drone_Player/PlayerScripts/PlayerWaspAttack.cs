@@ -17,10 +17,8 @@ public class PlayerWaspAttack : MonoBehaviour{
     [Header("Wasp Bomb")]
     [SerializeField] private Transform WaspBombHolder = null;
     [SerializeField] private GameObject WaspBomb = null;
-    [SerializeField] private Spin WaspBombSpin = null;
-    // [SerializeField] private float BombThrowForce = 100; 
-    [SerializeField] private Vector3 BomberThrowerOffset = Vector3.zero;
-    // private Transform BomberThrowerFinalPosition;
+    private Spin WaspBombSpin = null;
+    [SerializeField] private Vector3 BomberThrowerFinalOffset = new Vector3(0,5,0);
     [SerializeField] private GameObject throwerDrone = null;
     
     private Camera mainCamera;
@@ -51,7 +49,6 @@ public class PlayerWaspAttack : MonoBehaviour{
     }
     private void ResetThrowerGFX(){
         throwerDrone.SetActive(false);
-        // throwerDrone.transform.position = transform.position;
         throwerDrone.transform.position = new Vector3 (transform.position.x, 1, transform.position.y);
     }
     public void CheckWapsAttack(){
@@ -172,7 +169,7 @@ public class PlayerWaspAttack : MonoBehaviour{
             Vector3 pointToLook = (cameraRay.GetPoint(rayLenght));
             Vector3 finalPoint = new Vector3 (pointToLook.x,  0.3f  , pointToLook.z);
             WaspsHolderPosition(finalPoint);
-            throwerDroneScript.finalPos = finalPoint + BomberThrowerOffset;
+            throwerDroneScript.finalPos = finalPoint + BomberThrowerFinalOffset;
             return;
         }
         Debug.LogWarning("impossivel atacar aqui: nao há chao");
