@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfade7258378ac46b518d0d0540a134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMode: 0
+  cameraMode: 1
   zoomButtom: 32
+  followPlayer: 1
   zoomSmoothSpeed: 0.8
   zoomCamTarget: {fileID: 0}
   followTarget: {fileID: 0}
