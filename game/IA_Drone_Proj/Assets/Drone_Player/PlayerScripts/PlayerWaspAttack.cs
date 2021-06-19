@@ -15,27 +15,42 @@ public class PlayerWaspAttack : MonoBehaviour{
     [SerializeField] private Color waspChargerColorFull = Color.green;
     [SerializeField] private Color waspEmptyColor = Color.black;
     [Header("Wasp Bomb")]
-    [SerializeField] private Transform WapsBombHolder = null;
-    [SerializeField] private GameObject WapsBomb = null;
-    [SerializeField] private float BombThrowForce = 100; 
+    [SerializeField] private Transform WaspBombHolder = null;
+    [SerializeField] private GameObject WaspBomb = null;
+    // [SerializeField] private float BombThrowForce = 100; 
+    [SerializeField] private Vector3 BomberThrowerOffset = Vector3.zero;
+    // private Transform BomberThrowerFinalPosition;
+    [SerializeField] private GameObject throwerDrone = null;
     
     private Camera mainCamera;
     private bool canUseWasps = false;
     private bool waspsAreAttacking = false;
     private float BombThrowDistate;
     private Transform waspsChargerHolder;
-    private Rigidbody WapsBombRB;
+    private Rigidbody WaspBombRB;
+    private ThrowerDrone throwerDroneScript;
+    [SerializeField] [Range (0,3)] private int waspBombInitialFuel = 0;
     private void Awake() {
         waspsChargerHolder = GameObject.Find("waspsChargerHolder").transform;
         mainCamera = FindObjectOfType<Camera>();
-        IncrementDeadDrones(3);
-        // IncrementDeadDrones(0);
+        IncrementDeadDrones(waspBombInitialFuel);
         WaspBombInit();
+        ThrowerDroneInit();
+    }
+    private void ThrowerDroneInit(){
+        throwerDroneScript = throwerDrone.GetComponent<ThrowerDrone>(); 
+        throwerDroneScript.waspAttack = this;
+        ResetThrowerGFX();
     }
     private void WaspBombInit(){
-        WapsBomb.GetComponent<WapsBomb>().waspAttack = this;
-        WapsBombRB = WapsBomb.GetComponent<Rigidbody>();
+        WaspBomb.GetComponent<WapsBomb>().waspAttack = this;
+        WaspBombRB = WaspBomb.GetComponent<Rigidbody>();
         ResetBombGFX();
+    }
+    private void ResetThrowerGFX(){
+        throwerDrone.SetActive(false);
+        // throwerDrone.transform.position = transform.position;
+        throwerDrone.transform.position = new Vector3 (transform.position.x, 1, transform.position.y);
     }
     public void CheckWapsAttack(){
         if(DronesNetworkComunication.deadDrones < 3){
@@ -53,14 +68,13 @@ public class PlayerWaspAttack : MonoBehaviour{
                 return;
             }
             if(MouseRelease(1)){
-                ThrowBomb();
+                SendThrowerDrone();
             }
             if(waspsAreAttacking){
                 FuelUpdate();
             }
         }
     }
-
     private void FuelUpdate(){
         DecrementFuel();
         if(fuel<=0){
@@ -70,7 +84,7 @@ public class PlayerWaspAttack : MonoBehaviour{
         }
     }
     public void BlowBomb(){
-        //chamado no script "Wapsbomb" da bomba
+        //chamado no script "Waspbomb" da bomba
         ResetBombGFX();
         AimEffect(false);
         TimerEffect(true);
@@ -79,13 +93,17 @@ public class PlayerWaspAttack : MonoBehaviour{
     }
     private void ResetBombGFX(){
         VisibleBomb(false);
-        WapsBombRB.isKinematic = true;
-        Center(WapsBomb.transform);
+        WaspBombRB.isKinematic = true;
+        WaspBomb.transform.parent = WaspBombHolder.transform; 
+        Center(WaspBomb.transform);
     }
-    private void ThrowBomb(){
-        WapsBombRB.isKinematic = false;
-        Vector3 thowDir = WapsBombHolder.forward;
-        WapsBombRB.AddForce(thowDir * (BombThrowDistate * BombThrowForce * 0.8f));
+    private void SendThrowerDrone(){
+        ResetThrowerGFX();
+        throwerDrone.SetActive(true);
+    }
+    public void ThrowBomb(){
+        WaspBomb.transform.parent = null;
+        WaspBombRB.isKinematic = false;
     }
     private void DecrementFuel(){
         fuel -= (Time.deltaTime / fuelTimer);
@@ -104,8 +122,7 @@ public class PlayerWaspAttack : MonoBehaviour{
             }
         }
         if(charge >= 3){
-            foreach (Transform item in waspsChargerHolder)
-            {
+            foreach (Transform item in waspsChargerHolder){
                 item.GetComponent<Image>().color = waspChargerColorFull;
             }
         }
@@ -117,8 +134,9 @@ public class PlayerWaspAttack : MonoBehaviour{
             canUseWasps = !canUseWasps;
             AimEffect(canUseWasps);
             VisibleBomb(canUseWasps);
-            Center(WapsBomb.transform);
-            WapsBombRB.isKinematic = true;
+            Center(WaspBomb.transform);
+            WaspBombRB.isKinematic = true;
+            throwerDrone.SetActive(false);
         }
     }
     private void SendWasps(bool b){
@@ -150,14 +168,13 @@ public class PlayerWaspAttack : MonoBehaviour{
             Vector3 pointToLook = (cameraRay.GetPoint(rayLenght));
             Vector3 finalPoint = new Vector3 (pointToLook.x,  0.3f  , pointToLook.z);
             WaspsHolderPosition(finalPoint);
-            //força do tiro depende da distancia entre o player e o ponto de impacto da bomba
-            BombThrowDistate = Vector3.Distance(WapsBomb.transform.position, finalPoint);
+            throwerDroneScript.finalPos = finalPoint + BomberThrowerOffset;
             return;
         }
         Debug.LogWarning("impossivel atacar aqui: nao há chao");
     }
     private void VisibleBomb(bool visible){
-        WapsBomb.SetActive(visible);
+        WaspBomb.SetActive(visible);
     }
     private void WaspsHolderPosition(Vector3 pos){
         waspsHolder.transform.position = new Vector3 (pos.x, 0.3f, pos.z);

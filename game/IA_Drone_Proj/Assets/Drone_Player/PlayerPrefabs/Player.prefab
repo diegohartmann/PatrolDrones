@@ -384,37 +384,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &2043670666646740057
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6235624211676139642}
-  m_Layer: 0
-  m_Name: WaspBombHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6235624211676139642
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2043670666646740057}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1747771028797892}
-  m_Father: {fileID: 8552253401467005483}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2169602386652812211
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +670,6 @@ Transform:
   m_Children:
   - {fileID: 1166702066314084969}
   - {fileID: 6547080420380097063}
-  - {fileID: 6235624211676139642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -859,75 +827,10 @@ MonoBehaviour:
   waspChargerColor: {r: 1, g: 0.015686274, b: 0.0364544, a: 1}
   waspChargerColorFull: {r: 1, g: 0.96657693, b: 0, a: 1}
   waspEmptyColor: {r: 0, g: 0, b: 0, a: 0.50980395}
-  WapsBombHolder: {fileID: 6235624211676139642}
-  WapsBomb: {fileID: 8597633695677999815}
---- !u!1001 &6715919524176827331
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 6235624211676139642}
-    m_Modifications:
-    - target: {fileID: 3054376724759017732, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_Name
-      value: waspsBomb
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
---- !u!1 &8597633695677999815 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3054376724759017732, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-  m_PrefabInstance: {fileID: 6715919524176827331}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1747771028797892 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6716424705265003015, guid: d82ec73a8cbad354da89f430595aa181, type: 3}
-  m_PrefabInstance: {fileID: 6715919524176827331}
-  m_PrefabAsset: {fileID: 0}
+  WaspBombHolder: {fileID: 0}
+  WaspBomb: {fileID: 0}
+  BomberThrowerOffset: {x: 0, y: 10, z: 0}
+  throwerDrone: {fileID: 0}
 --- !u!1001 &7059125996277433165
 PrefabInstance:
   m_ObjectHideFlags: 0
