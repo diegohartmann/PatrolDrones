@@ -17,6 +17,7 @@ public class PlayerWaspAttack : MonoBehaviour{
     [Header("Wasp Bomb")]
     [SerializeField] private Transform WaspBombHolder = null;
     [SerializeField] private GameObject WaspBomb = null;
+    [SerializeField] private Spin WaspBombSpin = null;
     // [SerializeField] private float BombThrowForce = 100; 
     [SerializeField] private Vector3 BomberThrowerOffset = Vector3.zero;
     // private Transform BomberThrowerFinalPosition;
@@ -45,6 +46,7 @@ public class PlayerWaspAttack : MonoBehaviour{
     private void WaspBombInit(){
         WaspBomb.GetComponent<WapsBomb>().waspAttack = this;
         WaspBombRB = WaspBomb.GetComponent<Rigidbody>();
+        WaspBombSpin = WaspBomb.GetComponent<Spin>();
         ResetBombGFX();
     }
     private void ResetThrowerGFX(){
@@ -96,6 +98,7 @@ public class PlayerWaspAttack : MonoBehaviour{
         WaspBombRB.isKinematic = true;
         WaspBomb.transform.parent = WaspBombHolder.transform; 
         Center(WaspBomb.transform);
+        WaspBombSpin.enabled=false;
     }
     private void SendThrowerDrone(){
         ResetThrowerGFX();
@@ -104,6 +107,7 @@ public class PlayerWaspAttack : MonoBehaviour{
     public void ThrowBomb(){
         WaspBomb.transform.parent = null;
         WaspBombRB.isKinematic = false;
+        WaspBombSpin.enabled = true;
     }
     private void DecrementFuel(){
         fuel -= (Time.deltaTime / fuelTimer);
