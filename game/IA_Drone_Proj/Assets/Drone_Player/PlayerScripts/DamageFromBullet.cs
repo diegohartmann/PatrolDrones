@@ -21,14 +21,9 @@ public class DamageFromBullet : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        CheckColl(other.gameObject);
+        CheckTrigger(other.gameObject);
     }
-
-    // private void OnCollisionEnter(Collision other) {
-    //     CheckColl(other.gameObject);
-    // }
-
-    private void CheckColl(GameObject otherObj){
+    private void CheckTrigger(GameObject otherObj){
         if (otherObj.CompareTag("Bullet")){
             bulletMovement bulletMov = otherObj.GetComponent<bulletMovement>();
             if(SameObj(bulletMov.shooter, gameObject)){
@@ -41,7 +36,7 @@ public class DamageFromBullet : MonoBehaviour
             return;
         }
         if (otherObj.CompareTag("Wasp")){
-            if(SameObj(bulletMov.shooter, gameObject)){
+            if(SameObj(otherObj, gameObject)){
                 return;
             }
             if(destructble){
