@@ -40,11 +40,11 @@ public class DamageFromBullet : MonoBehaviour
             otherObj.SetActive(false);
             return;
         }
-        // if (otherObj.CompareTag("Wasp")){
-        //     if(destructble){
-        //         UpdateLife(-0.5f);
-        //     }
-        // }
+        if (otherObj.CompareTag("Wasp")){
+            if(destructble){
+                UpdateLife(-0.01f);
+            }
+        }
     }
 
 

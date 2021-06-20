@@ -825,8 +825,8 @@ MonoBehaviour:
   cancelAimButton: 99
   fuel: 1
   fuelTimer: 30
-  waspChargerColor: {r: 1, g: 0.015686274, b: 0.0364544, a: 1}
-  waspChargerColorFull: {r: 1, g: 0.96657693, b: 0, a: 1}
+  waspChargerColor: {r: 1, g: 0.96470594, b: 0, a: 1}
+  waspChargerColorFull: {r: 0, g: 0.9607844, b: 0.25490198, a: 1}
   waspEmptyColor: {r: 0, g: 0, b: 0, a: 0.50980395}
   throwerDrone: {fileID: 0}
   WaspBombHolder: {fileID: 0}

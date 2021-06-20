@@ -13,9 +13,7 @@ public class MinionTriggerChecker : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         GameObject obj = other.gameObject;
         int objLayer = obj.layer;
-        print(objLayer);
         if(objLayer == triggerLayer){
-            print("YEY");
             LevelComplete();
         }
     }
