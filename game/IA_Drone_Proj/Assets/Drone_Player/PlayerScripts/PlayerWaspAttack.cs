@@ -49,7 +49,10 @@ public class PlayerWaspAttack : MonoBehaviour{
     }
     private void ResetThrowerGFX(){
         throwerDrone.SetActive(false);
-        throwerDrone.transform.position = new Vector3 (transform.position.x, 1, transform.position.y);
+        float x = transform.localPosition.x;
+        int   y = 1;
+        float z = transform.localPosition.z;
+        throwerDrone.transform.localPosition = new Vector3(x, y, z);
     }
     public void CheckWapsAttack(){
 
