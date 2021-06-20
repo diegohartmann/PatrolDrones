@@ -1795,6 +1795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThrowerDrone
       objectReference: {fileID: 0}
+    - target: {fileID: 8896601349912399839, guid: 0affef16976c6e74bbf8fef292d634e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0affef16976c6e74bbf8fef292d634e9, type: 3}
 --- !u!1 &8896601350269466489 stripped
