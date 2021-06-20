@@ -26,23 +26,25 @@ public class DamageFromBullet : MonoBehaviour
     private void CheckTrigger(GameObject otherObj){
         if (otherObj.CompareTag("Bullet")){
             bulletMovement bulletMov = otherObj.GetComponent<bulletMovement>();
-            if(SameObj(bulletMov.shooter, gameObject)){
-                return;
+            if(!SameObj(bulletMov.shooter, gameObject)){ //se o atirador nao acertou em si mesmo
+                DestroyBulletEffect(otherObj);
+                if(destructble){
+                    UpdateLife(-bulletMov.bullDamage);
+                }
             }
-            if(destructble){
-                UpdateLife(-bulletMov.bullDamage);
-            }
-            otherObj.SetActive(false);
             return;
         }
         if (otherObj.CompareTag("Wasp")){
-            if(SameObj(otherObj, gameObject)){
-                return;
-            }
             if(destructble){
                 UpdateLife(-0.01f);
             }
         }
+    }
+
+    private void DestroyBulletEffect(GameObject _bullet){
+        _bullet.SetActive(false);
+        //som
+        //efeito visual
     }
 
 
