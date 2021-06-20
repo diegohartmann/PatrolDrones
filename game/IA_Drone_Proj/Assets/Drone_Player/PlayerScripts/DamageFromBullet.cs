@@ -24,9 +24,9 @@ public class DamageFromBullet : MonoBehaviour
         CheckColl(other.gameObject);
     }
 
-    private void OnCollisionEnter(Collision other) {
-        CheckColl(other.gameObject);
-    }
+    // private void OnCollisionEnter(Collision other) {
+    //     CheckColl(other.gameObject);
+    // }
 
     private void CheckColl(GameObject otherObj){
         if (otherObj.CompareTag("Bullet")){
@@ -40,12 +40,11 @@ public class DamageFromBullet : MonoBehaviour
             otherObj.SetActive(false);
             return;
         }
-        if (otherObj.CompareTag("Wasp")){
-            if(destructble){
-                UpdateLife(-0.1f);
-            }
-            otherObj.SetActive(false);
-        }
+        // if (otherObj.CompareTag("Wasp")){
+        //     if(destructble){
+        //         UpdateLife(-0.5f);
+        //     }
+        // }
     }
 
 
@@ -113,6 +112,7 @@ public class DamageFromBullet : MonoBehaviour
     public void IncrementDeadDrones(int _amt){
         if(DronesNetworkComunication.deadDrones < 3 ){
             player.IncrementDeadDrones(_amt);
+            player.FillFuel();
         }
     }
 }

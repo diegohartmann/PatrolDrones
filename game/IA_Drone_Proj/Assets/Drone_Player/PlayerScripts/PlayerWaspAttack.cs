@@ -75,6 +75,11 @@ public class PlayerWaspAttack : MonoBehaviour{
             }
         }
     }
+    public void FillFuel(){
+        if(fuel!=1){
+            fuel = 1;
+        }
+    }
     private void FuelUpdate(){
         DecrementFuel();
         if(fuel<=0){

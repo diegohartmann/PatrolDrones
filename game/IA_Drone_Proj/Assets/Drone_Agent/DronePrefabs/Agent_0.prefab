@@ -136,8 +136,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.43167374, y: 0.13398474, z: 1.7178085}
-  m_Center: {x: 0, y: 0.2942116, z: -0.7669524}
+  m_Size: {x: 0.43167374, y: 0.62, z: 1.7178085}
+  m_Center: {x: 0, y: 0.3, z: -0.32}
 --- !u!114 &3112075457157542562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +313,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  waspChargerColor: {r: 1, g: 0.9312867, b: 0, a: 1}
 --- !u!114 &731811328501006585
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1833,6 +1833,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flock
       objectReference: {fileID: 0}
+    - target: {fileID: 8296685239176654613, guid: ed72ee2a2e9ae1b41b9909005da7586d, type: 3}
+      propertyPath: neighborRadius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296685239176654613, guid: ed72ee2a2e9ae1b41b9909005da7586d, type: 3}
+      propertyPath: squareOfMaxSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296685239176654613, guid: ed72ee2a2e9ae1b41b9909005da7586d, type: 3}
+      propertyPath: squareOfNeighborRadius
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296685239176654613, guid: ed72ee2a2e9ae1b41b9909005da7586d, type: 3}
+      propertyPath: squareOfAvoidanceRadius
+      value: 0.715716
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed72ee2a2e9ae1b41b9909005da7586d, type: 3}
 --- !u!1 &2126883253
@@ -2375,7 +2391,7 @@ MonoBehaviour:
   WaspBombHolder: {fileID: 1287314284}
   WaspBomb: {fileID: 1287314285}
   BomberThrowerFinalOffset: {x: 0, y: 2, z: 0}
-  initialDeadDronesBars: 0
+  initialDeadDronesBars: 3
 --- !u!4 &8552253402562709403
 Transform:
   m_ObjectHideFlags: 0
