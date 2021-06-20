@@ -113,6 +113,10 @@ PrefabInstance:
       propertyPath: OnDestroyed.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6037012019717401250, guid: b4869ce47e2d39643a35146d2800ceb4, type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8035274516790377696, guid: b4869ce47e2d39643a35146d2800ceb4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

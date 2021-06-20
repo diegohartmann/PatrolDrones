@@ -41,6 +41,9 @@ public class DamageFromBullet : MonoBehaviour
             return;
         }
         if (otherObj.CompareTag("Wasp")){
+            if(SameObj(bulletMov.shooter, gameObject)){
+                return;
+            }
             if(destructble){
                 UpdateLife(-0.01f);
             }
