@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4973cd4994bae844a35522f486c0c54, type: 3}
   m_Name: Colors
   m_EditorClassIdentifier: 
-  fullLifeColor: {r: 0.39278913, g: 1, b: 0, a: 1}
+  fullLifeColor: {r: 0, g: 0, b: 0, a: 0}
+  almostFullLifeColor: {r: 0.3921569, g: 1, b: 0, a: 1}
   midLifeColor: {r: 1, g: 0.959195, b: 0, a: 1}
   lowLifeColor: {r: 1, g: 0, b: 0, a: 1}

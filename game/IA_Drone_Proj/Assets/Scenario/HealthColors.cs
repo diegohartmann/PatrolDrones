@@ -6,6 +6,7 @@ using UnityEngine;
 public class HealthColors : ScriptableObject
 {
     public Color fullLifeColor;
+    public Color almostFullLifeColor;
     public Color midLifeColor;
     public Color lowLifeColor;
 }

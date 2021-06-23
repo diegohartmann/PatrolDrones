@@ -7,21 +7,20 @@ using UnityEngine.Events;
 public class DamageFromBullet : MonoBehaviour
 {
     [SerializeField] private bool destructble = true;
-    [SerializeField] [Range(0.1f, 1.0f)] private float maxHealth = 1;
+    private const int maxHealth = 1;
+    [SerializeField] [Range(0.1f, 1.0f)] private float startHealth = 1;
     [SerializeField] private Transform healthImages = null;
     [SerializeField] private UnityEvent OnDestroyed = null;
     [SerializeField] private HealthColors healthColors = null;
     
     private PlayerWaspAttack player;
-   
-    private float currHealth = 0;
     private SceneLoader loader;
+    private float currHealth;
     private List <Image> HealthImages = new List<Image>();
     public void DamageFromBulletInit() {
         HealthImagesInit();
-        player = FindObjectOfType<PlayerWaspAttack>();
-        loader = FindObjectOfType<SceneLoader>();
-        currHealth = maxHealth;
+        VariablesInit();
+        HealthImageValue(startHealth);
     }
     private void HealthImagesInit(){
         if(HasHealthImages()){
@@ -30,12 +29,16 @@ public class DamageFromBullet : MonoBehaviour
             }
         }
     }
+    private void VariablesInit(){
+        player = FindObjectOfType<PlayerWaspAttack>();
+        loader = FindObjectOfType<SceneLoader>();
+        currHealth = startHealth;
+    }
     private void OnTriggerEnter(Collider other) {
         CheckTrigger(other.gameObject);
     }
     private void CheckTrigger(GameObject otherObj){
         if (otherObj.CompareTag("Bullet")){
-            
             bulletMovement bulletMov = otherObj.GetComponent<bulletMovement>();
             
             //se o atirador nao acertou em si mesmo
@@ -63,31 +66,23 @@ public class DamageFromBullet : MonoBehaviour
         currHealth += _amt;
         if(currHealth <= 0){
             currHealth = 0;
-            SliderValue(0);
+            HealthImageValue(0);
             OnDestroyEvent();
             return;
         }
         if(currHealth > maxHealth){
             currHealth = maxHealth;
-            SliderValue(maxHealth);
+            HealthImageValue(maxHealth);
             return;
         }
-        SliderValue(currHealth);
+        HealthImageValue(currHealth);
     }
-    private void SliderValue(float _value){
+    private void HealthImageValue(float _value){
         if(HasHealthImages()){
             if(HealthImages.Count > 0){
                 foreach (Image item in HealthImages){
                     item.fillAmount = _value;
-                    if(_value < 0.3f){
-                        SetImageColor(item, healthColors.lowLifeColor);
-                    }
-                    else if(_value < 0.6f){
-                        SetImageColor(item, healthColors.midLifeColor);
-                    }
-                    else{
-                        SetImageColor(item, healthColors.fullLifeColor);
-                    }
+                    SetImageColor(item, _value < 0.3f ? healthColors.lowLifeColor :  _value < 0.6f? healthColors.midLifeColor : _value < 1? healthColors.almostFullLifeColor: healthColors.fullLifeColor);
                 }
             }
         }
