@@ -9,14 +9,14 @@ public class WaspUpdate : MonoBehaviour
         WaspAwake();
     }
     private void Update() {
-        WaspUpdate();
+        _WaspUpdate();
     }
     private void WaspAwake(){
         flockAgent = GetComponent<FlockAgent>();
             flockAgent.FlockAgentInit();
         GetComponent<DamageFromBullet>().DamageFromBulletInit();
     }
-    private void WaspUpdate(){
+    private void _WaspUpdate(){
         flockAgent.MoveFlockAgent();
     }
 }
