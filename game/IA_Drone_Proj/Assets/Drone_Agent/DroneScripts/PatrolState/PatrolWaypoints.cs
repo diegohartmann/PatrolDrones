@@ -57,7 +57,7 @@ public class PatrolWaypoints : MonoBehaviour
     }
 
     private void UpdateTargetWaypoint(){
-        //for performance --> only asign the new target waypoint if it is different from the last one reached
+        // for performance --> only asign the new target waypoint if it is different from the last one reached
         if (targetIndex != lastTargetIndex) 
         {
             targetWaypoint = _PatrolWaypoints.GetChild(targetIndex);

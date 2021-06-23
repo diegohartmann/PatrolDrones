@@ -14,7 +14,7 @@ public enum DroneStates{
 
 public class StateChecker : MonoBehaviour
 {  
-    private DroneStates State =  DroneStates.BackToPatrol;  
+    private DroneStates State =  DroneStates.Patrol;  
     public void SetState(DroneComponents comp){
         if (HasATarget(comp.fieldOfView))
         {

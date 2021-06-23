@@ -16,33 +16,40 @@ public class StateActions : MonoBehaviour
     /// --------------------------------------------------------------------------------------------------------//////
     /// -----  ALL METHODS UNDER THIS LINE ARE THE DRONE STATES, CALLED INTO StateChecker's Update() method ----//////
     /// --------------------------------------------------------------------------------------------------------//////
+    // bool b = true;
     public void GoingBackToPatrol(){
-        AStartTo(comp.patrol.targetWaypoint.position);
-        comp.patrol.SmartWaypoints();
+        // comp.patrol.SmartWaypoints();
+        comp.patrol.SimpleWaypoints();
+        AStartTo(PositionOf(this.comp.patrol.targetWaypoint));
     }
+    
+    
     public void Patrol(){
         comp.patrol.SimpleWaypoints();
-        RotateTo(comp.patrol.targetWaypoint.position, true, comp.status.patrolRotationSpeed);
-        MoveForward(comp.status.patrolSpeed);
+        RotateTo(PositionOf(this.comp.patrol.targetWaypoint), true, this.comp.status.patrolRotationSpeed);
+        MoveForward(this.comp.status.patrolSpeed);
     }
     public void Search(){
-        transform.Rotate(new Vector3(0, 150*Time.deltaTime, 0));//AStartTo(randomTransforms);
+        transform.Rotate(new Vector3(0, 150*Time.deltaTime, 0));
     }
  
     public void Attack(){
         Shoot(4);
-        RotateTo(comp.fieldOfView.ClosestTarget.position, true, comp.status.chaseRotationSpeed*5); //faces target
+        RotateTo(this.comp.fieldOfView.ClosestTarget.position, true, this.comp.status.chaseRotationSpeed*5); //faces target
     }
     public void Chase(){
         Shoot(2);
-        RotateTo(comp.fieldOfView.ClosestTarget.position, true, comp.status.chaseRotationSpeed); //faces target
-        MoveForward(comp.status.chaseSpeed); //doesnt need A* cuz it follows the player in straight line, and once there is an obstacle between them, the drone loses sight of the player.                     
+        RotateTo(this.comp.fieldOfView.ClosestTarget.position, true, this.comp.status.chaseRotationSpeed); //faces target
+        MoveForward(this.comp.status.chaseSpeed); //doesnt need A* cuz it follows the player in straight line, and once there is an obstacle between them, the drone loses sight of the player.                     
     }
 
     /// --------------------------------------------------------------------------------------------------------//////
     /// ------------  ALL METHODS UNDER THIS LINE ARE USED INSIDE THE METHODS ABOVE --------------------------- //////
     /// --------------------------------------------------------------------------------------------------------//////
 
+    private Vector3 PositionOf(Transform t){
+        return t.position;
+    }
    public void Shoot(float _rate){
         charge += Time.deltaTime * comp.status.fireRate * _rate;
         if (charge >=1){
@@ -55,25 +62,25 @@ public class StateActions : MonoBehaviour
         if (_isSmooth){
             var neededRotation = Quaternion.LookRotation(_target - transform.position);
             var interpolatedRotation = Quaternion.Slerp(transform.rotation, neededRotation, Time.deltaTime * _rotSpeed);
-            transform.rotation = interpolatedRotation;
+            this.transform.rotation = interpolatedRotation;
         }
         else{
-            transform.LookAt(_target);
+            this.transform.LookAt(_target);
         }
     }
     private void MoveForward(float _speed){
-        transform.Translate(Vector3.forward * Time.deltaTime * (_speed));
+        this.transform.Translate(Vector3.forward * Time.deltaTime * (_speed));
     }
     private void AStartTo(Vector3 finalPos){
         CreatePathTo(finalPos);
-        RotateTo(comp.aStar.currentTargetWaypoint, true, comp.status.aStarRotationSpeed);
-        MoveForward(comp.status.aStarSpeed);    
+        RotateTo(this.comp.aStar.currentTargetWaypoint, true, this.comp.status.aStarRotationSpeed);
+        MoveForward(this.comp.status.aStarSpeed);    
     }
 
     private void CreatePathTo(Vector3 finalPos){
-        if(comp.aStar.canRequestAPath){
-            comp.aStar.RequestAPath(finalPos);
+        if(this.comp.aStar.canRequestAPath){
+            this.comp.aStar.RequestAPath(finalPos);
         }
-        comp.aStar.UpdatePathfindingWay();
+        this.comp.aStar.UpdatePathfindingWay();
     }
 }
