@@ -20,6 +20,7 @@ class DroneAgentUpdate : MonoBehaviour
         DronesNetworkComunication.dronesViewingIntruser.Clear();
         comp = GetComponent<DroneComponents>();
         comp.ComponentsInit();
+        // comp.aStar.AStarInit(comp.pathRequest);
         comp.status.searchTimer = DroneStatus.minSearchTimerValue;
         comp.bulletsPool.BulletsPoolInit(comp);
         comp.fieldOfView.FieldOfViewInit();

@@ -10,9 +10,13 @@ public class MinionPathfinding : MonoBehaviour
     private int targetIndex;
     [HideInInspector]public bool reachedTargetTransform = false;
     [HideInInspector]public bool pathSuccedded = false;
-
+    // private PathRequestManager pathRequest;
+    // public void AStartInit(PathRequestManager _pathRequest){
+    //     pathRequest = _pathRequest;
+    // }
     public void RequestAPath(Vector3 _finalTarget){
         targetIndex = 0;
+        // pathRequest.RequestPath(transform.position, _finalTarget, OnPathFound);
         PathRequestManager.RequestPath(transform.position, _finalTarget, OnPathFound);
         LastFinalTarget = _finalTarget;
     }

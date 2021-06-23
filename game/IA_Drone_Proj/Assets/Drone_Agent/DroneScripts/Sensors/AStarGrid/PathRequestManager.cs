@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 //tuto used to make this script: https://www.youtube.com/watch?v=dn1XRIaROM4&ab_channel=SebastianLague
 public class PathRequestManager : MonoBehaviour
 {
@@ -25,6 +24,11 @@ public class PathRequestManager : MonoBehaviour
         instante.pathRequestQueue.Enqueue(newRequest);
         instante.TryProcessNext();
     }
+	// public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback){
+    //     PathRequest newRequest = new PathRequest (pathStart, pathEnd, callback);
+    //     instante.pathRequestQueue.Enqueue(newRequest);
+    //     instante.TryProcessNext();
+    // }
 
     private void TryProcessNext() {
 		if (!isProcessingPath && pathRequestQueue.Count > 0) {

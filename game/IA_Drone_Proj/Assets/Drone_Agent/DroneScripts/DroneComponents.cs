@@ -13,6 +13,7 @@ public class DroneComponents : MonoBehaviour
     [HideInInspector]public DronePathfinding aStar;
     [HideInInspector]public StateChecker stateChecker;
     [HideInInspector]public DamageFromBullet damageFromBullets;
+    [HideInInspector]public PathRequestManager pathRequest;
     public void ComponentsInit(){
         //chamado no Awake() do DroneAgentUpdate.cs
         fieldOfView = GetComponent<FieldOfView>();
@@ -23,5 +24,6 @@ public class DroneComponents : MonoBehaviour
         aStar = GetComponent<DronePathfinding>();
         stateChecker = GetComponent<StateChecker>();
         damageFromBullets = GetComponent<DamageFromBullet>();
+        pathRequest = GetComponent<PathRequestManager>();
     }
 }

@@ -23,7 +23,6 @@ public class PatrolWaypoints : MonoBehaviour
             SetNextWaypointBasedOn(i);
         } 
     }
-
     public void SimpleWaypoints(){
         SetNextWaypointBasedOn(targetIndex);
     }

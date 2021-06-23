@@ -13,8 +13,8 @@ public class MinionUpdate : MonoBehaviour
     }
     private void MinionInit(){
         comp = GetComponent<MinionComponents>();
-            comp.MinionComponentsInit();
-
+        comp.MinionComponentsInit();
+        // comp.aStar.AStartInit(comp.pathRequest);
         comp.stateChecker.StateCheckerInit(comp);
         comp.actions.ActionsInit(comp);
         comp.triggerChecker.TriggerCheckerInit();

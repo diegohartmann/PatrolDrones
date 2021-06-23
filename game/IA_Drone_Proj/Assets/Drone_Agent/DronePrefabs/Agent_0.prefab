@@ -346,6 +346,7 @@ MonoBehaviour:
   aStar: {fileID: 0}
   stateChecker: {fileID: 0}
   damageFromBullets: {fileID: 0}
+  pathRequest: {fileID: 0}
 --- !u!114 &7730413838215157287
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,14 +18,13 @@ public class StateActions : MonoBehaviour
     /// --------------------------------------------------------------------------------------------------------//////
     // bool b = true;
     public void GoingBackToPatrol(){
-        // comp.patrol.SmartWaypoints();
-        comp.patrol.SimpleWaypoints();
+        this.comp.patrol.SimpleWaypoints();
         AStartTo(PositionOf(this.comp.patrol.targetWaypoint));
     }
     
     
     public void Patrol(){
-        comp.patrol.SimpleWaypoints();
+        this.comp.patrol.SimpleWaypoints();
         RotateTo(PositionOf(this.comp.patrol.targetWaypoint), true, this.comp.status.patrolRotationSpeed);
         MoveForward(this.comp.status.patrolSpeed);
     }

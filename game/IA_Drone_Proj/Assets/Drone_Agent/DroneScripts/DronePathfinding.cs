@@ -9,18 +9,20 @@ public class DronePathfinding : MonoBehaviour
     [HideInInspector]public Vector3[] path; //taken from grid
     [HideInInspector]public bool startFollow = false;
     [HideInInspector]public bool canRequestAPath = true;
-
+    
     private int targetIndex;
     
     public void RequestAPath(Vector3 _finalTarget){
+        // pathRequest.RequestPath(transform.position, _finalTarget, OnPathFound);
         PathRequestManager.RequestPath(transform.position, _finalTarget, OnPathFound);
         targetIndex = 0;
         canRequestAPath = false;
     }
     private void OnPathFound ( Vector3[] newPath, bool pathSuccessful){
         if (pathSuccessful){
-            path = newPath;
-            startFollow = true;
+            this.path = newPath;
+            this.currentTargetWaypoint = path[0];
+            this.startFollow = true;
             return;
         }
         print("não conseguiu criar caminho");
@@ -28,10 +30,9 @@ public class DronePathfinding : MonoBehaviour
 
     public void UpdatePathfindingWay() {
         if(startFollow && (targetIndex < path.Length)){
-            if (DistanceFrom(targetIndex) < 1f)
-            {    
+            if (DistanceFrom(targetIndex) < 1f){    
                 targetIndex ++;
-                if (targetIndex == path.Length){
+                if (targetIndex >= path.Length){
                     startFollow = false;
                     canRequestAPath = true;
                     targetIndex = 0;
