@@ -8,16 +8,27 @@ public class DamageFromBullet : MonoBehaviour
 {
     [SerializeField] private bool destructble = true;
     [SerializeField] [Range(0.1f, 1.0f)] private float maxHealth = 1;
-    [SerializeField] private Slider healthSlider = null;
+    [SerializeField] private Transform healthImages = null;
     [SerializeField] private UnityEvent OnDestroyed = null;
+    [SerializeField] private HealthColors healthColors = null;
+    
     private PlayerWaspAttack player;
    
     private float currHealth = 0;
     private SceneLoader loader;
+    private List <Image> HealthImages = new List<Image>();
     public void DamageFromBulletInit() {
+        HealthImagesInit();
         player = FindObjectOfType<PlayerWaspAttack>();
         loader = FindObjectOfType<SceneLoader>();
         currHealth = maxHealth;
+    }
+    private void HealthImagesInit(){
+        if(HasHealthImages()){
+            foreach(Transform image in healthImages){
+                HealthImages.Add(image.GetComponent<Image>());
+            }
+        }
     }
     private void OnTriggerEnter(Collider other) {
         CheckTrigger(other.gameObject);
@@ -64,9 +75,30 @@ public class DamageFromBullet : MonoBehaviour
         SliderValue(currHealth);
     }
     private void SliderValue(float _value){
-        if(healthSlider != null){
-            healthSlider.value = _value;
+        if(HasHealthImages()){
+            if(HealthImages.Count > 0){
+                foreach (Image item in HealthImages){
+                    item.fillAmount = _value;
+                    if(_value < 0.3f){
+                        SetImageColor(item, healthColors.lowLifeColor);
+                    }
+                    else if(_value < 0.6f){
+                        SetImageColor(item, healthColors.midLifeColor);
+                    }
+                    else{
+                        SetImageColor(item, healthColors.fullLifeColor);
+                    }
+                }
+            }
         }
+    }
+    private void SetImageColor(Image _image, Color _color){
+        if(_image.color != _color){
+            _image.color = _color;
+        }
+    }
+    private bool HasHealthImages(){
+        return healthImages != null;
     }
     private bool SameObj(GameObject obj1, GameObject obj2){
         return obj1 == obj2;
@@ -77,8 +109,7 @@ public class DamageFromBullet : MonoBehaviour
         }
     }
     public void SplashObjectsIn(Transform partsParent){
-        foreach (Transform part in partsParent)
-        {
+        foreach (Transform part in partsParent){
             Splash(part.gameObject);
         }
     }
