@@ -6641,7 +6641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1095153714506834031, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: bulletDamage
-      value: 0.01
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1095153714506834031, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: bulletSpeed
@@ -8431,8 +8431,8 @@ Transform:
   - {fileID: 250456109}
   - {fileID: 1206064448}
   - {fileID: 2079163666}
-  - {fileID: 371137910}
   - {fileID: 1485576003}
+  - {fileID: 371137910}
   - {fileID: 627515881}
   - {fileID: 476810179}
   - {fileID: 1842611506}

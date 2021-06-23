@@ -5945,7 +5945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1095153714506834031, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: bulletDamage
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1095153714506834031, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: bulletSpeed
@@ -10005,8 +10005,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructble: 1
-  maxHealth: 0.1
-  healthSlider: {fileID: 0}
+  startHealth: 1
+  healthImages: {fileID: 0}
   OnDestroyed:
     m_PersistentCalls:
       m_Calls:
@@ -10034,3 +10034,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  healthColors: {fileID: 0}
