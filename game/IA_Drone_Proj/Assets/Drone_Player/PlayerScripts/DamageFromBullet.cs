@@ -20,7 +20,7 @@ public class DamageFromBullet : MonoBehaviour
     public void DamageFromBulletInit() {
         HealthImagesInit();
         VariablesInit();
-        HealthImageValue(startHealth);
+        UpdateHealthFill(startHealth);
     }
     private void HealthImagesInit(){
         if(HasHealthImages()){
@@ -65,24 +65,27 @@ public class DamageFromBullet : MonoBehaviour
     private void UpdateLife(float _amt){
         currHealth += _amt;
         if(currHealth <= 0){
-            currHealth = 0;
-            HealthImageValue(0);
+            // currHealth = 0;
+            UpdateHealthFill(0);
             OnDestroyEvent();
             return;
         }
         if(currHealth > maxHealth){
             currHealth = maxHealth;
-            HealthImageValue(maxHealth);
+            UpdateHealthFill(maxHealth);
             return;
         }
-        HealthImageValue(currHealth);
+        UpdateHealthFill(currHealth);
     }
-    private void HealthImageValue(float _value){
+    private void UpdateHealthFill(float _value){
         if(HasHealthImages()){
             if(HealthImages.Count > 0){
                 foreach (Image item in HealthImages){
                     item.fillAmount = _value;
-                    SetImageColor(item, _value < 0.3f ? healthColors.lowLifeColor :  _value < 0.6f? healthColors.midLifeColor : _value < 1? healthColors.almostFullLifeColor: healthColors.fullLifeColor);
+                    SetImageColor(item,
+                        _value < 0.3f ? healthColors.lowLifeColor : 
+                            _value < 0.6f? healthColors.midLifeColor :
+                                _value < 1? healthColors.almostFullLifeColor: healthColors.fullLifeColor);
                 }
             }
         }
