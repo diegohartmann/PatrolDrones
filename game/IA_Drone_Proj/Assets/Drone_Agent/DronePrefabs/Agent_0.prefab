@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3984725447375471693}
-  - component: {fileID: 3984725447375471680}
+  - component: {fileID: 2868920304062955874}
   - component: {fileID: 3112075457157542562}
   - component: {fileID: 7730413838215157287}
   - component: {fileID: 6217656485238998898}
@@ -126,7 +126,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3984725447375471680
+--- !u!65 &2868920304062955874
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,6 +158,7 @@ MonoBehaviour:
   patrol: {fileID: 0}
   aStar: {fileID: 0}
   stateChecker: {fileID: 0}
+  damageFromBullets: {fileID: 0}
 --- !u!114 &7730413838215157287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5210128b9adf9104c8ce8b7afee45ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gfx: {fileID: 3984725446675701890}
 --- !u!114 &7346335767965675447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,7 +515,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6017722563527468722}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.93895}
+  m_LocalPosition: {x: 0, y: 0, z: 0.81104994}
   m_LocalScale: {x: 0.046183333, y: 0.033174403, z: 0}
   m_Children:
   - {fileID: 7640859991596365690}

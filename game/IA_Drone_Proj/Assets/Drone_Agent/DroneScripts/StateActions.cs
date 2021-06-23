@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class StateActions : MonoBehaviour
 {
+    // [SerializeField] Transform gfx = null;
     private DroneComponents comp;
     private float charge = 0;
     
@@ -63,7 +64,6 @@ public class StateActions : MonoBehaviour
     private void MoveForward(float _speed){
         transform.Translate(Vector3.forward * Time.deltaTime * (_speed));
     }
-    
     private void AStartTo(Vector3 finalPos){
         CreatePathTo(finalPos);
         RotateTo(comp.aStar.currentTargetWaypoint, true, comp.status.aStarRotationSpeed);

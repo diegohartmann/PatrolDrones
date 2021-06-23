@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     void MoveRB(Vector3 dir){
         dir *= DeltaTime(moveSpeed);
         thisRB.velocity = Vector3.zero;
-        thisRB.angularVelocity = Vector3.zero;   
+        thisRB.angularVelocity = Vector3.zero;
         thisRB.Sleep();
         thisRB.MovePosition(transform.position + dir);
     }
