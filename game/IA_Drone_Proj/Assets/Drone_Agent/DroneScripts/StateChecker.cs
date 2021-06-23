@@ -12,49 +12,21 @@ public enum DroneStates{
     Attack,
 }
 
-class StateChecker : MonoBehaviour
+public class StateChecker : MonoBehaviour
 {  
     private DroneStates State =  DroneStates.BackToPatrol;  
-    private DroneComponents comp;
-    private GameObject thisDrone;
-
-    private void Start(){
-        SetStuff();
-    }
-
-    private void SetStuff(){
-        thisDrone = this.gameObject;
-        comp = GetComponent<DroneComponents>();
-        comp.status.searchTimer = DroneStatus.minSearchTimerValue;
-        comp.bulletsPool.InstantiateBullets();
-    }
-
-    private void Update(){
-        LookForTargets();
-        SetState();
-        ExecuteState();
-    }
-
-    private void LateUpdate() {
-        comp.fieldOfView.DrawFieldOfView();
-    }
-
-    private void LookForTargets(){
-        comp.fieldOfView.FindVisibleTargets();
-    }
-   
-    private void SetState(){
-        if (HasATarget())
+    public void SetState(DroneComponents comp){
+        if (HasATarget(comp.fieldOfView))
         {
-            RefillSearchTimer(); 
+            RefillSearchTimer(comp.status); 
             SeesTarget(true);
-            if (ReachedAnyPatrolPoint()){
-                ReachedAnyPatrolPoint(false);
+            if (ReachedAnyPatrolPoint(comp.patrol)){
+                ReachedAnyPatrolPoint(false, comp.patrol);
             }
-            if(!DroneCanRequestAPathAStar()){
-                DroneCanRequestAPathAStar(true);
+            if(!DroneCanRequestAPathAStar(comp.aStar)){
+                DroneCanRequestAPathAStar(true, comp.aStar);
             }
-            if (DistFromTarget_GraterThan(comp.status.distanceToAttack)){
+            if (DistFromTarget_GraterThan(comp.status.distanceToAttack, comp.fieldOfView)){
                 State = DroneStates.Chase;
                 return;
             }
@@ -63,101 +35,91 @@ class StateChecker : MonoBehaviour
         }
         SeesTarget(false);
         if (AnotherDroneHasATarget()){
-            RefillSearchTimer();
+            RefillSearchTimer(comp.status);
             State = DroneStates.Search;
             return;
         }
-        if (IsTimeToSearch()){
+        if (IsTimeToSearch(comp.status)){
             State = DroneStates.Search;
             comp.status.searchTimer -= Time.deltaTime;
             return;
         }
-        if (!ReachedAnyPatrolPoint()){
+        if (!ReachedAnyPatrolPoint(comp.patrol)){
             State = DroneStates.BackToPatrol;
             return;
         }
-        if(DroneCanRequestAPathAStar()){
-            DroneCanRequestAPathAStar(false);
+        if(DroneCanRequestAPathAStar(comp.aStar)){
+            DroneCanRequestAPathAStar(false, comp.aStar);
         }
         State = DroneStates.Patrol;
     }
 
-    private void ExecuteState(){
+    public void ExecuteState(StateActions actions){
         switch (State)
         {
             case DroneStates.Attack:
-                comp.actions.Attack(); 
+                actions.Attack(); 
             break;
 
             case DroneStates.Chase:
-                comp.actions.Chase();
+                actions.Chase();
             break;
 
             case DroneStates.Search:
-                comp.actions.Search(); 
+                actions.Search(); 
             break;
 
             case DroneStates.BackToPatrol:
-                comp.actions.GoingBackToPatrol(); 
+                actions.GoingBackToPatrol(); 
             break;
 
             case DroneStates.Patrol:
-                comp.actions.Patrol();
+                actions.Patrol();
             break;
             
             default:
             break;
         }
     }
-
-    private bool DistFromTarget_GraterThan(float _amount){
-        return (Vector3.Distance(transform.position, comp.fieldOfView.ClosestTarget.position) > _amount);
+    private bool DistFromTarget_GraterThan(float _amount, FieldOfView fieldOfView){
+        return (Vector3.Distance(transform.position, fieldOfView.ClosestTarget.position) > _amount);
     }
-
-    private bool HasATarget(){
-        return comp.fieldOfView.ClosestTarget != null;
+    private bool HasATarget(FieldOfView fieldOfView){
+        return fieldOfView.ClosestTarget != null;
     }
-
-    private bool ReachedAnyPatrolPoint(){
-        return comp.patrol.reachedPatrol;
+    private bool ReachedAnyPatrolPoint(PatrolWaypoints patrol){
+        return patrol.reachedPatrol;
     }
-   
-    private void ReachedAnyPatrolPoint(bool _b){
-        comp.patrol.reachedPatrol = _b;
+    private void ReachedAnyPatrolPoint(bool _b, PatrolWaypoints patrol){
+        patrol.reachedPatrol = _b;
     }
-
     private bool AnotherDroneHasATarget(){
         return DronesNetworkComunication.dronesViewingIntruser.Count>0;
     }
-    private void DroneCanRequestAPathAStar(bool b){
-        comp.aStar.canRequestAPath = b;
+    private void DroneCanRequestAPathAStar(bool b, DronePathfinding aStar){
+        aStar.canRequestAPath = b;
     }
-
-    private bool DroneCanRequestAPathAStar(){
-        return comp.aStar.canRequestAPath;
+    private bool DroneCanRequestAPathAStar(DronePathfinding aStar){
+        return aStar.canRequestAPath;
     }
-
-    private void RefillSearchTimer(){
-        if (comp.status.searchTimer < DroneStatus.maxSearchTimerValue)
-            comp.status.searchTimer = DroneStatus.maxSearchTimerValue;
+    private void RefillSearchTimer(DroneStatus status){
+        if (status.searchTimer < DroneStatus.maxSearchTimerValue)
+            status.searchTimer = DroneStatus.maxSearchTimerValue;
     }
-
-    private bool IsTimeToSearch(){
-        return comp.status.searchTimer > DroneStatus.minSearchTimerValue;
+    private bool IsTimeToSearch(DroneStatus status){
+        return status.searchTimer > DroneStatus.minSearchTimerValue;
     }
-
     private void SeesTarget(bool sees){
         if (sees){
-            if (!DronesNetworkComunication.dronesViewingIntruser.Contains(thisDrone))
+            if (!DronesNetworkComunication.dronesViewingIntruser.Contains(this.gameObject))
             {
-                DronesNetworkComunication.dronesViewingIntruser.Add(thisDrone);
+                DronesNetworkComunication.dronesViewingIntruser.Add(this.gameObject);
             }
             return;
         }
-        if (DronesNetworkComunication.dronesViewingIntruser.Contains(thisDrone))
+        if (DronesNetworkComunication.dronesViewingIntruser.Contains(this.gameObject))
         {
-            DronesNetworkComunication.dronesViewingIntruser.Remove(thisDrone);
+            DronesNetworkComunication.dronesViewingIntruser.Remove(this.gameObject);
         }
-
     }
 }

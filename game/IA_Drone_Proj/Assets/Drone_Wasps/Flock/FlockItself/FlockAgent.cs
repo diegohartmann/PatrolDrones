@@ -12,12 +12,9 @@ public class FlockAgent : MonoBehaviour
     Collider agentCollider;
     Flock flock;
     [HideInInspector]public Collider AgentCollider {get {return agentCollider;}}
-    void Awake(){
+    public void FlockAgentInit(){
         flock = FindObjectOfType<Flock>();
         agentCollider = GetComponent<Collider>();        
-    }
-    private void Update() {
-        MoveFlockAgent();
     }
     public void MoveFlockAgent(){
         Move(MovementDir());

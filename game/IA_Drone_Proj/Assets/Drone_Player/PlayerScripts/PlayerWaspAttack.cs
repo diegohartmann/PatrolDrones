@@ -29,7 +29,7 @@ public class PlayerWaspAttack : MonoBehaviour{
     private Rigidbody WaspBombRB;
     private ThrowerDrone throwerDroneScript;
     [SerializeField] [Range (0,3)] private int initialDeadDronesBars = 0;
-    private void Awake() {
+    public void WaspAttackInit() {
         waspsChargerHolder = GameObject.Find("waspsChargerHolder").transform;
         mainCamera = FindObjectOfType<Camera>();
         IncrementDeadDrones(initialDeadDronesBars);

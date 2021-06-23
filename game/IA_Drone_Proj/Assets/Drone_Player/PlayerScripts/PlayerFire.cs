@@ -9,10 +9,10 @@ public class PlayerFire : MonoBehaviour
     [Range(10,30)]public float bulletSpeed = 20f;
     [Range(0.005f, 0.3f)]public float bulletDamage = 0.01f;
     private float charge = 0;
-    private void Awake() {
-        pool = GetComponent<PlayerBulletsPool>();
+    
+    public void FireInit(PlayerBulletsPool _pool) {
+        pool = _pool;
     }    
-
     public void CheckFire(){
         if(Input.GetMouseButton(0)){
             Shoot(1);

@@ -161,7 +161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 646.5, y: 363.65625}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &11011436
@@ -2289,6 +2289,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4618029243550328076, guid: a5e82330ea930094484a8f4fe2397b37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4618029243567826155, guid: a5e82330ea930094484a8f4fe2397b37, type: 3}
       propertyPath: m_Text
       value: Right mouse to cancel
@@ -2535,12 +2539,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8552253402562709403}
-  - component: {fileID: 2613987532885873478}
   - component: {fileID: 4310559715215810425}
+  - component: {fileID: 2613987532885873478}
   - component: {fileID: 1095153715332009439}
   - component: {fileID: 827447160901221872}
-  - component: {fileID: 7445397272262011623}
   - component: {fileID: 8552253402562709384}
+  - component: {fileID: 7445397272262011623}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2570,12 +2574,12 @@ MonoBehaviour:
   fuelTimer: 30
   waspChargerColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   waspChargerColorFull: {r: 0, g: 1, b: 0, a: 1}
-  waspEmptyColor: {r: 0, g: 0, b: 0, a: 0.50980395}
+  waspEmptyColor: {r: 0, g: 0, b: 0, a: 0.47058824}
   throwerDrone: {fileID: 1287314283}
   WaspBombHolder: {fileID: 1287314284}
   WaspBomb: {fileID: 1287314285}
   BomberThrowerFinalOffset: {x: 0, y: 2, z: 0}
-  initialDeadDronesBars: 3
+  initialDeadDronesBars: 1
 --- !u!4 &8552253402562709403
 Transform:
   m_ObjectHideFlags: 0

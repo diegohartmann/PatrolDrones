@@ -21,9 +21,9 @@ public class FieldOfView : MonoBehaviour
     [HideInInspector]public Transform ClosestTarget = null;
 
     
-    private void Awake(){
+    public void FieldOfViewInit(){
         viewMesh = new Mesh();
-        viewMesh.name = "malha da vista";
+        viewMesh.name = "malha_da_vista";
         viewMeshFilter.mesh = viewMesh;
     }
 

@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class MinionComponents : MonoBehaviour
 {
+    [HideInInspector] public Transform player;
     [HideInInspector] public MinionPathfinding aStar;
     [HideInInspector] public MinionStatus status;
-    // [HideInInspector] public FlockAgent flockAgent;
+    [HideInInspector] public MinionStateChecker stateChecker;
     [HideInInspector] public MinionActions actions;
-    [HideInInspector] public Transform player;
+    [HideInInspector] public DamageFromBullet damageFromBullet;
+    [HideInInspector] public MinionTriggerChecker triggerChecker;
 
-    private void Awake() {
+    public void MinionComponentsInit() {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //===============================================================
         aStar = GetComponent<MinionPathfinding>();
         status = GetComponent<MinionStatus>();
-        // flockAgent = GetComponent<FlockAgent>();
         actions = GetComponent<MinionActions>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        stateChecker = GetComponent<MinionStateChecker>();
+        damageFromBullet = GetComponent<DamageFromBullet>();
+        triggerChecker = GetComponent<MinionTriggerChecker>();
     }
 }

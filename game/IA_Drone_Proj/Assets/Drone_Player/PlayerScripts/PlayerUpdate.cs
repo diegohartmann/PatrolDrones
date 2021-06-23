@@ -11,29 +11,45 @@ public class PlayerUpdate : MonoBehaviour
     [SerializeField] private CameraController cameraController = null;
     
     private void Awake() {
-        GettingComponents();
-        pool.SetUpBullets(fire);
+        PlayerInit();    
     }
+    
     private void Update() {
+        _PlayerUpdate();
+    }
+    private void LateUpdate(){
+        PlayerLateUpdate();
+    }
+
+    private void PlayerInit() {
+        
+        fire = GetComponent<PlayerFire>();
+
+        move = GetComponent<PlayerMovement>();
+            move.MovementInit();
+
+        wasps = GetComponent<PlayerWaspAttack>();
+            wasps.WaspAttackInit();
+
+        pool = GetComponent<PlayerBulletsPool>();
+            pool.SetUpBullets(fire);
+            fire.FireInit(pool);
+
+        DamageFromBullet damage = GetComponent<DamageFromBullet>(); 
+        if(damage!= null){
+            damage.DamageFromBulletInit();
+        }
+    }
+    private void _PlayerUpdate(){
         if(Time.timeScale <= 0){
             return;
         }
-        PlayerUpdateMethods();
-        cameraController.CheckSwapCameraMode();
-    }
-    private void LateUpdate(){
-        cameraController.CameraMovement();
-    }
-    private void PlayerUpdateMethods(){
         move.Movement();
         fire.CheckFire();
         wasps.CheckWapsAttack();
+        cameraController.CheckSwapCameraMode();
     }
-
-    private void GettingComponents(){
-        fire = GetComponent<PlayerFire>();
-        move = GetComponent<PlayerMovement>();
-        wasps = GetComponent<PlayerWaspAttack>();
-        pool = GetComponent<PlayerBulletsPool>();
+    private void PlayerLateUpdate(){
+        cameraController.CameraMovement();
     }
 }

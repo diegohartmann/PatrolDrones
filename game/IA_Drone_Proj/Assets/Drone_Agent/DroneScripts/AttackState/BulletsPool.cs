@@ -10,23 +10,22 @@ public class BulletsPool : MonoBehaviour
     [SerializeField] Transform FirePointsHandler = null;
     private List<GameObject> InstantiatedBullets = null;
     private DroneComponents components;
-    private void Awake(){
-        components = GetComponent<DroneComponents>();
-        // InstantiateBullets();
+    public void BulletsPoolInit(DroneComponents _components){
+        components = _components;
+        InstantiateBullets(_components.status);
     }
-    public void InstantiateBullets(){
+    public void InstantiateBullets(DroneStatus status){
         InstantiatedBullets = new List<GameObject>();
-        foreach (Transform _firePoint in FirePointsHandler)
-            for (int i = 0; i < (components.status.fireRate * 10); i++)
-            {
+        foreach (Transform _firePoint in FirePointsHandler){
+            for (int i = 0; i < (status.fireRate * 10); i++){
                 GameObject _bullet = Instantiate(BulletPrefab, _firePoint.position, _firePoint.rotation);
                 InstantiatedBullets.Add(_bullet);
                 _bullet.SetActive(false);
             }
+        }
     }
     public void Fire(){
-        foreach (Transform _firePoint in FirePointsHandler)
-        {
+        foreach (Transform _firePoint in FirePointsHandler){
             List<GameObject> BulletsReadyToBeShooted = new List<GameObject>();;
             
             foreach (var bullet in InstantiatedBullets)
@@ -38,9 +37,9 @@ public class BulletsPool : MonoBehaviour
             _bulletToShoot.transform.position = _firePoint.position;
             _bulletToShoot.transform.rotation = _firePoint.rotation;
             _bulletToShoot.SetActive(true);
-            _bulletToShoot.GetComponent<bulletMovement>().bullSpeed = components.status.bulletSpeed;
-            _bulletToShoot.GetComponent<bulletMovement>().bullDamage = components.status.shootDamage;
-            // _bulletToShoot.GetComponent<Rigidbody>().AddForce(transform.forward * (components.status.bulletSpeed));
+            bulletMovement bullMov = _bulletToShoot.GetComponent<bulletMovement>();
+            bullMov.bullSpeed = components.status.bulletSpeed;
+           bullMov.bullDamage = components.status.shootDamage;
         }
     }
 }

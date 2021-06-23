@@ -218,8 +218,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1391028550034747916}
   - component: {fileID: 1391028550034747905}
+  - component: {fileID: 3347326874793350390}
   - component: {fileID: 8630794386948349155}
-  - component: {fileID: 3325505013200058040}
   m_Layer: 10
   m_Name: strawAgent
   m_TagString: Untagged
@@ -256,6 +256,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6328621, y: 0.7926527, z: 1.58}
   m_Center: {x: 0, y: 0.3, z: -0.49}
+--- !u!114 &3347326874793350390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391028550034747904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfee3f35d2610a44ab7a24c24bda6c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8630794386948349155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,22 +322,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3325505013200058040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391028550034747904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f32956aa819f4945acd21c080d3e138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTargetWaypoint: {x: 0, y: 0, z: 0}
-  path: []
-  startFollow: 0
-  canRequestAPath: 1
 --- !u!1 &1398509937758613772
 GameObject:
   m_ObjectHideFlags: 0

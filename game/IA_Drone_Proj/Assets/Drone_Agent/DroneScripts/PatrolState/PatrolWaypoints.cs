@@ -15,14 +15,9 @@ public class PatrolWaypoints : MonoBehaviour
     private int targetIndex = 0;
     private int lastTargetIndex = -1;
     [HideInInspector] public bool reachedPatrol = false;
-    private void Awake() {
-        // if(hasPatrolPoints()){
-            targetWaypoint = _PatrolWaypoints.GetChild(0);
-        // }
+    public void PatrolPointsInit() {
+        targetWaypoint = _PatrolWaypoints.GetChild(0);
     }
-    // public bool hasPatrolPoints(){
-    //     return _PatrolWaypoints!=null;
-    // }
     public void SmartWaypoints(){
         for(int i = 0; i < _PatrolWaypoints.childCount; i++){
             SetNextWaypointBasedOn(i);

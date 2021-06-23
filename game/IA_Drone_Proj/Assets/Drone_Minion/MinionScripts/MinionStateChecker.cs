@@ -6,39 +6,27 @@ public enum MinionStates{
     Locked,
     Stoped,
     Follow,
-    // GoingToFixedArea,
 }
 public class MinionStateChecker : MonoBehaviour
 {
-    public bool instaFlock;
-    // public bool tempLeader = false;
     [SerializeField]private MinionStates State = MinionStates.Locked;
     private PlayerMovement PlayerMov = null;
     private MinionComponents components;
     private GameObject thisMinion;
 
-    private void Start() {
-        components = GetComponent<MinionComponents>();
+    public void StateCheckerInit(MinionComponents comp) {
+        components = comp;
         PlayerMov = Player().gameObject.GetComponent<PlayerMovement>();
         thisMinion = this.gameObject;
     }
-        
-    private Transform Player(){
-        return components.player;
-    }
-    private void Update() {
-        // if(instaFlock){
-        //     FlockMovement();
-        //     return;
-        // }
+    public void MinionStateMachine() {
          if(Player() == null){
             State = MinionStates.Stoped;
             return;
         }
-        // SetState();
         ExecuteState();
     }
-    public float DistFrom(Transform target){
+    private float DistFrom(Transform target){
         return Vector3.Distance(transform.position, target.position);
     }
     private void SetState(){
@@ -98,10 +86,9 @@ public class MinionStateChecker : MonoBehaviour
         p("Stoped");
     }
 
-    // private void GoTo(){
-    //     // components.GoToArea();
-    //     p("Going To Some Area");
-    // }
+    private Transform Player(){
+        return components.player;
+    }
     private void FollowMachine(){
         if(DistFrom(Player()) < 2){
             StandOnPlayer();
@@ -117,9 +104,6 @@ public class MinionStateChecker : MonoBehaviour
         components.actions.SimpleFollowPlayer();
     }
 
-    // private void FlockMovement(){
-    //     components.actions.Flocking();
-    // }
     private void FollowDistanceChecker(){
         if(DistFrom(Player()) < 3f){
             components.actions.SimpleFollowPlayer();

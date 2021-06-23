@@ -6,8 +6,8 @@ public class MinionTriggerChecker : MonoBehaviour
 {
     [SerializeField] private int triggerLayer = 12;
     [SerializeField] private float leadLevelDelay = 1;
-    private SceneLoader loader = null;
-    private void Awake() {
+    private SceneLoader loader;
+    public void TriggerCheckerInit() {
         loader = FindObjectOfType<SceneLoader>();
     }
     private void OnTriggerEnter(Collider other) {

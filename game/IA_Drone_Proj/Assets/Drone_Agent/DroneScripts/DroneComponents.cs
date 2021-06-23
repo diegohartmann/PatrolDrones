@@ -11,14 +11,17 @@ public class DroneComponents : MonoBehaviour
     [HideInInspector]public BulletsPool bulletsPool;
     [HideInInspector]public PatrolWaypoints patrol;
     [HideInInspector]public DronePathfinding aStar;
-   
-
-    private void Awake(){
+    [HideInInspector]public StateChecker stateChecker;
+    [HideInInspector]public DamageFromBullet damageFromBullets;
+    public void ComponentsInit(){
+        //chamado no Awake() do DroneAgentUpdate.cs
         fieldOfView = GetComponent<FieldOfView>();
         status = GetComponent<DroneStatus>();
         actions = GetComponent<StateActions>();
         bulletsPool = GetComponent<BulletsPool>();
         patrol = GetComponent<PatrolWaypoints>();
         aStar = GetComponent<DronePathfinding>();
+        stateChecker = GetComponent<StateChecker>();
+        damageFromBullets = GetComponent<DamageFromBullet>();
     }
 }

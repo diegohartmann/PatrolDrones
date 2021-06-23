@@ -9,29 +9,20 @@ public class StateActions : MonoBehaviour
     private DroneComponents comp;
     private float charge = 0;
     
-
-    private void Awake(){
-      comp = GetComponent<DroneComponents>();
+    public void ActionsInit(DroneComponents _comp){
+      comp = _comp;
     }
     /// --------------------------------------------------------------------------------------------------------//////
     /// -----  ALL METHODS UNDER THIS LINE ARE THE DRONE STATES, CALLED INTO StateChecker's Update() method ----//////
     /// --------------------------------------------------------------------------------------------------------//////
     public void GoingBackToPatrol(){
-        // if(comp.patrol.hasPatrolPoints()){
-            AStartTo(comp.patrol.targetWaypoint.position);
-            comp.patrol.SmartWaypoints();
-            // return;
-        // }
-        // Search();
+        AStartTo(comp.patrol.targetWaypoint.position);
+        comp.patrol.SmartWaypoints();
     }
     public void Patrol(){
-        // if(comp.patrol.hasPatrolPoints()){
-            comp.patrol.SimpleWaypoints();
-            RotateTo(comp.patrol.targetWaypoint.position, true, comp.status.patrolRotationSpeed);
-            MoveForward(comp.status.patrolSpeed);
-            // return;  
-        // }
-        // Search();
+        comp.patrol.SimpleWaypoints();
+        RotateTo(comp.patrol.targetWaypoint.position, true, comp.status.patrolRotationSpeed);
+        MoveForward(comp.status.patrolSpeed);
     }
     public void Search(){
         transform.Rotate(new Vector3(0, 150*Time.deltaTime, 0));//AStartTo(randomTransforms);

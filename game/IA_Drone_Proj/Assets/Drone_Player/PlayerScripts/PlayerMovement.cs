@@ -16,10 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]public bool isOnTile;
     private Vector3 lastCamTargetPos = Vector3.zero;
     private Camera mainCamera;
-    private void Awake() {
-        SetStuff();
-    }
-    void SetStuff(){
+    public void MovementInit(){
         mainCamera = FindObjectOfType<Camera>();
         thisRB = GetComponent<Rigidbody>();
     }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class MinionActions : MonoBehaviour
 {
     private MinionComponents components;
-    private void Awake(){
-        components = GetComponent<MinionComponents>();
+    public void ActionsInit(MinionComponents _comp){
+        components = _comp;
     }
     private Vector3 PlayerPos(){
         return components.player.position;

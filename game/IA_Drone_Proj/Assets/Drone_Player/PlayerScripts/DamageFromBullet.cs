@@ -14,19 +14,21 @@ public class DamageFromBullet : MonoBehaviour
    
     private float currHealth = 0;
     private SceneLoader loader;
-    private void Awake() {
+    public void DamageFromBulletInit() {
         player = FindObjectOfType<PlayerWaspAttack>();
         loader = FindObjectOfType<SceneLoader>();
         currHealth = maxHealth;
     }
-
     private void OnTriggerEnter(Collider other) {
         CheckTrigger(other.gameObject);
     }
     private void CheckTrigger(GameObject otherObj){
         if (otherObj.CompareTag("Bullet")){
+            
             bulletMovement bulletMov = otherObj.GetComponent<bulletMovement>();
-            if(!SameObj(bulletMov.shooter, gameObject)){ //se o atirador nao acertou em si mesmo
+            
+            //se o atirador nao acertou em si mesmo
+            if(!SameObj(bulletMov.shooter, gameObject)){ 
                 DestroyBulletEffect(otherObj);
                 if(destructble){
                     UpdateLife(-bulletMov.bullDamage);
@@ -46,9 +48,7 @@ public class DamageFromBullet : MonoBehaviour
         //som
         //efeito visual
     }
-
-
-    void UpdateLife(float _amt){
+    private void UpdateLife(float _amt){
         currHealth += _amt;
         if(currHealth <= 0){
             currHealth = 0;
@@ -63,7 +63,7 @@ public class DamageFromBullet : MonoBehaviour
         }
         SliderValue(currHealth);
     }
-    void SliderValue(float _value){
+    private void SliderValue(float _value){
         if(healthSlider != null){
             healthSlider.value = _value;
         }
@@ -107,7 +107,11 @@ public class DamageFromBullet : MonoBehaviour
         }
     }
     public void ReloadGame(float t){
-        loader.Reload(t);
+        if(loader!=null){
+            loader.Reload(t);
+            return;
+        }
+        Debug.LogWarning("loader em "+name+" é nulo");
     }
     public void IncrementDeadDrones(int _amt){
         if(DronesNetworkComunication.deadDrones < 3 ){
