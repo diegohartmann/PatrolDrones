@@ -39,20 +39,17 @@ public class MinionStateChecker : MonoBehaviour
     }
 
     public void SetState(int _state){
-        switch (_state)
-        {
+        switch (_state){
             case 0:
                 State = MinionStates.Locked;
             break;
-            
             case 1:
                 State = MinionStates.Stoped;
             break;
-
             case 2:
                 State = MinionStates.Follow;
+                // print("Follow state");
             break;
-
             default:
                 Debug.LogWarning("não há estado para esse número");
             break;

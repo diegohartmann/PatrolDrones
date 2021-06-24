@@ -147,6 +147,10 @@ public class DamageFromBullet : MonoBehaviour
     }
     public void IncrementDeadDrones(int _amt){
         if(DronesNetworkComunication.deadDrones < 3 ){
+            if(player == null){
+                // print("Reseting player");
+                player = FindObjectOfType<PlayerWaspAttack>();
+            }
             player.IncrementDeadDrones(_amt);
             player.FillFuel();
         }

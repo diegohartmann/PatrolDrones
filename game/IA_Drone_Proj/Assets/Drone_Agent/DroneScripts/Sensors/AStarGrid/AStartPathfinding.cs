@@ -17,7 +17,7 @@ public class AStartPathfinding : MonoBehaviour
         StartCoroutine(FindPath(startPos, targetPos));
     }
 
-    IEnumerator FindPath(Vector3 startPos, Vector3 targetPos) {
+    private IEnumerator FindPath(Vector3 startPos, Vector3 targetPos) {
 
 		Vector3[] waypoints = new Vector3[0];
 		bool pathSuccess = false;
@@ -51,8 +51,9 @@ public class AStartPathfinding : MonoBehaviour
 						neighbour.hCost = GetDistance(neighbour, targetNode);
 						neighbour.parent = currentNode;
 						
-						if (!openSet.Contains(neighbour))
+						if (!openSet.Contains(neighbour)){
 							openSet.Add(neighbour);
+						}
 					}
 				}
 			}
@@ -62,7 +63,6 @@ public class AStartPathfinding : MonoBehaviour
 			waypoints = RetracePath(startNode,targetNode);
 		}
 		requestManager.FinishedProcessingPath(waypoints,pathSuccess);
-		
 	}
 
     Vector3[] RetracePath(Node startNode, Node endNode) {
@@ -73,11 +73,14 @@ public class AStartPathfinding : MonoBehaviour
 			currentNode = currentNode.parent;
 		}
 
-        // //EXTRA ADDED ------
-        // if (currentNode == startNode)
+        //EXTRA ADDED ------
+        // if (currentNode == startNode){
         //     path.Add(currentNode);
-        // //----------------
-        Vector3[] _waypoints = SimplifyPath(path, startNode);//only creates waypoints where the path changes direction (nodes)
+		// }
+        //----------------
+
+		//only creates waypoints where the path changes direction (nodes)
+        Vector3[] _waypoints = SimplifyPath(path, startNode);
         Array.Reverse(_waypoints);
         return _waypoints;
 	}

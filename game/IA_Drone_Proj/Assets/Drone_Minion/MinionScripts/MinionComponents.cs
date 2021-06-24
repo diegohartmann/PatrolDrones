@@ -11,8 +11,6 @@ public class MinionComponents : MonoBehaviour
     [HideInInspector] public MinionActions actions;
     [HideInInspector] public DamageFromBullet damageFromBullet;
     [HideInInspector] public MinionTriggerChecker triggerChecker;
-    // [HideInInspector] public PathRequestManager pathRequest;
-
 
     public void MinionComponentsInit() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -23,6 +21,5 @@ public class MinionComponents : MonoBehaviour
         stateChecker = GetComponent<MinionStateChecker>();
         damageFromBullet = GetComponent<DamageFromBullet>();
         triggerChecker = GetComponent<MinionTriggerChecker>();
-        // pathRequest = GetComponent<PathRequestManager>();
     }
 }

@@ -47,11 +47,14 @@ public class MinionActions : MonoBehaviour
     }
     
     private void AStartTo(Vector3 finalPos){
-        var _aStart = components.aStar;
+        MinionPathfinding _aStart = components.aStar;
         _aStart.RequestAPath(finalPos);
         _aStart.UpdatePathWaypoints();
-        RotateTo(_aStart.currentTargetWaypoint, true, components.status.rotationSpeed);
-        MoveForward(components.status.runSpeed);
+        Vector3 _targetPos = _aStart.currentTargetWaypoint;
+        if( _targetPos != null){
+            RotateTo(_targetPos, true, components.status.rotationSpeed);
+            MoveForward(components.status.runSpeed);
+        }
     }
     void p (string _string){
         //print(_string);

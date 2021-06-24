@@ -10,10 +10,6 @@ public class MinionPathfinding : MonoBehaviour
     private int targetIndex;
     [HideInInspector]public bool reachedTargetTransform = false;
     [HideInInspector]public bool pathSuccedded = false;
-    // private PathRequestManager pathRequest;
-    // public void AStartInit(PathRequestManager _pathRequest){
-    //     pathRequest = _pathRequest;
-    // }
     public void RequestAPath(Vector3 _finalTarget){
         targetIndex = 0;
         // pathRequest.RequestPath(transform.position, _finalTarget, OnPathFound);
@@ -26,7 +22,9 @@ public class MinionPathfinding : MonoBehaviour
         if (pathSuccessful){
             reachedTargetTransform = false;
             this.path = newPath;
-            this.currentTargetWaypoint = path[0];
+            // if(this.path[0]!=null){
+                this.currentTargetWaypoint = this.path[0];
+            // }
             return;
         }
         Debug.LogWarning("minion path failed");

@@ -29,6 +29,10 @@ public class PathRequestManager : MonoBehaviour
 		if (!isProcessingPath && pathRequestQueue.Count > 0) {
 			currentPathRequest = pathRequestQueue.Dequeue();
 			isProcessingPath = true;
+            if(pathfinding == null){
+                print("Resetting 'pathfinding' variable");
+                pathfinding = GetComponent<AStartPathfinding>();
+            }
 			pathfinding.StartFindingPath(currentPathRequest.pathStart, currentPathRequest.pathEnd);
 		}
 	}
