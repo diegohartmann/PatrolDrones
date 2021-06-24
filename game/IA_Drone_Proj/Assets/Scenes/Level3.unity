@@ -547,17 +547,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8823160381601220374, guid: 1f108e83fb7c1fe46b56214eddc5f0a9, type: 3}
   m_PrefabInstance: {fileID: 169845101}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &120764460 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8365552576878576148, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
-  m_PrefabInstance: {fileID: 1783927844}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6666a77c018ec674b99ed0a40cf8a3d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &124361394 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8823160381601220374, guid: 1f108e83fb7c1fe46b56214eddc5f0a9, type: 3}
@@ -1251,7 +1240,7 @@ PrefabInstance:
     - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
       propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1783927848}
+      objectReference: {fileID: 0}
     - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
       propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DamageFromBullet, Assembly-CSharp
@@ -1315,7 +1304,7 @@ PrefabInstance:
     - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
       propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1783927846}
+      objectReference: {fileID: 0}
     - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
       propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: set_material
@@ -1343,7 +1332,7 @@ PrefabInstance:
     - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
       propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 120764460}
+      objectReference: {fileID: 0}
     - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
       propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: set_enabled
@@ -4204,7 +4193,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3021789287896597042, guid: 60fd31126aadbab4ba3bcf4c2a060b91, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.3
+      value: 13.11
       objectReference: {fileID: 0}
     - target: {fileID: 3021789287896597042, guid: 60fd31126aadbab4ba3bcf4c2a060b91, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4212,7 +4201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3021789287896597042, guid: 60fd31126aadbab4ba3bcf4c2a060b91, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 3021789287896597042, guid: 60fd31126aadbab4ba3bcf4c2a060b91, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6846,7 +6835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552253401467005483, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.32
+      value: 13.11
       objectReference: {fileID: 0}
     - target: {fileID: 8552253401467005483, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6854,7 +6843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552253401467005483, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.89
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 8552253401467005483, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8241,11 +8230,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5464866503378788307, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
   m_PrefabInstance: {fileID: 1783927844}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &1783927846 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2775863328280182538, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
-  m_PrefabInstance: {fileID: 1783927844}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1783927847 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
@@ -8255,17 +8239,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 967a934aba0f48d48985614a9433df64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1783927848 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1339409544690700030, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
-  m_PrefabInstance: {fileID: 1783927844}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bc7e975176b1ba41ae3d81f38bfa626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1786548630
@@ -9760,7 +9733,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8896601349912399824, guid: 0affef16976c6e74bbf8fef292d634e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.180941
+      value: 13.11
       objectReference: {fileID: 0}
     - target: {fileID: 8896601349912399824, guid: 0affef16976c6e74bbf8fef292d634e9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9768,7 +9741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8896601349912399824, guid: 0affef16976c6e74bbf8fef292d634e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.43627843
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 8896601349912399824, guid: 0affef16976c6e74bbf8fef292d634e9, type: 3}
       propertyPath: m_LocalRotation.x

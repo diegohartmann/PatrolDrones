@@ -6,12 +6,12 @@ using System.Collections.Generic;
 
 public class AStartPathfinding : MonoBehaviour
 {
-    PathRequestManager requestManager;
+    private PathRequestManager requestManager;
     private Grid grid;
 
-    private void Awake() {
-        requestManager = GetComponent<PathRequestManager>();
-        grid = GetComponent<Grid>();
+    public void Init(Grid _grid, PathRequestManager _requestManager) {
+        grid = _grid;
+        requestManager = _requestManager;
     }
     public void StartFindingPath(Vector3 startPos, Vector3 targetPos){
         StartCoroutine(FindPath(startPos, targetPos));
@@ -61,8 +61,9 @@ public class AStartPathfinding : MonoBehaviour
 		yield return null;
 		if (pathSuccess) {
 			waypoints = RetracePath(startNode,targetNode);
+			// requestManager.FinishedProcessingPath(waypoints, pathSuccess);
 		}
-		requestManager.FinishedProcessingPath(waypoints,pathSuccess);
+		requestManager.FinishedProcessingPath(waypoints, pathSuccess);
 	}
 
     Vector3[] RetracePath(Node startNode, Node endNode) {
@@ -73,11 +74,11 @@ public class AStartPathfinding : MonoBehaviour
 			currentNode = currentNode.parent;
 		}
 
-        //EXTRA ADDED ------
+        ////EXTRA ADDED ------
         // if (currentNode == startNode){
         //     path.Add(currentNode);
 		// }
-        //----------------
+        ////----------------
 
 		//only creates waypoints where the path changes direction (nodes)
         Vector3[] _waypoints = SimplifyPath(path, startNode);
