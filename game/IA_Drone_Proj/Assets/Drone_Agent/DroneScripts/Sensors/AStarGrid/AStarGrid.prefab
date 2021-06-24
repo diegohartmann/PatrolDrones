@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aebdf9f865ec4b4b9cf36c8a806661e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathfinding: {fileID: 865259708144677788}
 --- !u!114 &3451250534405586630
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,23 +12,18 @@ public class PathRequestManager : MonoBehaviour
 
     static PathRequestManager instante;
 
-    private AStartPathfinding pathfinding;
+    [SerializeField] private AStartPathfinding pathfinding = null;
     bool isProcessingPath;
 
     private void Awake() {
         instante = this;
-        pathfinding = GetComponent<AStartPathfinding>();
     }
     public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback){
         PathRequest newRequest = new PathRequest (pathStart, pathEnd, callback);
         instante.pathRequestQueue.Enqueue(newRequest);
         instante.TryProcessNext();
     }
-	// public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback){
-    //     PathRequest newRequest = new PathRequest (pathStart, pathEnd, callback);
-    //     instante.pathRequestQueue.Enqueue(newRequest);
-    //     instante.TryProcessNext();
-    // }
+	
 
     private void TryProcessNext() {
 		if (!isProcessingPath && pathRequestQueue.Count > 0) {

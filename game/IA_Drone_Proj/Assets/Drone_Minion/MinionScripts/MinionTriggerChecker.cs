@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MinionTriggerChecker : MonoBehaviour
 {
-    [SerializeField] private int triggerLayer = 12;
-    [SerializeField] private float leadLevelDelay = 1;
+    private const int triggerLayer = 12;
+    private const int loadLevelDelay = 0;
+    [SerializeField] private UnityEvent OnMinionTriggerReached = null;
     private SceneLoader loader;
     public void TriggerCheckerInit() {
         loader = FindObjectOfType<SceneLoader>();
@@ -14,11 +16,11 @@ public class MinionTriggerChecker : MonoBehaviour
         GameObject obj = other.gameObject;
         int objLayer = obj.layer;
         if(objLayer == triggerLayer){
-            LevelComplete();
+            OnMinionTriggerReached.Invoke();
         }
     }
-    private void LevelComplete(){
+    public void FinishLevel(){
         int nextLevelIndex = loader.CurrentIndex() + 1;
-        loader.Load(nextLevelIndex, leadLevelDelay);
+        loader.Load(nextLevelIndex, loadLevelDelay);
     }
 }

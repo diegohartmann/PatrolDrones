@@ -77,6 +77,9 @@ public class DamageFromBullet : MonoBehaviour
         }
         UpdateHealthFill(currHealth);
     }
+    public void IsDestructable(bool b){
+        destructble = b;
+    }
     private void UpdateHealthFill(float _value){
         if(HasHealthImages()){
             if(HealthImages.Count > 0){

@@ -3346,6 +3346,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8823160381601220374, guid: 1f108e83fb7c1fe46b56214eddc5f0a9, type: 3}
   m_PrefabInstance: {fileID: 823462561}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &843878645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+  m_PrefabInstance: {fileID: 1783927844}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967a934aba0f48d48985614a9433df64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &845611379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3740,7 +3751,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3021789287896597042, guid: 60fd31126aadbab4ba3bcf4c2a060b91, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.99
+      value: -16.07
       objectReference: {fileID: 0}
     - target: {fileID: 3021789287896597042, guid: 60fd31126aadbab4ba3bcf4c2a060b91, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3748,7 +3759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3021789287896597042, guid: 60fd31126aadbab4ba3bcf4c2a060b91, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.39
+      value: -7.1
       objectReference: {fileID: 0}
     - target: {fileID: 3021789287896597042, guid: 60fd31126aadbab4ba3bcf4c2a060b91, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6113,7 +6124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552253401467005483, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.99
+      value: -16.07
       objectReference: {fileID: 0}
     - target: {fileID: 8552253401467005483, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6121,7 +6132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8552253401467005483, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.39
+      value: -7.1
       objectReference: {fileID: 0}
     - target: {fileID: 8552253401467005483, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7574,6 +7585,42 @@ PrefabInstance:
     - target: {fileID: 281374328194801946, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 843878645}
+    - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MinionTriggerChecker, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FinishLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 975050729200347024, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2396599787423825109, guid: f660100d2f0f66045a7ef4470447aa34, type: 3}
       propertyPath: m_AnchorMin.x

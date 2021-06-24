@@ -29,7 +29,7 @@ public class MinionPathfinding : MonoBehaviour
             this.currentTargetWaypoint = path[0];
             return;
         }
-        Debug.LogWarning("path failed");
+        Debug.LogWarning("minion path failed");
     }
     public void UpdatePathWaypoints(){
         if(!pathSuccedded){

@@ -13,7 +13,6 @@ public class DronePathfinding : MonoBehaviour
     private int targetIndex;
     
     public void RequestAPath(Vector3 _finalTarget){
-        // pathRequest.RequestPath(transform.position, _finalTarget, OnPathFound);
         PathRequestManager.RequestPath(transform.position, _finalTarget, OnPathFound);
         targetIndex = 0;
         canRequestAPath = false;
@@ -25,7 +24,7 @@ public class DronePathfinding : MonoBehaviour
             this.startFollow = true;
             return;
         }
-        print("não conseguiu criar caminho");
+        Debug.LogWarning("drone path failed");
     }
 
     public void UpdatePathfindingWay() {

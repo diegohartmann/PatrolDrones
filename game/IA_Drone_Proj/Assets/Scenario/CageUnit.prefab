@@ -292,6 +292,30 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.50000006
       objectReference: {fileID: 0}
+    - target: {fileID: 5070780886177008301, guid: 28ee6124dd21a67479555550e3e990b4, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070780886177008301, guid: 28ee6124dd21a67479555550e3e990b4, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070780886177008301, guid: 28ee6124dd21a67479555550e3e990b4, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070780886177008301, guid: 28ee6124dd21a67479555550e3e990b4, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070780886177008301, guid: 28ee6124dd21a67479555550e3e990b4, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070780886177008301, guid: 28ee6124dd21a67479555550e3e990b4, type: 3}
+      propertyPath: OnMinionTriggerReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8781391948004095150, guid: 28ee6124dd21a67479555550e3e990b4, type: 3}
       propertyPath: m_Name
       value: minion

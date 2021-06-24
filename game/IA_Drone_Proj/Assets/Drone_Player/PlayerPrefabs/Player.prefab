@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85804ed269a64ec4392c599fbe1acc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rbMove: 0
+  rbMove: 1
   rotatableObj: {fileID: 1166702066314084969}
   zoomCamTarget: {fileID: 0}
   rotationFactor: 6
