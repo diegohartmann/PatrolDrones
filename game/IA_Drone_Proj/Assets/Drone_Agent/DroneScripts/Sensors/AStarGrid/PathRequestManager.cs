@@ -10,22 +10,22 @@ public class PathRequestManager : MonoBehaviour
     Queue<PathRequest> pathRequestQueue = new Queue <PathRequest>();
     PathRequest currentPathRequest;
 
-    private static PathRequestManager instante;
+    private static PathRequestManager instance;
 
     [SerializeField] private AStartPathfinding pathfinding = null;
     bool isProcessingPath;
 
     public void Init(AStartPathfinding _aStar) {
-        instante = this;
+        instance = this;
         pathfinding = _aStar;
     }
     public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback){
         PathRequest newRequest = new PathRequest (pathStart, pathEnd, callback);
-        if(instante != null){
-            instante.pathRequestQueue.Enqueue(newRequest);
-            instante.TryProcessNext();
+        if(instance != null){
+            instance.pathRequestQueue.Enqueue(newRequest);
+            instance.TryProcessNext();
         }
-        Debug.LogWarning("instante é nulo");
+        // Debug.LogWarning("instance é nulo");
     }
     private void TryProcessNext() {
 		if (!isProcessingPath && pathRequestQueue.Count > 0) {

@@ -37,6 +37,7 @@ public class DronePathfinding : MonoBehaviour
                     startFollow = false;
                     canRequestAPath = true;
                     targetIndex = 0;
+                    path = new Vector3[0];
                     return;
                 }
                 currentTargetWaypoint = path[targetIndex];

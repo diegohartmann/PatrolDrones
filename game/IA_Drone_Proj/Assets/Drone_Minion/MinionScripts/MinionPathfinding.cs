@@ -44,6 +44,7 @@ public class MinionPathfinding : MonoBehaviour
             UpdateTargetWaypointByDistance(); //o waypoint é atualizado
             return;
         }
+        path = new Vector3[0];
         pathSuccedded = false;
         reachedTargetTransform = true;
     }
@@ -59,7 +60,7 @@ public class MinionPathfinding : MonoBehaviour
         return (this.path == null);
     }
     private bool ReachedTargetTransform(){
-        return (this.targetIndex == this.path.Length);
+        return (this.targetIndex >= this.path.Length);
     }
     private bool EmptyPath(){
         return (this.path.Length == 0);
