@@ -10,15 +10,9 @@ public class FieldOfViewEditor : Editor
         Handles.DrawWireArc(fow.transform.position, Vector3.up, Vector3.forward, 360, fow.viewRadius);
 
         Vector3 viewAngleA = fow.DirFromAngle(-fow.viewAngle/2, false);
-        Vector3 viewAngleB = fow.DirFromAngle(fow.viewAngle/2, false);
-       
         Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleA * fow.viewRadius);
-        Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleB * fow.viewRadius);
 
-        // Handles.color = Color.red;
-        // foreach ( Transform _target in fow.visibleTargets){
-        //     Handles.DrawLine (fow.transform.position, _target.position);
-        // }
-    
+        Vector3 viewAngleB = fow.DirFromAngle(fow.viewAngle/2, false);
+        Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleB * fow.viewRadius);
     }
 }

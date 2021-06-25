@@ -6,21 +6,14 @@ public class MinionUpdate : MonoBehaviour
 {
     private MinionComponents comp;
     private void Awake() {
-        MinionInit();
-    }
-    private void Update(){
-        _MinionUpdate();
-    }
-    private void MinionInit(){
         comp = GetComponent<MinionComponents>();
         comp.MinionComponentsInit();
-        // comp.aStar.AStartInit(comp.pathRequest);
         comp.stateChecker.StateCheckerInit(comp);
         comp.actions.ActionsInit(comp);
         comp.triggerChecker.TriggerCheckerInit();
         comp.damageFromBullet.DamageFromBulletInit();
     }
-    private void _MinionUpdate(){
+    private void Update(){
         comp.stateChecker.MinionStateMachine();
     }
 }

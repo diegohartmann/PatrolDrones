@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DroneStatus : MonoBehaviour
 {
-
     [Header ("SEARCH")]
     public const int maxSearchTimerValue = 6;
     public const int minSearchTimerValue = 0;
@@ -29,5 +28,4 @@ public class DroneStatus : MonoBehaviour
     [Header ("PATROL")]
     [Range(1, 10)]public float patrolSpeed = 2.5f;
     [Range(1, 10)] public float patrolRotationSpeed = 2;
-    
 }

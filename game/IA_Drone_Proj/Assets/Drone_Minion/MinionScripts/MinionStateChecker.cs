@@ -26,18 +26,7 @@ public class MinionStateChecker : MonoBehaviour
         }
         ExecuteState();
     }
-    private float DistFrom(Transform target){
-        return Vector3.Distance(transform.position, target.position);
-    }
-    private void SetState(){
-        if(Player() == null){
-            State = MinionStates.Stoped;
-            return;
-        }
-        State = MinionStates.Follow;
-        return;
-    }
-
+   
     public void SetState(int _state){
         switch (_state){
             case 0:
@@ -48,7 +37,6 @@ public class MinionStateChecker : MonoBehaviour
             break;
             case 2:
                 State = MinionStates.Follow;
-                // print("Follow state");
             break;
             default:
                 Debug.LogWarning("não há estado para esse número");
@@ -56,10 +44,9 @@ public class MinionStateChecker : MonoBehaviour
         }   
     }
     private void ExecuteState(){
-        switch (State)
-        {
+        switch (State){
             case MinionStates.Locked:
-                Locked();
+                components.actions.Locked();
             break;
             
             case MinionStates.Follow:
@@ -67,28 +54,19 @@ public class MinionStateChecker : MonoBehaviour
             break;
 
             case MinionStates.Stoped:
-                Stoped();
-            break;
-
-            default:
+                components.actions.Stoped();
             break;
         }
     }
-
-    private void Locked(){
-        p("locked");
+    private float DistFrom(Transform target){
+        return Vector3.Distance(transform.position, target.position);
     }
-
-    private void Stoped(){
-        p("Stoped");
-    }
-
     private Transform Player(){
         return components.player;
     }
     private void FollowMachine(){
         if(DistFrom(Player()) < 2){
-            StandOnPlayer();
+            components.actions.StandOnPlayer();
             return;
         }
         MoveToPlayer();
@@ -100,30 +78,11 @@ public class MinionStateChecker : MonoBehaviour
         }
         components.actions.SimpleFollowPlayer();
     }
-
     private void FollowDistanceChecker(){
         if(DistFrom(Player()) < 3f){
             components.actions.SimpleFollowPlayer();
             return;
         }
         components.actions.AStartToPlayer();
-    }
-    private void StandOnPlayer(){
-        p("standOnPlayer");
-    }
-    public void TryToSetAsLeaderMinion(){
-        if(GetLeaderMinion() == null){
-            SetLeaderMinion(thisMinion);
-        }
-    }
-
-    private GameObject GetLeaderMinion(){
-        return MinionsNetworking.leaderMinion;
-    }
-    private void SetLeaderMinion(GameObject _minion){
-        MinionsNetworking.leaderMinion = _minion;
-    }
-    void p (string _string){
-        //print(_string);
     }
 }

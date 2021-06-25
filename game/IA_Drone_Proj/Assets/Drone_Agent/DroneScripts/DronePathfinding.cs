@@ -20,9 +20,7 @@ public class DronePathfinding : MonoBehaviour
     private void OnPathFound ( Vector3[] newPath, bool pathSuccessful){
         if (pathSuccessful){
             this.path = newPath;
-            // if(this.path[0]!=null){
-                this.currentTargetWaypoint = this.path[0];
-            // }
+            this.currentTargetWaypoint = this.path[0];
             this.startFollow = true;
             return;
         }

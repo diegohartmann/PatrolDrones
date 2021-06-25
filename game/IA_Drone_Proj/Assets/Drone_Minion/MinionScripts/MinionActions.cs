@@ -4,59 +4,40 @@ using UnityEngine;
 
 public class MinionActions : MonoBehaviour
 {
+    private IAAgentMovement movement;
     private MinionComponents components;
     public void ActionsInit(MinionComponents _comp){
         components = _comp;
+        movement = new IAAgentMovement();
+    }
+    public void StandOnPlayer(){
+
+    }
+    public void Locked(){
+
+    }
+    public void Stoped(){
+
+    }
+    public void SimpleFollowPlayer(){
+        movement.GoTo(this.transform, PlayerPos(), components.status.rotationSpeed, components.status.runSpeed);
+    }
+    public void AStartToPlayer(){
+        AStartTo(PlayerPos());
     }
     private Vector3 PlayerPos(){
         return components.player.position;
     }
-    public void SimpleFollowPlayer(){
-        p("simple following Player");
-        RotateTo(PlayerPos(), true, components.status.rotationSpeed);
-        MoveForward(components.status.runSpeed);
-    }
-    public void AStartToPlayer(){
-        p("aStar to Player");
-        AStartTo(PlayerPos());
-    }
     public void GoToArea(Vector3 _position){
         AStartTo(PlayerPos());
     }
-    // public void Flocking(){
-    //     // AStartTo(MinionsNetworking.leaderMinion.transform.position);
-    //     p("flocking");
-    //     components.flockAgent.MoveFlockAgent();
-    //     // RotateTo(MinionsNetworking.leaderMinion.transform.position, true);
-    // }
-    /// --------------------------------------------------------------------------------------------------------//////
-    /// ------------  ALL METHODS UNDER THIS LINE ARE USED INSIDE THE METHODS ABOVE --------------------------- //////
-    /// --------------------------------------------------------------------------------------------------------//////
-    private void RotateTo(Vector3 _target, bool _isSmooth, float _rotSpeed = 1) {
-        if (_isSmooth){
-            var neededRotation = Quaternion.LookRotation(_target - transform.position);
-            var interpolatedRotation = Quaternion.Slerp(transform.rotation, neededRotation, Time.deltaTime * _rotSpeed);
-            transform.rotation = interpolatedRotation;
-            return;
-        }
-        transform.LookAt(_target);
-    }
-
-    private void MoveForward(float _speed){
-        transform.Translate(Vector3.forward * Time.deltaTime * (_speed));
-    }
-    
     private void AStartTo(Vector3 finalPos){
         MinionPathfinding _aStart = components.aStar;
         _aStart.RequestAPath(finalPos);
         _aStart.UpdatePathWaypoints();
         Vector3 _targetPos = _aStart.currentTargetWaypoint;
         if( _targetPos != null){
-            RotateTo(_targetPos, true, components.status.rotationSpeed);
-            MoveForward(components.status.runSpeed);
+            movement.GoTo(this.transform, _targetPos, components.status.rotationSpeed, components.status.runSpeed);
         }
-    }
-    void p (string _string){
-        //print(_string);
     }
 }

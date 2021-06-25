@@ -28,7 +28,6 @@ public class FieldOfView : MonoBehaviour
     }
 
     public void FindVisibleTargets(){
-       
        //here, we clean the list of visibleTargets and the ClosestTareget so we update it everytime this func is called
         visibleTargets.Clear();
         ClosestTarget = null;

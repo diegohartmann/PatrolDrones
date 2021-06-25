@@ -65,7 +65,6 @@ public class DamageFromBullet : MonoBehaviour
     private void UpdateLife(float _amt){
         currHealth += _amt;
         if(currHealth <= 0){
-            // currHealth = 0;
             UpdateHealthFill(0);
             OnDestroyEvent();
             return;

@@ -9,7 +9,6 @@ public class PatrolWaypoints : MonoBehaviour
     private DroneStatus status;
     [HideInInspector]public Transform targetWaypoint;
     [SerializeField] private Transform _PatrolWaypoints = null;
-    // [SerializeField] private bool smartSearch = true; 
     [SerializeField][Range(-1, 1)] private int direction = 1;
     [SerializeField][Range(0.0f, 2.0f)] private float minDistToWaypoint = 1.0f;
     private int targetIndex = 0;
@@ -18,12 +17,21 @@ public class PatrolWaypoints : MonoBehaviour
     public void PatrolPointsInit() {
         targetWaypoint = _PatrolWaypoints.GetChild(0);
     }
-    public void SmartWaypoints(){
+
+    public void UpdateWaypoints(bool _smart){
+        if (_smart){
+            SmartWaypoints();
+            return;
+        }
+        SimpleWaypoints();
+    }
+
+    private void SmartWaypoints(){
         for(int i = 0; i < _PatrolWaypoints.childCount; i++){
             SetNextWaypointBasedOn(i);
         } 
     }
-    public void SimpleWaypoints(){
+    private void SimpleWaypoints(){
         SetNextWaypointBasedOn(targetIndex);
     }
 
@@ -33,7 +41,6 @@ public class PatrolWaypoints : MonoBehaviour
             TargetIndexEqualsTo(_index + direction);
         }
     }
-    
     private void TargetIndexEqualsTo(int _newTargetIndex){
         targetIndex = _newTargetIndex;
         if (targetIndex == _PatrolWaypoints.childCount){

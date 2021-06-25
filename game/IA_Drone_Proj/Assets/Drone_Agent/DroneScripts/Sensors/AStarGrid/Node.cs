@@ -10,7 +10,6 @@ public class Node : IHeapItem<Node> {
 	public Vector3 worldPosition;
 	public int gridX;
 	public int gridY;
-	// public int gridZ;
 
 	public int gCost;
 	public int hCost;

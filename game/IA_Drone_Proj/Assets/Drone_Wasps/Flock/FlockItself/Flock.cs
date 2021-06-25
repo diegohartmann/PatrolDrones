@@ -9,7 +9,7 @@ public class Flock : MonoBehaviour
     [Range(1, 100)]public float driveFactor = 10;
     [Range(.1f, 100)]public float maxSpeed = 5f;
     [Range(1, 10)]public float neighborRadius = 1.5f;
-    [Range(0, 1)][SerializeField] float avoidanceRadiusMultiplier = 0.5f;
+    [Range(0, 1)][SerializeField] private float avoidanceRadiusMultiplier = 0.5f;
     [HideInInspector]public float squareOfMaxSpeed;
     [HideInInspector]public float squareOfNeighborRadius;
     [HideInInspector]public float squareOfAvoidanceRadius;

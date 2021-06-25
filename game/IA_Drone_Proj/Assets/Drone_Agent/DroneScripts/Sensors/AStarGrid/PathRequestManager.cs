@@ -25,7 +25,6 @@ public class PathRequestManager : MonoBehaviour
             instance.pathRequestQueue.Enqueue(newRequest);
             instance.TryProcessNext();
         }
-        // Debug.LogWarning("instance é nulo");
     }
     private void TryProcessNext() {
 		if (!isProcessingPath && pathRequestQueue.Count > 0) {

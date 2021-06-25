@@ -9,20 +9,7 @@ public class PlayerUpdate : MonoBehaviour
     private PlayerWaspAttack wasps;
     private PlayerBulletsPool pool;
     [SerializeField] private CameraController cameraController = null;
-    
     private void Awake() {
-        PlayerInit();    
-    }
-    
-    private void Update() {
-        _PlayerUpdate();
-    }
-    private void LateUpdate(){
-        PlayerLateUpdate();
-    }
-
-    private void PlayerInit() {
-        
         fire = GetComponent<PlayerFire>();
 
         move = GetComponent<PlayerMovement>();
@@ -38,9 +25,9 @@ public class PlayerUpdate : MonoBehaviour
         DamageFromBullet damage = GetComponent<DamageFromBullet>(); 
         if(damage!= null){
             damage.DamageFromBulletInit();
-        }
+        }    
     }
-    private void _PlayerUpdate(){
+    private void Update() {
         if(Time.timeScale <= 0){
             return;
         }
@@ -49,7 +36,7 @@ public class PlayerUpdate : MonoBehaviour
         wasps.CheckWapsAttack();
         cameraController.CheckSwapCameraMode();
     }
-    private void PlayerLateUpdate(){
+    private void LateUpdate(){
         cameraController.CameraMovement();
     }
 }

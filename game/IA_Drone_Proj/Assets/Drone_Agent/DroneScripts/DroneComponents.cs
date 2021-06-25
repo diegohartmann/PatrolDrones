@@ -15,7 +15,6 @@ public class DroneComponents : MonoBehaviour
     [HideInInspector]public DamageFromBullet damageFromBullets;
     [HideInInspector]public PathRequestManager pathRequest;
     public void ComponentsInit(){
-        //chamado no Awake() do DroneAgentUpdate.cs
         fieldOfView = GetComponent<FieldOfView>();
         status = GetComponent<DroneStatus>();
         actions = GetComponent<StateActions>();
