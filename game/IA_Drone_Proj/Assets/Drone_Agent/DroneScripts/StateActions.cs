@@ -7,7 +7,6 @@ using UnityEngine;
 public class StateActions : MonoBehaviour
 {
     private DroneComponents comp;
-    private float charge = 0;
     private IAAgentMovement movement;
     
     public void ActionsInit(DroneComponents _comp){
@@ -31,11 +30,11 @@ public class StateActions : MonoBehaviour
     }
  
     public void Attack(){
-        Shoot(4);
+        Shoot(2);
         movement.RotateTo(this.transform, PositionOf(this.comp.fieldOfView.ClosestTarget), this.comp.status.chaseRotationSpeed*5); //faces target
     }
     public void Chase(){
-        Shoot(2);
+        Shoot(1);
         movement.GoTo(this.transform, PositionOf(this.comp.fieldOfView.ClosestTarget), this.comp.status.chaseRotationSpeed*5, this.comp.status.chaseSpeed);
     }
 
@@ -47,11 +46,7 @@ public class StateActions : MonoBehaviour
         return t.position;
     }
    public void Shoot(float _rate){
-        charge += Time.deltaTime * comp.status.fireRate * _rate;
-        if (charge >=1){
-            comp.bulletsPool.Fire();
-            charge = 0;
-        }
+        comp.fire.ShootIf(true, _rate);
     }
     private void AStartTo(Vector3 finalPos){
         CreatePathTo(finalPos);

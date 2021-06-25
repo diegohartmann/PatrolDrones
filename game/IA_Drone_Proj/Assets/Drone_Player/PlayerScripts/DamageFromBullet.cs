@@ -16,7 +16,11 @@ public class DamageFromBullet : MonoBehaviour
     private PlayerWaspAttack player;
     private SceneLoader loader;
     private float currHealth;
+
+    private const int bulletLayer = 13;
+    private const int waspLayer = 14;
     private List <Image> HealthImages = new List<Image>();
+
     public void DamageFromBulletInit() {
         HealthImagesInit();
         VariablesInit();
@@ -35,28 +39,24 @@ public class DamageFromBullet : MonoBehaviour
         currHealth = startHealth;
     }
     private void OnTriggerEnter(Collider other) {
-        CheckTrigger(other.gameObject);
-    }
-    private void CheckTrigger(GameObject otherObj){
-        if (otherObj.CompareTag("Bullet")){
+        GameObject otherObj = (other.gameObject);
+        if (otherObj.layer == bulletLayer){
             bulletMovement bulletMov = otherObj.GetComponent<bulletMovement>();
-            
-            //se o atirador nao acertou em si mesmo
-            if(!SameObj(bulletMov.shooter, gameObject)){ 
-                DestroyBulletEffect(otherObj);
+            if(DifferentObjects(bulletMov.Shooter(), this.gameObject)){ 
                 if(destructble){
-                    UpdateLife(-bulletMov.bullDamage);
+                    UpdateLife(-bulletMov.Damage());
                 }
+                DestroyBulletEffect(otherObj);
             }
             return;
         }
-        if (otherObj.CompareTag("Wasp")){
+        if (otherObj.layer == waspLayer){
             if(destructble){
                 UpdateLife(-0.01f);
             }
         }
     }
-
+    //COLOCAR RIGIDBODY NAS BULLETS E WASPS PRA DETECTAR COLISAO POR LAYER E NAO POR TAG
     private void DestroyBulletEffect(GameObject _bullet){
         _bullet.SetActive(false);
         //som
@@ -100,13 +100,13 @@ public class DamageFromBullet : MonoBehaviour
     private bool HasHealthImages(){
         return healthImages != null;
     }
-    private bool SameObj(GameObject obj1, GameObject obj2){
-        return obj1 == obj2;
+    private bool DifferentObjects(GameObject obj1, GameObject obj2){
+        return obj1 != obj2;
     }
     private void OnDestroyEvent(){
-        if(OnDestroyed!=null){
-            OnDestroyed.Invoke();
-        }
+            if(OnDestroyed!=null){
+                OnDestroyed.Invoke();
+            }
     }
     public void SplashObjectsIn(Transform partsParent){
         foreach (Transform part in partsParent){
@@ -147,7 +147,6 @@ public class DamageFromBullet : MonoBehaviour
     public void IncrementDeadDrones(int _amt){
         if(DronesNetworkComunication.deadDrones < 3 ){
             if(player == null){
-                // print("Reseting player");
                 player = FindObjectOfType<PlayerWaspAttack>();
             }
             player.IncrementDeadDrones(_amt);

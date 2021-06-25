@@ -11,11 +11,12 @@ class DroneAgentUpdate : MonoBehaviour
         comp = GetComponent<DroneComponents>();
         comp.ComponentsInit();
         comp.status.searchTimer = DroneStatus.minSearchTimerValue;
-        comp.bulletsPool.BulletsPoolInit(comp);
+        comp.bulletsPool.BulletsPoolInit(comp.shooterData);
         comp.fieldOfView.FieldOfViewInit();
         comp.actions.ActionsInit(comp);
         comp.patrol.PatrolPointsInit();
         comp.damageFromBullets.DamageFromBulletInit();
+        comp.fire.FireInit(comp.bulletsPool, comp.shooterData);
     }
     private void Update(){
         comp.fieldOfView.FindVisibleTargets();

@@ -14,6 +14,8 @@ public class DroneComponents : MonoBehaviour
     [HideInInspector]public StateChecker stateChecker;
     [HideInInspector]public DamageFromBullet damageFromBullets;
     [HideInInspector]public PathRequestManager pathRequest;
+    [HideInInspector]public ShooterData shooterData;
+    [HideInInspector]public Fire fire;
     public void ComponentsInit(){
         fieldOfView = GetComponent<FieldOfView>();
         status = GetComponent<DroneStatus>();
@@ -24,5 +26,7 @@ public class DroneComponents : MonoBehaviour
         stateChecker = GetComponent<StateChecker>();
         damageFromBullets = GetComponent<DamageFromBullet>();
         pathRequest = GetComponent<PathRequestManager>();
+        shooterData = GetComponent<ShooterData>();
+        fire = GetComponent<Fire>();
     }
 }

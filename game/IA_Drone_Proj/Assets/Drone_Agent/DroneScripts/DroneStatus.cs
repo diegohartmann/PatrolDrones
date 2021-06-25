@@ -20,10 +20,10 @@ public class DroneStatus : MonoBehaviour
 
     [Header ("ATTACK")]
     [Range(0, 4)]public float distanceToAttack = 3f;
-    [Range(10, 20)]public float bulletSpeed = 15f;
+    // [Range(10, 20)]public float bulletSpeed = 15f;
 
-    [Range(0.01f, 1.0f)]public float shootDamage = 0.01f;
-    [Range(0.1f, 10.0f)]public float fireRate = 5f;
+    // [Range(0.01f, 1.0f)]public float shootDamage = 0.01f;
+    // [Range(0.1f, 10.0f)]public float fireRate = 5f;
     
     [Header ("PATROL")]
     [Range(1, 10)]public float patrolSpeed = 2.5f;

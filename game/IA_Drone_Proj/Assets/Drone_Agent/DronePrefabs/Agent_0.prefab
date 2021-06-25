@@ -284,9 +284,11 @@ GameObject:
   - component: {fileID: 5645602852880009033}
   - component: {fileID: 7346335767965675447}
   - component: {fileID: 4547201057041380426}
-  - component: {fileID: 280420667939735362}
   - component: {fileID: 6037012019717401250}
   - component: {fileID: 731811328501006585}
+  - component: {fileID: 1721705773047041346}
+  - component: {fileID: 280420667939735362}
+  - component: {fileID: 1584875192483679758}
   - component: {fileID: 5921868586874682810}
   m_Layer: 10
   m_Name: Agent_0
@@ -324,8 +326,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.43167374, y: 0.62, z: 1.3822962}
-  m_Center: {x: 0, y: 0.3, z: -0.4877562}
+  m_Size: {x: 0.43167374, y: 1.0841761, z: 1.150955}
+  m_Center: {x: 0, y: 0.43034714, z: -0.37208557}
 --- !u!114 &3112075457157542562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +349,8 @@ MonoBehaviour:
   stateChecker: {fileID: 0}
   damageFromBullets: {fileID: 0}
   pathRequest: {fileID: 0}
+  shooterData: {fileID: 0}
+  fire: {fileID: 0}
 --- !u!114 &7730413838215157287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,9 +369,6 @@ MonoBehaviour:
   aStarSpeed: 3
   aStarRotationSpeed: 3
   distanceToAttack: 3
-  bulletSpeed: 15
-  shootDamage: 0.05
-  fireRate: 5
   patrolSpeed: 2.5
   patrolRotationSpeed: 2
 --- !u!114 &6217656485238998898
@@ -387,7 +388,7 @@ MonoBehaviour:
   viewMeshFilter: {fileID: 8601604056182203519}
   targetMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 16896
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
@@ -436,20 +437,6 @@ MonoBehaviour:
   direction: 1
   minDistToWaypoint: 1
   reachedPatrol: 0
---- !u!114 &280420667939735362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3984725447375471681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b0c1f189ffd8748abfb116b1e32cdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 537277265012669328, guid: 86eb5613498a9fc40b9c5dc666daa8a4, type: 3}
-  FirePointsHandler: {fileID: 8029904060576021387}
 --- !u!114 &6037012019717401250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +508,47 @@ MonoBehaviour:
   path: []
   startFollow: 0
   canRequestAPath: 1
+--- !u!114 &1721705773047041346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984725447375471681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff804c4fddbb6704da50ed10fa158b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &280420667939735362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984725447375471681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b0c1f189ffd8748abfb116b1e32cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 1278891230787310743, guid: 63d1e523452a94747ab01b3ceb872c76, type: 3}
+  FirePointsHandler: {fileID: 8029904060576021387}
+--- !u!114 &1584875192483679758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984725447375471681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ce4838f64c55d40bc5863dcb957b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 10
+  fireSpeed: 15
+  fireDamage: 0.071
 --- !u!114 &5921868586874682810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1255,11 +1283,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2d549107286dc99449ee55a2f1ad301d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401e1d06997979e4ca703e81df57ed5a, type: 3}
---- !u!4 &2228627002088966747 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 401e1d06997979e4ca703e81df57ed5a, type: 3}
-  m_PrefabInstance: {fileID: 1830454924008631728}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &52386936328216033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7359716688871231407, guid: 401e1d06997979e4ca703e81df57ed5a, type: 3}
@@ -1268,5 +1291,10 @@ GameObject:
 --- !u!1 &7950969142218693479 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8588524198508345047, guid: 401e1d06997979e4ca703e81df57ed5a, type: 3}
+  m_PrefabInstance: {fileID: 1830454924008631728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2228627002088966747 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 401e1d06997979e4ca703e81df57ed5a, type: 3}
   m_PrefabInstance: {fileID: 1830454924008631728}
   m_PrefabAsset: {fileID: 0}

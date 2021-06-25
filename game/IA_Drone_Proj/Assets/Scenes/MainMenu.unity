@@ -1119,6 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c914dd3a6f2b05440b1f360e44fa897a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instantiateAtAwake: 0
   strawPanelPrefab: {fileID: 7600058754985725972, guid: 7cadd180db4b658428944a4dee93298f, type: 3}
   strawPanelPos: {fileID: 1945426607}
   strawDronePrefab: {fileID: 1391028550034747904, guid: 8e27414421a95584c9f131c2a3744e35, type: 3}
@@ -2110,35 +2111,6 @@ Transform:
   m_Father: {fileID: 1166702067200094169}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &827447160901221872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8552253402562709383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be97196e1b1537d418f13c86cb5f689a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 537277265012669328, guid: 86eb5613498a9fc40b9c5dc666daa8a4, type: 3}
-  FirePointsHandler: {fileID: 64646299319614117}
---- !u!114 &1095153715332009439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8552253402562709383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25f1276d9831fcb44a287fce3c8544ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireRate: 10
-  bulletSpeed: 20
-  bulletDamage: 0.1
 --- !u!4 &1166702067200094169
 Transform:
   m_ObjectHideFlags: 0
@@ -2559,9 +2531,10 @@ GameObject:
   - component: {fileID: 8552253402562709403}
   - component: {fileID: 4310559715215810425}
   - component: {fileID: 2613987532885873478}
-  - component: {fileID: 1095153715332009439}
-  - component: {fileID: 827447160901221872}
+  - component: {fileID: 8552253402562709387}
   - component: {fileID: 8552253402562709384}
+  - component: {fileID: 8552253402562709386}
+  - component: {fileID: 8552253402562709385}
   - component: {fileID: 7445397272262011623}
   m_Layer: 0
   m_Name: Player
@@ -2598,6 +2571,47 @@ MonoBehaviour:
   WaspBomb: {fileID: 1287314285}
   BomberThrowerFinalOffset: {x: 0, y: 2, z: 0}
   initialDeadDronesBars: 1
+--- !u!114 &8552253402562709385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552253402562709383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b0c1f189ffd8748abfb116b1e32cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 1278891230787310743, guid: 63d1e523452a94747ab01b3ceb872c76, type: 3}
+  FirePointsHandler: {fileID: 64646299319614117}
+--- !u!114 &8552253402562709386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552253402562709383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ce4838f64c55d40bc5863dcb957b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 15
+  fireSpeed: 15
+  fireDamage: 0.1
+--- !u!114 &8552253402562709387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552253402562709383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff804c4fddbb6704da50ed10fa158b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8552253402562709403
 Transform:
   m_ObjectHideFlags: 0
@@ -2606,7 +2620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8552253402562709383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.3, z: -6.72}
+  m_LocalPosition: {x: -0, y: 0.03, z: -6.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1166702067200094169}

@@ -9,6 +9,9 @@ public class StrawPannel : MonoBehaviour
         instantiator = FindObjectOfType<StrawDroneInstantiator>();
     }
     public void InstantiateAnotherPanel(){
+        if(instantiator == null){
+            instantiator = FindObjectOfType<StrawDroneInstantiator>();
+        }
         instantiator.InstantiateNewStrawPannel();
         instantiator.FillStrawDrones();
     }

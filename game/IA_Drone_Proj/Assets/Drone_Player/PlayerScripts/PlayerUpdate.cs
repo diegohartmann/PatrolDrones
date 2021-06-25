@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerUpdate : MonoBehaviour
 {
-    private PlayerFire fire;
+    private Fire fire;
     private PlayerMovement move;
+    private ShooterData shooterData;
     private PlayerWaspAttack wasps;
-    private PlayerBulletsPool pool;
+    private BulletsPool pool;
     [SerializeField] private CameraController cameraController = null;
     private void Awake() {
-        fire = GetComponent<PlayerFire>();
+        fire = GetComponent<Fire>();
 
         move = GetComponent<PlayerMovement>();
             move.MovementInit();
@@ -18,9 +19,11 @@ public class PlayerUpdate : MonoBehaviour
         wasps = GetComponent<PlayerWaspAttack>();
             wasps.WaspAttackInit();
 
-        pool = GetComponent<PlayerBulletsPool>();
-            pool.SetUpBullets(fire);
-            fire.FireInit(pool);
+        shooterData = GetComponent<ShooterData>();
+
+        pool = GetComponent<BulletsPool>();
+            pool.BulletsPoolInit(shooterData);
+            fire.FireInit(pool, shooterData);
 
         DamageFromBullet damage = GetComponent<DamageFromBullet>(); 
         if(damage!= null){
@@ -32,7 +35,7 @@ public class PlayerUpdate : MonoBehaviour
             return;
         }
         move.Movement();
-        fire.CheckFire();
+        fire.ShootIf(Input.GetMouseButton(0));
         wasps.CheckWapsAttack();
         cameraController.CheckSwapCameraMode();
     }
