@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/SteeredCoheision")]
 public class FlockSteeredCoheisionBehaviour : FilteredFlockBehaviour
 {
-    Vector3 currentVelocity;
-    [SerializeField] float agentSmoothTime = 0.5f;
+    private Vector3 currentVelocity;
+    [SerializeField] private float agentSmoothTime = 0.5f;
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock){
         if(context.Count == 0){
             return Vector3.zero;

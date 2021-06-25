@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/StayInRadius")]
 public class FlockStayInRadiusBehaviour : FlockBehaviour
 {
-    [HideInInspector]public Transform center = null;
+    [HideInInspector] public Transform center = null;
     [SerializeField] private float radius = 15f;
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock){
         Vector3 centerOffset = (center.position - agent.transform.position);

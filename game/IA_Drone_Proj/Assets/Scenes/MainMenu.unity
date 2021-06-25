@@ -2569,7 +2569,7 @@ MonoBehaviour:
   WaspBombHolder: {fileID: 1287314284}
   WaspBomb: {fileID: 1287314285}
   BomberThrowerFinalOffset: {x: 0, y: 2, z: 0}
-  initialDeadDronesBars: 3
+  initialDeadDronesBars: 1
 --- !u!114 &8552253402562709385
 MonoBehaviour:
   m_ObjectHideFlags: 0
