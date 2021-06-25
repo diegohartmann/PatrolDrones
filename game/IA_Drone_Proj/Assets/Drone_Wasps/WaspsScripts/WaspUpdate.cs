@@ -6,17 +6,11 @@ public class WaspUpdate : MonoBehaviour
 {
     private FlockAgent flockAgent;
     private void Awake(){
-        WaspAwake();
+        GetComponent<DamageFromBullet>().DamageFromBulletInit();
+        flockAgent = GetComponent<FlockAgent>();
+        flockAgent.Init( FindObjectOfType<Flock>(), GetComponent<Collider>() );
     }
     private void Update() {
-        _WaspUpdate();
-    }
-    private void WaspAwake(){
-        flockAgent = GetComponent<FlockAgent>();
-            flockAgent.FlockAgentInit();
-        GetComponent<DamageFromBullet>().DamageFromBulletInit();
-    }
-    private void _WaspUpdate(){
         flockAgent.MoveFlockAgent();
     }
 }

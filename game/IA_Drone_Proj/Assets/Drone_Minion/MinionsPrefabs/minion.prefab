@@ -964,7 +964,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  aStar: {fileID: 0}
   status: {fileID: 0}
   stateChecker: {fileID: 0}
   actions: {fileID: 0}
@@ -982,8 +981,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766f5c036e65d6f42bf98d43e17b4724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 4
-  rotationSpeed: 4
+  runSpeed: 3
+  rotationSpeed: 3
 --- !u!114 &1246031937113912813
 MonoBehaviour:
   m_ObjectHideFlags: 0

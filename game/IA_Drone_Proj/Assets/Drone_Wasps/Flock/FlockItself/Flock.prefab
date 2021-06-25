@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 592432135612924243}
   - component: {fileID: 1589986510154149969}
   - component: {fileID: 8296685239176654613}
-  - component: {fileID: 4683506092540010495}
   m_Layer: 0
   m_Name: Flock
   m_TagString: Untagged
@@ -67,15 +66,3 @@ MonoBehaviour:
   squareOfMaxSpeed: 9
   squareOfNeighborRadius: 2.5281
   squareOfAvoidanceRadius: 0.20104463
---- !u!114 &4683506092540010495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4273657179428783288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aebdf9f865ec4b4b9cf36c8a806661e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

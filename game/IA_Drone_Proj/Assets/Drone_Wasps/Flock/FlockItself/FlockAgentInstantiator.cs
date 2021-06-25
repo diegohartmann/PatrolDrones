@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FlockAgentInstantiator : MonoBehaviour
 {
-    [SerializeField] Transform WaspsHolder = null;
-    [SerializeField] FlockStayInRadiusBehaviour radiusBehaviour = null;
+    [SerializeField] private Transform WaspsHolder = null;
+    [SerializeField] private FlockStayInRadiusBehaviour radiusBehaviour = null;
     private void Awake() {
         radiusBehaviour.center = WaspsHolder;
         CenterPos(transform);

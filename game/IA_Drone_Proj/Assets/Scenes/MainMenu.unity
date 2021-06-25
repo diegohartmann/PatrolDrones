@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c914dd3a6f2b05440b1f360e44fa897a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiateAtAwake: 0
+  instantiateAtAwake: 1
   strawPanelPrefab: {fileID: 7600058754985725972, guid: 7cadd180db4b658428944a4dee93298f, type: 3}
   strawPanelPos: {fileID: 1945426607}
   strawDronePrefab: {fileID: 1391028550034747904, guid: 8e27414421a95584c9f131c2a3744e35, type: 3}
@@ -2569,7 +2569,7 @@ MonoBehaviour:
   WaspBombHolder: {fileID: 1287314284}
   WaspBomb: {fileID: 1287314285}
   BomberThrowerFinalOffset: {x: 0, y: 2, z: 0}
-  initialDeadDronesBars: 1
+  initialDeadDronesBars: 3
 --- !u!114 &8552253402562709385
 MonoBehaviour:
   m_ObjectHideFlags: 0

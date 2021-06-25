@@ -5,6 +5,6 @@ using UnityEngine;
 public class MinionStatus : MonoBehaviour
 {
     [Header("Movement")]
-    public float runSpeed;
-    public float rotationSpeed;
+    [Range(1,5)]public float runSpeed = 3;
+    [Range(1,5)]public float rotationSpeed = 3;
 }
