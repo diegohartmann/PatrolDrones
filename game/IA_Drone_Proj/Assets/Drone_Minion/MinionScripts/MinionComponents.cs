@@ -5,7 +5,7 @@ using UnityEngine;
 public class MinionComponents : MonoBehaviour
 {
     [HideInInspector] public Transform player;
-    [HideInInspector] public MinionPathfinding aStar;
+    [HideInInspector] public IAAgentPathFinding aStar;
     [HideInInspector] public MinionStatus status;
     [HideInInspector] public MinionStateChecker stateChecker;
     [HideInInspector] public MinionActions actions;
@@ -15,11 +15,11 @@ public class MinionComponents : MonoBehaviour
     public void MinionComponentsInit() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         //===============================================================
-        aStar = GetComponent<MinionPathfinding>();
         status = GetComponent<MinionStatus>();
         actions = GetComponent<MinionActions>();
         stateChecker = GetComponent<MinionStateChecker>();
         damageFromBullet = GetComponent<DamageFromBullet>();
         triggerChecker = GetComponent<MinionTriggerChecker>();
+        aStar = new IAAgentPathFinding(this.transform);
     }
 }

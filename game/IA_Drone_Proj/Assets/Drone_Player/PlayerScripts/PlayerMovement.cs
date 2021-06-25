@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         CheckIfIsOnTile();
     }
   
-    void CheckIfIsOnTile(){
+    private void CheckIfIsOnTile(){
         RaycastHit hit;
         bool rayCollided = Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity);
         if(rayCollided){
@@ -41,11 +41,11 @@ public class PlayerMovement : MonoBehaviour
         }
         this.isOnTile = false;
     }
-    void SetCameraTarget(Vector3 pos){
+    private void SetCameraTarget(Vector3 pos){
         lastCamTargetPos = pos;
         zoomCamTarget.transform.position = pos;
     }
-    void TurnToMouse(){
+    private void TurnToMouse(){
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLenght;
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             RotateTo(finalPoint);
         }
     }
-    void Move(){
+    private void Move(){
         Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0 , Input.GetAxis("Vertical")).normalized;
         if(rbMove){
             MoveRB(dir);
@@ -63,17 +63,17 @@ public class PlayerMovement : MonoBehaviour
         }
         MoveTransform(dir);
     }
-    void MoveTransform(Vector3 dir){
+    private void MoveTransform(Vector3 dir){
         transform.Translate(dir * DeltaTime(moveSpeed));
     }
-    void MoveRB(Vector3 dir){
+    private void MoveRB(Vector3 dir){
         dir *= DeltaTime(moveSpeed);
         thisRB.velocity = Vector3.zero;
         thisRB.angularVelocity = Vector3.zero;
         thisRB.Sleep();
         thisRB.MovePosition(transform.position + dir);
     }
-    void RotateTo(Vector3 _target){
+    private void RotateTo(Vector3 _target){
         var neededRotation = Quaternion.LookRotation(_target - rotatableObj.position);
         var interpolatedRotation = Quaternion.Slerp(rotatableObj.rotation, neededRotation, Time.deltaTime * rotationFactor);
         if(rbMove){
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         }
         rotatableObj.rotation = interpolatedRotation;
     }
-    float DeltaTime(float _times){
+    private float DeltaTime(float _times){
         return _times * Time.deltaTime;
     }
 }

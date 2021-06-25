@@ -32,9 +32,9 @@ public class MinionActions : MonoBehaviour
         AStartTo(PlayerPos());
     }
     private void AStartTo(Vector3 finalPos){
-        MinionPathfinding _aStart = components.aStar;
+        var _aStart = components.aStar;
         _aStart.RequestAPath(finalPos);
-        _aStart.UpdatePathWaypoints();
+        _aStart.UpdatePathfindingWay();
         Vector3 _targetPos = _aStart.currentTargetWaypoint;
         if( _targetPos != null){
             movement.GoTo(this.transform, _targetPos, components.status.rotationSpeed, components.status.runSpeed);

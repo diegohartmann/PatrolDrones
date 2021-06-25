@@ -285,7 +285,6 @@ GameObject:
   - component: {fileID: 7346335767965675447}
   - component: {fileID: 4547201057041380426}
   - component: {fileID: 6037012019717401250}
-  - component: {fileID: 731811328501006585}
   - component: {fileID: 280420667939735362}
   - component: {fileID: 1584875192483679758}
   - component: {fileID: 5921868586874682810}
@@ -349,7 +348,6 @@ MonoBehaviour:
   damageFromBullets: {fileID: 0}
   pathRequest: {fileID: 0}
   shooterData: {fileID: 0}
-  fire: {fileID: 0}
 --- !u!114 &7730413838215157287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,22 +489,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   healthColors: {fileID: 11400000, guid: 0b8818fb5727579498cd0ea675564b76, type: 2}
---- !u!114 &731811328501006585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3984725447375471681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f32956aa819f4945acd21c080d3e138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTargetWaypoint: {x: 0, y: 0, z: 0}
-  path: []
-  startFollow: 0
-  canRequestAPath: 1
 --- !u!114 &280420667939735362
 MonoBehaviour:
   m_ObjectHideFlags: 0

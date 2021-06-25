@@ -96,10 +96,10 @@ public class StateChecker : MonoBehaviour
     private bool AnotherDroneHasATarget(){
         return DronesNetworkComunication.dronesViewingIntruser.Count>0;
     }
-    private void DroneCanRequestAPathAStar(bool b, DronePathfinding aStar){
+    private void DroneCanRequestAPathAStar(bool b, IAAgentPathFinding aStar){
         aStar.canRequestAPath = b;
     }
-    private bool DroneCanRequestAPathAStar(DronePathfinding aStar){
+    private bool DroneCanRequestAPathAStar(IAAgentPathFinding aStar){
         return aStar.canRequestAPath;
     }
     private void RefillSearchTimer(DroneStatus status){

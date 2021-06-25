@@ -10,7 +10,7 @@ public class DroneComponents : MonoBehaviour
     [HideInInspector]public StateActions actions;
     [HideInInspector]public BulletsPool bulletsPool;
     [HideInInspector]public PatrolWaypoints patrol;
-    [HideInInspector]public DronePathfinding aStar;
+    [HideInInspector]public IAAgentPathFinding aStar;
     [HideInInspector]public StateChecker stateChecker;
     [HideInInspector]public DamageFromBullet damageFromBullets;
     [HideInInspector]public PathRequestManager pathRequest;
@@ -22,11 +22,11 @@ public class DroneComponents : MonoBehaviour
         actions = GetComponent<StateActions>();
         bulletsPool = GetComponent<BulletsPool>();
         patrol = GetComponent<PatrolWaypoints>();
-        aStar = GetComponent<DronePathfinding>();
         stateChecker = GetComponent<StateChecker>();
         damageFromBullets = GetComponent<DamageFromBullet>();
         pathRequest = GetComponent<PathRequestManager>();
         shooterData = GetComponent<ShooterData>();
         fire = new Fire(bulletsPool, shooterData);
+        aStar = new IAAgentPathFinding(this.transform);
     }
 }
