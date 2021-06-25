@@ -7,9 +7,9 @@ public class MinionPathfinding : MonoBehaviour
     [HideInInspector]public Vector3 currentTargetWaypoint;
     [HideInInspector]public Vector3[] path; //taken from grid
     [HideInInspector]public Vector3 LastFinalTarget;
-    private int targetIndex;
     [HideInInspector]public bool reachedTargetTransform = false;
     [HideInInspector]public bool pathSuccedded = false;
+    private int targetIndex;
     public void RequestAPath(Vector3 _finalTarget){
         targetIndex = 0;
         PathRequestManager.RequestPath(transform.position, _finalTarget, OnPathFound);
@@ -30,7 +30,7 @@ public class MinionPathfinding : MonoBehaviour
         if(!pathSuccedded){
             return;
         }
-        if (PathNull()){
+        if (this.path == null){
             print("Path Null");
             return;
         }
@@ -52,9 +52,6 @@ public class MinionPathfinding : MonoBehaviour
                 this.currentTargetWaypoint = path[this.targetIndex];
             }
         }
-    }
-    private bool PathNull(){
-        return (this.path == null);
     }
     private bool ReachedTargetTransform(){
         return (this.targetIndex >= this.path.Length);

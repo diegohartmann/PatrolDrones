@@ -373,7 +373,6 @@ GameObject:
   - component: {fileID: 2613987531788074742}
   - component: {fileID: 2822787937260799855}
   - component: {fileID: 1395258489778546014}
-  - component: {fileID: 1095153714506834031}
   - component: {fileID: 3263830388439505587}
   - component: {fileID: 827447161718132800}
   - component: {fileID: 7445397273315870551}
@@ -518,18 +517,6 @@ MonoBehaviour:
   WaspBomb: {fileID: 0}
   BomberThrowerFinalOffset: {x: 0, y: 2, z: 0}
   initialDeadDronesBars: 0
---- !u!114 &1095153714506834031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8552253401467005495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff804c4fddbb6704da50ed10fa158b11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3263830388439505587
 MonoBehaviour:
   m_ObjectHideFlags: 0

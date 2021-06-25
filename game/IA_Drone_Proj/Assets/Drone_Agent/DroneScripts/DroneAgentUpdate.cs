@@ -16,7 +16,6 @@ class DroneAgentUpdate : MonoBehaviour
         comp.actions.ActionsInit(comp);
         comp.patrol.PatrolPointsInit();
         comp.damageFromBullets.DamageFromBulletInit();
-        comp.fire.FireInit(comp.bulletsPool, comp.shooterData);
     }
     private void Update(){
         comp.fieldOfView.FindVisibleTargets();

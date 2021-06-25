@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fire : MonoBehaviour
+public class Fire
 {
     private BulletsPool pool;
     private ShooterData data;
     
     private float charge = 0;
     
-    public void FireInit(BulletsPool _pool, ShooterData _data) {
+    public Fire(BulletsPool _pool, ShooterData _data) {
         pool = _pool;
         data = _data;
     }    

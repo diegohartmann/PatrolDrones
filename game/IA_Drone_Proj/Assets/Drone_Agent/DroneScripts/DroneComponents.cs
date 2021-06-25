@@ -27,6 +27,6 @@ public class DroneComponents : MonoBehaviour
         damageFromBullets = GetComponent<DamageFromBullet>();
         pathRequest = GetComponent<PathRequestManager>();
         shooterData = GetComponent<ShooterData>();
-        fire = GetComponent<Fire>();
+        fire = new Fire(bulletsPool, shooterData);
     }
 }

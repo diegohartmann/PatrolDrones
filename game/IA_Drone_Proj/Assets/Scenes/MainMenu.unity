@@ -2531,7 +2531,6 @@ GameObject:
   - component: {fileID: 8552253402562709403}
   - component: {fileID: 4310559715215810425}
   - component: {fileID: 2613987532885873478}
-  - component: {fileID: 8552253402562709387}
   - component: {fileID: 8552253402562709384}
   - component: {fileID: 8552253402562709386}
   - component: {fileID: 8552253402562709385}
@@ -2600,18 +2599,6 @@ MonoBehaviour:
   fireRate: 15
   fireSpeed: 15
   fireDamage: 0.1
---- !u!114 &8552253402562709387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8552253402562709383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff804c4fddbb6704da50ed10fa158b11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8552253402562709403
 Transform:
   m_ObjectHideFlags: 0

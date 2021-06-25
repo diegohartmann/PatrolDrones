@@ -56,7 +56,6 @@ public class DamageFromBullet : MonoBehaviour
             }
         }
     }
-    //COLOCAR RIGIDBODY NAS BULLETS E WASPS PRA DETECTAR COLISAO POR LAYER E NAO POR TAG
     private void DestroyBulletEffect(GameObject _bullet){
         _bullet.SetActive(false);
         //som

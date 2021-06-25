@@ -11,7 +11,6 @@ public class PlayerUpdate : MonoBehaviour
     private BulletsPool pool;
     [SerializeField] private CameraController cameraController = null;
     private void Awake() {
-        fire = GetComponent<Fire>();
 
         move = GetComponent<PlayerMovement>();
             move.MovementInit();
@@ -23,7 +22,7 @@ public class PlayerUpdate : MonoBehaviour
 
         pool = GetComponent<BulletsPool>();
             pool.BulletsPoolInit(shooterData);
-            fire.FireInit(pool, shooterData);
+        fire = new Fire(pool, shooterData);
 
         DamageFromBullet damage = GetComponent<DamageFromBullet>(); 
         if(damage!= null){

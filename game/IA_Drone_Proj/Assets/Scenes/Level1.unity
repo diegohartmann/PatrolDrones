@@ -6285,22 +6285,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1095153714506834031, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
-      propertyPath: pool
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1095153714506834031, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
-      propertyPath: bulletDamage
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 1095153714506834031, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
-      propertyPath: bulletSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1095153714506834031, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
-      propertyPath: fireRate
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1166702066314084969, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
@@ -6357,10 +6341,6 @@ PrefabInstance:
       propertyPath: WaspBomb
       value: 
       objectReference: {fileID: 8896601350269466489}
-    - target: {fileID: 1395258489778546014, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
-      propertyPath: initialDeadDronesBars
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1754921601984774270, guid: 2056b95623f460d4d8fd1bd286fb28aa, type: 3}
       propertyPath: m_Layer
       value: 9
