@@ -56,12 +56,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     private void Move(){
-        Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0 , Input.GetAxis("Vertical")).normalized;
+        // Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0 , Input.GetAxis("Vertical")).normalized;
         if(rbMove){
-            MoveRB(dir);
+            MoveRB(Dir());
             return;
         }
-        MoveTransform(dir);
+        MoveTransform(Dir());
+    }
+    private Vector3 Dir(){
+        return new Vector3(Input.GetAxis("Horizontal"), 0 , Input.GetAxis("Vertical")).normalized;
     }
     private void MoveTransform(Vector3 dir){
         transform.Translate(dir * DeltaTime(moveSpeed));

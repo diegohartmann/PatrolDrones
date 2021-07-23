@@ -13,13 +13,13 @@ public class CameraController : MonoBehaviour
     [SerializeField] private KeyCode zoomButtom = KeyCode.Space; 
     private Camera thisCam;
     [SerializeField]private bool followPlayer = false;
-    [SerializeField][Range (0,1)] float zoomSmoothSpeed = 0.8f; //the higher the faster
-    [SerializeField] Transform zoomCamTarget = null;
+    private const float zoomSmoothSpeed = 0.8f; //the higher the faster
+    [SerializeField]private  Transform zoomCamTarget = null;
     private Vector3 zoomOffset = new Vector3 (0,0,0);
     [Header("Seguir player")]
-    [SerializeField] Transform followTarget = null;
-    [SerializeField][Range (0,1)] float playerSmoothSpeed = 0.5f; //the higher the faster
-    [SerializeField] Vector3 playerOffset = new Vector3 (0,5,0);
+    [SerializeField] private Transform followTarget = null;
+    private const float playerSmoothSpeed = 0.5f; //the higher the faster
+    private Vector3 playerOffset = new Vector3 (0,8,0);
     private void Awake() {
         thisCam = GetComponent<Camera>();
         ApplyMode(followPlayer);
